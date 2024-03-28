@@ -1,0 +1,266 @@
+
+
+
+
+ <script>
+ Array.prototype.append=function(obj,nodup){
+  if (!(nodup && this.contains(obj))){
+    this[this.length]=obj;
+  }
+
+}
+
+/*
+return index of element in the array
+*/
+Array.prototype.indexOf=function(obj){
+  var result=-1;
+  for (var i=0;i<this.length;i++){
+    if (this[i]==obj){
+      result=i;
+      break;
+
+    }
+  }
+
+
+  return result;
+}
+
+/*
+return true if element is in the array
+*/
+Array.prototype.contains=function(obj){
+  return (this.indexOf(obj)>=0);
+}
+
+/*
+empty the array
+*/
+Array.prototype.clear=function(){
+  this.length=0;
+}
+
+/*
+insert element at given position in the array, bumping all
+subsequent members up one index
+*/
+Array.prototype.insertAt=function(index,obj){
+  this.splice(index,0,obj);
+}
+
+/*
+remove element at given index
+*/
+Array.prototype.removeAt=function(index){
+  this.splice(index,1);
+}
+
+/*
+return index of element in the array
+*/
+Array.prototype.remove=function(obj){
+  var index=this.indexOf(obj);
+  if (index>=0){
+    this.removeAt(index);
+  }
+
+}
+function isUndefined(v) {
+    var undef;
+    return v===undef;
+}
+
+ function getIndex(instance){
+ for(var i=0;i<myMenu.length;i++){
+	if(myMenu[i][1] == instance){
+	return i;	
+
+	}
+	
+}
+return -1;
+}
+ function removeFromMenu(instance){
+ var index=getIndex(instance);
+	if(index!=-1)
+		myMenu.removeAt(i);
+
+
+}
+function showsubMenu(mainMenuName,subMenuName,callback){ 
+	var index = getIndex(mainMenuName);
+	var submenu= ["",subMenuName,callback,null,""];
+	if(index==-1)
+	{
+		var firstLevelMenu= ["",mainMenuName,"",null,"",submenu]; 
+		 myMenu.insertAt(myMenu.length,firstLevelMenu); 	
+	}
+	else{
+		myMenu[index].insertAt(myMenu[index].length,submenu);
+
+
+
+	}
+}
+
+
+
+
+function setPos(e)
+{
+	try
+	{
+		curevent=(typeof event=='undefined'?e:event);
+		mouseStatus='down';
+		curPos=curevent.clientY;
+		FrmHeight=document.getElementById('IdDivFrm').style.height;
+		DocHeight=document.getElementById('docDiv').style.height; 
+		InitialPos=curPos;
+		
+	}
+	catch(e)
+	{
+		alert(e.message);
+	}
+}
+function getPos(e)
+{
+	try
+	{
+		if(mouseStatus=='down'){ 
+			curevent=(typeof event=='undefined'?e:event);
+			mouseStatus='down';
+			curPos=curevent.clientY;
+			CordPos=parseInt(InitialPos)-parseInt(curPos);
+			
+			document.getElementById('docDiv').style.height=parseInt(DocHeight)-parseInt(CordPos); 
+			document.getElementById('IdDivFrm').style.height=parseInt(FrmHeight);
+			DocHeight=document.getElementById('docDiv').style.height; //Bhupesh 
+			FrmHeight=document.getElementById('IdDivFrm').style.height; //Bhupesh 
+		}
+		mouseStatus='up';
+	}
+	catch(e)
+	{
+		alert(e.message);
+	}
+}
+
+
+function ShowForm(e)
+{
+
+
+	getPos(e);
+
+	try
+	{
+		if(document.getElementById("docDiv").style.display == 'inline')
+		{
+			document.getElementById("IdDivFrm").style.display="inline";
+
+			document.getElementById("docDiv").style.display="none";
+		}
+		document.getElementById("IdImgForm").src="/webdesktop/webtop/en_us/images/tab_form_en.gif";
+		document.getElementById("IdImgDoc").src="/webdesktop/webtop/en_us/images/tab_doc_dis.gif";
+		var h = document.body.offsetHeight;
+alert(h);
+        document.getElementById("IdDivFrm").style.height = (h - 25) + "px";
+alert( document.getElementById("IdDivFrm").style.height);
+	}
+	catch(e)
+	{
+		alert(e.message);
+	}
+	return false;
+}
+
+
+// added by sachin
+function ShowDoc()
+{
+	try
+	{
+		if(document.getElementById("IdDivFrm").style.display == 'inline' || document.getElementById("IdDivFrm").style.display == ''|| document.getElementById("IdDivFrm").style.display == 'block')
+
+
+		{
+			document.getElementById("IdDivFrm").style.display="none";
+			document.getElementById("docDiv").style.display="inline";
+		}
+
+		document.getElementById("IdImgForm").src="/webdesktop/webtop/en_us/images/tab_form_dis.gif";
+		document.getElementById("IdImgDoc").src="/webdesktop/webtop/en_us/images/tab_doc_en.gif";
+	}
+	catch(e)
+	{
+		alert(e.message);
+	}
+	return false;
+}
+
+
+var FrmHeight=0;
+var DocHeight=0;
+var InitialPos=0;
+</script>
+
+<%
+ int newHght = heightH - 10-25;
+
+String docHeight=templetePrefXmlResponse.getVal("DocHeight");//Bhupesh 
+String frmHeight=templetePrefXmlResponse.getVal("FrmHeight");//Bhupesh 
+if(docHeight.equals("")||docHeight.equalsIgnoreCase("0"))//Bhupesh 
+    docHeight=(heightH - 10-25)/2+"px";//Bhupesh 
+%>
+<script>
+
+//formHght = formH/2;
+formHght = formH;
+</script>
+<body onload = "ShowForm(event);">
+ 
+<table width="100%" height="100%" border=0 style='margin-top:1px;'>	
+	
+	<tr>
+		<td valign="top" width="10px">
+			<img id="IdImgForm" src="/webdesktop/webtop/en_us/images/tab_form_en.gif" alt="Form" onclick="ShowForm(event)"><BR>
+			<img id="IdImgDoc" src="/webdesktop/webtop/en_us/images/tab_doc_dis.gif" alt="Document" onclick="ShowDoc()"><BR>
+		</td>
+		<td valign=top align="left" style='width:100%; height:100%; margin-left:0px;'>
+		<!--garima-->
+		
+		<!--garima-->
+			<div id="IdDivFrm" style="overflow:auto;display:inline;">
+				<!-- Form--> 
+			
+				<h:panelGrid columnClasses="EWCab" id="formGrid" binding="#{formView.formPanel}"  style="width:100%; text-align :center; height:100%"></h:panelGrid> 
+
+
+				<!-- Form end-->    
+			</div>		
+			<script type="text/javascript">
+   ShowForm(event);
+</script>
+			
+			<div id="docDiv" style="overflow:auto;display:none;">
+                <!--Document-->
+                    <%@ include file="/workitem/view/docview.process" %>
+                <!--Document end-->
+            </div>
+			<!-- sachin -->
+
+
+
+
+
+
+
+
+		</td>
+	</tr>
+</table>
+</body>
+
+  

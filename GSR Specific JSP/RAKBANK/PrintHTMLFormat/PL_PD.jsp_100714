@@ -1,0 +1,445 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title></title>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="java.text.*"%>
+<%
+			DateFormat dtFormat = new SimpleDateFormat("dd/MM/yy");
+			String dateFormat = dtFormat.format(new java.util.Date());			
+		%>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Arabic Transparent";}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+ P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+h1
+	{margin:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US onload="window.print();">
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=696
+ style='width:7.25in;border-collapse:collapse'>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>Date: <%=new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())%></span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=RTL></span><span lang=AR-SA style='font-family:
+  "Arabic Transparent";color:#003300'><span dir=RTL></span> &#1575;&#1604;&#1578;&#1575;&#1585;&#1610;&#1582;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=LTR style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>The Manager</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-size:14.0pt;font-family:
+  "Arabic Transparent";color:#003300'>&#1575;&#1604;&#1587;&#1610;&#1583;
+  &#1605;&#1583;&#1610;&#1585; </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>RAK BANK</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-size:14.0pt;font-family:
+  "Arabic Transparent";color:#003300'>&#1585;&#1575;&#1603;
+  &#1576;&#1606;&#1603; </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>Branch:  <u><%=request.getParameter("BranchCodeName")==null?"":request.getParameter("BranchCodeName")%></u></span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-size:14.0pt;font-family:
+  "Arabic Transparent";color:#003300'>&#1575;&#1604;&#1601;&#1585;&#1593; : </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=LTR style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:6.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=LTR style='font-size:6.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>Dear Sirs,</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1587;&#1610;&#1583;&#1610;
+  &#1575;&#1604;&#1593;&#1586;&#1610;&#1586;&#1548;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=LTR style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <h1><span style='font-size:11.0pt;color:#003300'>Re: Postponement of Loan
+  installment</span></h1>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <h1 dir=RTL style='text-align:justify;direction:rtl;unicode-bidi:embed'><span
+  lang=AR-SA style='font-family:"Arabic Transparent";color:#003300'>&#1575;&#1604;&#1605;&#1608;&#1590;&#1608;&#1593;:
+  &#1578;&#1571;&#1580;&#1610;&#1604;  &#1602;&#1587;&#1591; 
+  &#1575;&#1604;&#1602;&#1585;&#1590;</span></h1>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b><span style='font-size:11.0pt;color:#003300'>Agreement
+  ID :<u> <%=request.getParameter("AgreementNo")==null?"":request.getParameter("AgreementNo")%></u></span></b></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><b><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1573;&#1578;&#1601;&#1575;&#1602;&#1610;&#1577;
+  &#1585;&#1602;&#1605; :</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=LTR style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:11.0pt;
+  color:#003300'>Please defer the installment of my loan that falls due on <%=request.getParameter("DeferInstDueOn")==null?"":request.getParameter("DeferInstDueOn")%>
+  </span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1571;&#1585;&#1580;&#1608;
+  &#1575;&#1604;&#1578;&#1603;&#1585;&#1605;
+  &#1576;&#1578;&#1571;&#1580;&#1610;&#1604; &#1602;&#1587;&#1591;
+  &#1575;&#1604;&#1602;&#1585;&#1590;
+  &#1575;&#1604;&#1605;&#1587;&#1578;&#1581;&#1602;
+  &#1576;&#1578;&#1575;&#1585;&#1610;&#1582; </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+  style='font-size:11.0pt;color:#003300'>The reason for this request is <%=request.getParameter("ReasonOfRequest")==null?"":request.getParameter("ReasonOfRequest")%></span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='margin-top:6.0pt;text-align:justify;
+  direction:rtl;unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1608;&#1575;&#1604;&#1587;&#1576;&#1576;
+  &#1575;&#1604;&#1605;&#1578;&#1593;&#1604;&#1602;
+  &#1576;&#1591;&#1604;&#1576;&#1610; &#1607;&#1584;&#1575; &#1607;&#1608;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='font-size:11.0pt;color:#003300'>I
+  acknowledge that the installment deferral will result in additional interest
+  being charged and in the final loan repayment date being extended.  I agree
+  that the interest due for the deferral period may be added to the outstanding
+  principal loan amount. </span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1571;&#1602;&#1585;&#1617; &#1576;&#1571;&#1606;
+  &#1578;&#1571;&#1580;&#1610;&#1604; &#1575;&#1604;&#1602;&#1587;&#1591;
+  &#1587;&#1608;&#1601; &#1578;&#1578;&#1585;&#1578;&#1576;
+  &#1593;&#1606;&#1607; &#1601;&#1575;&#1574;&#1583;&#1577; &#1573;&#1590;&#1575;&#1601;&#1610;&#1577;
+  &#1610;&#1578;&#1605; &#1573;&#1581;&#1578;&#1587;&#1575;&#1576;&#1607;&#1575;
+  &#1593;&#1606;&#1583; &#1606;&#1607;&#1575;&#1610;&#1577;
+  &#1601;&#1578;&#1585;&#1577; &#1587;&#1583;&#1575;&#1583;
+  &#1575;&#1604;&#1602;&#1585;&#1590;. &#1571;&#1608;&#1575;&#1601;&#1602;
+  &#1576;&#1571;&#1606; &#1575;&#1604;&#1601;&#1575;&#1574;&#1583;&#1577;
+  &#1575;&#1604;&#1605;&#1578;&#1585;&#1578;&#1576;&#1577; &#1593;&#1606;
+  &#1601;&#1578;&#1585;&#1577;
+  &#1575;&#1604;&#1578;&#1571;&#1580;&#1610;&#1604;
+  &#1610;&#1580;&#1608;&#1586; &#1573;&#1590;&#1575;&#1601;&#1578;&#1607;&#1575;
+  &#1604;&#1602;&#1610;&#1605;&#1577; &#1575;&#1604;&#1602;&#1585;&#1590;
+  &#1575;&#1604;&#1571;&#1589;&#1604;&#1610;&#1577;
+  &#1575;&#1604;&#1605;&#1578;&#1576;&#1602;&#1610;&#1577;.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='font-size:6.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-size:6.0pt;font-family:"Arabic Transparent";
+  color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='color:#003300'>I authorize the bank to
+  recover the deferral charges of AED <%=request.getParameter("ChargesRecvd")==null?"":request.getParameter("ChargesRecvd")%> as
+  follows:</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-AE style='font-size:11.0pt;font-family:
+  "Arabic Transparent";color:#003300'>&#1576;&#1607;&#1584;&#1575;
+  &#1571;&#1601;&#1608;&#1617;&#1590;&#1603;&#1605;
+  &#1576;&#1573;&#1587;&#1578;&#1585;&#1583;&#1575;&#1583;
+  &#1585;&#1587;&#1608;&#1605;
+  &#1575;&#1604;&#1578;&#1571;&#1580;&#1610;&#1604;
+  &#1575;&#1604;&#1576;&#1575;&#1604;&#1594;
+  &#1602;&#1583;&#1585;&#1607;&#1575; --------- &#1583;&#1585;&#1607;&#1605;
+  &#1608;&#1584;&#1604;&#1603; &#1603;&#1605;&#1575; &#1610;&#1604;&#1610; : </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=LTR style='color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='font-size:11.0pt;color:#003300'></span><span
+  style='font-size:11.0pt;color:#003300'><input type="checkbox">Debit deferral charges from my account<br>
+  <%=request.getParameter("DebitAccount")==null?"":request.getParameter("DebitAccount")%></span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=RTL></span><span lang=AR-SA style='font-family:
+  "Arabic Transparent";color:#003300'><span dir=RTL></span> &#1573;&#1587;&#1578;&#1602;&#1591;&#1575;&#1593;
+  &#1585;&#1587;&#1608;&#1605;
+  &#1575;&#1604;&#1578;&#1571;&#1580;&#1610;&#1604; &#1605;&#1606;
+  &#1581;&#1587;&#1575;&#1576;&#1610;.  </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><b><span style='font-size:11.0pt;color:#003300'>OR</span></b></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><b><span lang=AR-SA style='font-size:14.0pt;font-family:
+  "Arabic Transparent";color:#003300'>&#1571;&#1608; </span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='color:#003300'></span><span
+  style='font-size:11.0pt;color:#003300'><input type="checkbox">I have deposited cash for charges on this
+  deferral</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=RTL></span><span style='font-size:8.0pt;
+  color:#003300'><span dir=RTL></span> </span><span lang=AR-SA
+  style='font-family:"Arabic Transparent";color:#003300'>&#1604;&#1602;&#1583;
+  &#1602;&#1605;&#1578; &#1576;&#1573;&#1610;&#1583;&#1575;&#1593;
+  &#1605;&#1576;&#1604;&#1594; &#1606;&#1602;&#1583;&#1610;
+  &#1604;&#1571;&#1580;&#1604; &#1585;&#1587;&#1608;&#1605;
+  &#1575;&#1604;&#1578;&#1571;&#1580;&#1610;&#1604; .</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><b><span style='font-size:11.0pt;color:#003300'>OR</span></b></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><b><span lang=AR-SA style='font-size:14.0pt;font-family:
+  "Arabic Transparent";color:#003300'>&#1571;&#1608;</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='color:#003300'></span><span
+  style='font-size:11.0pt;color:#003300'><input type="checkbox">Accrue the deferral charge on my loan
+  account and recover from my next salary</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1573;&#1590;&#1575;&#1601;&#1577;
+  &#1585;&#1587;&#1608;&#1605;
+  &#1575;&#1604;&#1578;&#1571;&#1580;&#1610;&#1604;
+  &#1604;&#1581;&#1587;&#1575;&#1576; &#1575;&#1604;&#1602;&#1585;&#1590;
+  &#1575;&#1604;&#1582;&#1575;&#1589; &#1576;&#1610;</span><span lang=AR-AE
+  style='font-family:"Arabic Transparent";color:#003300'>
+  &#1608;&#1573;&#1587;&#1578;&#1602;&#1591;&#1575;&#1593;&#1607;&#1575;
+  &#1605;&#1606; &#1605;&#1593;&#1575;&#1588;
+  &#1575;&#1604;&#1588;&#1607;&#1585;
+  &#1575;&#1604;&#1602;&#1575;&#1583;&#1605;</span><span lang=AR-SA
+  style='font-family:"Arabic Transparent";color:#003300'>.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText><span style='font-size:6.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoBodyText dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-size:6.0pt;font-family:"Arabic Transparent";
+  color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>Name: <%=request.getParameter("CustomerName")==null?"":request.getParameter("CustomerName")%></span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1575;&#1604;&#1573;&#1587;&#1605; : </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>Signature:
+  ___________________________  </span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1575;&#1604;&#1578;&#1608;&#1602;&#1610;&#1593; : </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>Contact No: <%=request.getParameter("MOBILENO")==null?"":request.getParameter("MOBILENO")%></span></p>
+  </td>
+  
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1585;&#1602;&#1605;
+				&#1575;&#1604;&#1607;&#1575;&#1578;&#1601; : </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span dir=LTR style='font-size:11.0pt;color:#003300'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=360 valign=top style='width:3.75in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:11.0pt;
+  color:#003300'>Note: Approval of this request is at the Bank’s sole
+  discretion. The Bank reserves the right to reject the request without
+  assigning a reason or providing intimation to the customer.</span></p>
+  </td>
+  <td width=336 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal dir=RTL style='text-align:justify;direction:rtl;
+  unicode-bidi:embed'><span lang=AR-SA style='font-family:"Arabic Transparent";
+  color:#003300'>&#1578;&#1582;&#1590;&#1593;
+  &#1575;&#1604;&#1605;&#1608;&#1575;&#1601;&#1602;&#1577;
+  &#1593;&#1604;&#1609; &#1607;&#1584;&#1575;
+  &#1575;&#1604;&#1591;&#1604;&#1576; &#1604;&#1581;&#1585;&#1610;&#1577;
+  &#1608;&#1573;&#1582;&#1578;&#1610;&#1575;&#1585; &#1575;&#1604;&#1576;&#1606;&#1603;
+  &#1575;&#1604;&#1605;&#1591;&#1604;&#1602;&#1577; .
+  &#1610;&#1581;&#1578;&#1601;&#1592; &#1575;&#1604;&#1576;&#1606;&#1603;
+  &#1576;&#1581;&#1602;&#1607;  &#1601;&#1610; &#1585;&#1601;&#1590;
+  &#1607;&#1584;&#1575; &#1575;&#1604;&#1591;&#1604;&#1576;
+  &#1576;&#1583;&#1608;&#1606; &#1573;&#1576;&#1583;&#1575;&#1569;
+  &#1571;&#1610; &#1571;&#1593;&#1584;&#1575;&#1585; &#1571;&#1608;
+  &#1605;&#1576;&#1585;&#1585;&#1575;&#1578;
+  &#1604;&#1604;&#1593;&#1605;&#1610;&#1604;.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='color:#003300'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

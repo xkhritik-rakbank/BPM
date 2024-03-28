@@ -1,0 +1,364 @@
+[ INFO] 05-Jun-2023 08:29:50 (RAK_SRMUtility.java:59)
+Starting Utility
+
+[DEBUG] 05-Jun-2023 08:29:50 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 05-Jun-2023 08:29:50 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 05-Jun-2023 08:29:50 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 05-Jun-2023 08:29:50 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 08:29:51 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+	</Records>
+	<TotalRetrieved>0</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 05-Jun-2023 08:29:51 (CommonConnection.java:170)
+SessionID: 
+
+[DEBUG] 05-Jun-2023 08:29:51 (CommonConnection.java:92)
+Input XML for Connect Cabinet: <?xml version="1.0"?>
+<WMConnect_Input>
+<Option>WMConnect</Option>
+<EngineName>rakcas</EngineName>
+<Participant>
+<Name>srmutility</Name>
+<Password>xxxx</Password>
+<Scope></Scope>
+<UserExist>N</UserExist>
+<Locale>en-us</Locale>
+<ParticipantType>U</ParticipantType>
+</Particpant>
+</WMConnect_Input>
+
+[DEBUG] 05-Jun-2023 08:29:51 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 08:29:51 (CommonConnection.java:95)
+Connect cabinet output: <?xml version="1.0"?>
+<WMConnect_Output>
+<Option>WMConnect</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Participant>
+<SessionId>-2068241132</SessionId><ID>5220</ID><LastLoginTime></LastLoginTime><IsAdmin>N</IsAdmin><Privileges>0000000000000000</Privileges>
+</Participant>
+<LastLoginTime></LastLoginTime><LastLoginFailureTime></LastLoginFailureTime><FailureAttemptCount>0</FailureAttemptCount><TimeZoneInfo><DBServer><OffSet>240</OffSet></DBServer></TimeZoneInfo></WMConnect_Output>
+
+
+[DEBUG] 05-Jun-2023 08:29:51 (CommonConnection.java:101)
+Connected to cabinet successfully: -2068241132
+
+[ INFO] 05-Jun-2023 10:14:23 (RAK_SRMUtility.java:59)
+Starting Utility
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+	</Records>
+	<TotalRetrieved>0</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:170)
+SessionID: 
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:92)
+Input XML for Connect Cabinet: <?xml version="1.0"?>
+<WMConnect_Input>
+<Option>WMConnect</Option>
+<EngineName>rakcas</EngineName>
+<Participant>
+<Name>srmutility</Name>
+<Password>xxxx</Password>
+<Scope></Scope>
+<UserExist>N</UserExist>
+<Locale>en-us</Locale>
+<ParticipantType>U</ParticipantType>
+</Particpant>
+</WMConnect_Input>
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:95)
+Connect cabinet output: <?xml version="1.0"?>
+<WMConnect_Output>
+<Option>WMConnect</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Participant>
+<SessionId>-1423640107</SessionId><ID>5220</ID><LastLoginTime>2023-06-05 08:29:52.0</LastLoginTime><IsAdmin>N</IsAdmin><Privileges>0000000000000000</Privileges>
+</Participant>
+<LastLoginTime>2023-06-05 08:29:52.0</LastLoginTime><LastLoginFailureTime></LastLoginFailureTime><FailureAttemptCount>0</FailureAttemptCount><TimeZoneInfo><DBServer><OffSet>240</OffSet></DBServer></TimeZoneInfo></WMConnect_Output>
+
+
+[DEBUG] 05-Jun-2023 10:14:24 (CommonConnection.java:101)
+Connected to cabinet successfully: -1423640107
+
+[ INFO] 05-Jun-2023 10:47:21 (RAK_SRMUtility.java:59)
+Starting Utility
+
+[DEBUG] 05-Jun-2023 10:47:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 05-Jun-2023 10:47:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 05-Jun-2023 10:47:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 05-Jun-2023 10:47:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 10:47:22 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1423640107</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 05-Jun-2023 10:47:22 (CommonConnection.java:170)
+SessionID: -1423640107
+
+[DEBUG] 05-Jun-2023 10:47:22 (CommonConnection.java:85)
+got existng sessionid: -1423640107
+
+[ INFO] 05-Jun-2023 10:48:00 (RAK_SRMUtility.java:59)
+Starting Utility
+
+[DEBUG] 05-Jun-2023 10:48:00 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 05-Jun-2023 10:48:00 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 05-Jun-2023 10:48:00 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 05-Jun-2023 10:48:00 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 10:48:02 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1423640107</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 05-Jun-2023 10:48:02 (CommonConnection.java:170)
+SessionID: -1423640107
+
+[DEBUG] 05-Jun-2023 10:48:02 (CommonConnection.java:85)
+got existng sessionid: -1423640107
+
+[ INFO] 05-Jun-2023 10:49:56 (RAK_SRMUtility.java:59)
+Starting Utility
+
+[DEBUG] 05-Jun-2023 10:49:56 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 05-Jun-2023 10:49:56 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 05-Jun-2023 10:49:56 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 05-Jun-2023 10:49:56 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 10:49:57 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1423640107</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 05-Jun-2023 10:49:57 (CommonConnection.java:170)
+SessionID: -1423640107
+
+[DEBUG] 05-Jun-2023 10:49:57 (CommonConnection.java:85)
+got existng sessionid: -1423640107
+
+[ INFO] 05-Jun-2023 10:57:53 (RAK_SRMUtility.java:59)
+Starting Utility
+
+[DEBUG] 05-Jun-2023 10:57:53 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 05-Jun-2023 10:57:53 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 05-Jun-2023 10:57:53 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 05-Jun-2023 10:57:53 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 10:57:54 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1423640107</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 05-Jun-2023 10:57:54 (CommonConnection.java:170)
+SessionID: -1423640107
+
+[DEBUG] 05-Jun-2023 10:57:54 (CommonConnection.java:85)
+got existng sessionid: -1423640107
+
+[ INFO] 05-Jun-2023 11:02:50 (RAK_SRMUtility.java:59)
+Starting Utility
+
+[DEBUG] 05-Jun-2023 11:02:50 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 05-Jun-2023 11:02:50 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 05-Jun-2023 11:02:50 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 05-Jun-2023 11:02:50 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 05-Jun-2023 11:02:51 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1423640107</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 05-Jun-2023 11:02:51 (CommonConnection.java:170)
+SessionID: -1423640107
+
+[DEBUG] 05-Jun-2023 11:02:51 (CommonConnection.java:85)
+got existng sessionid: -1423640107
+

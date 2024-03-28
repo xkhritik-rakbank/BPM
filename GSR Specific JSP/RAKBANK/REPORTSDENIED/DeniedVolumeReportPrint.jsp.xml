@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<URLList>
+    <URLInfo>
+        <URL>DeniedVolumeReportPrint.jsp</URL>
+        <EnableChecks>false</EnableChecks>
+        <AllowRuntimeParameters>false</AllowRuntimeParameters>
+        <ParamList>
+         </ParamList>
+    </URLInfo>
+</URLList>

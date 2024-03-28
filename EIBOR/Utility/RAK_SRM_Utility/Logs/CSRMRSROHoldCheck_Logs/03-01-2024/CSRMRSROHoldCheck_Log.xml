@@ -1,0 +1,150 @@
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:71)
+Connecting to Cabinet.
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:75)
+configReadStatus 0
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:83)
+Cabinet Name: rakcas
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:86)
+JTSIP: 10.15.12.164
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:89)
+JTSPORT: 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:92)
+QueueID: 2179
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:95)
+SleepIntervalInMin: 3
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:106)
+Session ID found: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:111)
+CSR_MR SRO Hold Check...123.
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:172)
+Fetching all Workitems on CSR_MR Hold Check queue
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:175)
+InputXML for fetchWorkList Call: <?xml version="1.0"?>
+<WMFetchWorkItems_Input>
+<Option>WMFetchWorkItem</Option>
+<EngineName>rakcas</EngineName>
+<SessionID>-1032784723</SessionID>
+<QueueId>2179</QueueId>
+<BatchInfo>
+<NoOfRecordsToFetch>100</NoOfRecordsToFetch>
+<LastWorkItem></LastWorkItem>
+<LastValue></LastValue>
+<LastProcessInstance></LastProcessInstance>
+</BatchInfo>
+</WMFetchWorkItems_Input>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:509)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:179)
+WMFetchWorkList OutputXML: <?xml version="1.0"?>
+<WMFetchWorkItem_Output>
+<Option>WMFetchWorkItem</Option>
+<Exception>
+<MainCode>18</MainCode>
+</Exception>
+<RetrievedCount>0</RetrievedCount><Count>0</Count><WorkitemCount>0</WorkitemCount><AliasProcessDefId>0</AliasProcessDefId><LastModifiedOn>2023-06-04 16:28:18.22</LastModifiedOn><SessionId>-1032784723</SessionId><UserName>srmutility</UserName><QueueId>2179</QueueId></WMFetchWorkItem_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:184)
+FetchWorkItemListMainCode: 18
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:187)
+RetrievedCount for WMFetchWorkList Call: 0
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSRMRSROHoldCheck.java:189)
+Number of workitems retrieved on CSR_MR Hold Check : 0
+

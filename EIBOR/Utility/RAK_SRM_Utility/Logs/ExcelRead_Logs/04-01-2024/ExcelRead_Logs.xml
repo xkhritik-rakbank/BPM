@@ -1,0 +1,32 @@
+[DEBUG] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:68)
+Connecting to Cabinet.
+
+[DEBUG] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:72)
+configReadStatus 0
+
+[DEBUG] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:80)
+Cabinet Name: rakcas
+
+[DEBUG] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:83)
+JTSIP: 10.15.12.164
+
+[DEBUG] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:86)
+JTSPORT: 2809
+
+[DEBUG] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:89)
+QueueID: null
+
+[DEBUG] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:92)
+sheetCount: 1
+
+[ERROR] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:123)
+Exception Occurred in CSR_MR SRO Hold Check : java.lang.NumberFormatException: null
+
+[ERROR] 04-Jan-2024 10:57:38 (ExcelValidationAndRead.java:127)
+Exception Occurred in iRBL AO Approval Hold : java.lang.NumberFormatException: null
+	at java.lang.Integer.parseInt(Integer.java:542)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.newgen.EIBOR.ExcelFileRead.ExcelValidationAndRead.run(ExcelValidationAndRead.java:94)
+	at java.lang.Thread.run(Thread.java:748)
+
+

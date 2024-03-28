@@ -1,0 +1,47 @@
+[ INFO] 04-Jan-2024 10:57:35 (RAK_SRMUtility.java:62)
+Starting Utility
+
+[DEBUG] 04-Jan-2024 10:57:35 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 04-Jan-2024 10:57:35 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 04-Jan-2024 10:57:35 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 04-Jan-2024 10:57:35 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 04-Jan-2024 10:57:38 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>72286413</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 04-Jan-2024 10:57:38 (CommonConnection.java:170)
+SessionID: 72286413
+
+[DEBUG] 04-Jan-2024 10:57:38 (CommonConnection.java:85)
+got existng sessionid: 72286413
+
+[ INFO] 04-Jan-2024 10:57:38 (RAK_SRMUtility.java:139)
+EIBORExcelRead Started
+

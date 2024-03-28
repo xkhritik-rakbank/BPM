@@ -1,0 +1,22 @@
+
+Separator='~'
+
+NoOfQueues=4
+Queue1=DSR_DCB_Work Introduction
+Queue2=DSR_CBR_Work Introduction
+Queue3=DSR_ODC_Work Introduction
+Queue4=DSR_MR_Work Introduction
+
+
+
+NoOfSubQueues=10
+SubQueue1=DSR_ODC_CDRWork Introduction
+SubQueue2=DSR_ODC_CLIWork Introduction
+SubQueue3=DSR_ODC_CRWork Introduction
+SubQueue4=DSR_ODC_CSIWork Introduction
+SubQueue5=DSR_ODC_CSWork Introduction
+SubQueue6=DSR_ODC_CUWork Introduction
+SubQueue7=DSR_ODC_ECRWork Introduction
+SubQueue8=DSR_ODC_RIPWork Introduction
+SubQueue9=DSR_ODC_SSCWork Introduction
+SubQueue10=DSR_ODC_TDWork Introduction

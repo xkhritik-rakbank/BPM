@@ -1,0 +1,738 @@
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:48)
+Connecting to Cabinet.
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:52)
+configReadStatus 0
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:60)
+Cabinet Name: rakcas
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:63)
+JTSIP: 10.15.12.164
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:66)
+JTSPORT: 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:69)
+QueueID: 2181
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:72)
+SleepIntervalInMin: 3
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:83)
+Session ID found: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:88)
+CSR_MR SRO Hold Check...123.
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:149)
+Fetching all Workitems on CSR_MR Hold Check queue
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:152)
+InputXML for fetchWorkList Call: <?xml version="1.0"?>
+<WMFetchWorkItems_Input>
+<Option>WMFetchWorkItem</Option>
+<EngineName>rakcas</EngineName>
+<SessionID>-1032784723</SessionID>
+<QueueId>2181</QueueId>
+<BatchInfo>
+<NoOfRecordsToFetch>100</NoOfRecordsToFetch>
+<LastWorkItem></LastWorkItem>
+<LastValue></LastValue>
+<LastProcessInstance></LastProcessInstance>
+</BatchInfo>
+</WMFetchWorkItems_Input>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:472)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:156)
+WMFetchWorkList OutputXML: <?xml version="1.0"?>
+<WMFetchWorkItem_Output>
+<Option>WMFetchWorkItem</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Instruments>
+<Instrument>
+<ProcessInstanceId>CSR-0000000500271-OCC</ProcessInstanceId><WorkItemName>CSR-0000000500271-OCC</WorkItemName><RouteId>25</RouteId><RouteName>CSR_OCC</RouteName><WorkStageId>21</WorkStageId><ActivityName>SRO_Hold</ActivityName><PriorityLevel>1</PriorityLevel><InstrumentStatus>N</InstrumentStatus><LockStatus>N</LockStatus><CreatedByUserName>Test 2</CreatedByUserName><CreatedByPersonalName>New User 2</CreatedByPersonalName><CreationDateTime>2023-06-25 18:46:09.287</CreationDateTime><WorkitemState>NOTSTARTED</WorkitemState><CheckListCompleteFlag>N</CheckListCompleteFlag><EntryDateTime>2023-06-26 05:12:39.453</EntryDateTime><IntroductionDateTime>2023-06-25 18:46:09.287</IntroductionDateTime><IntroducedBy>Test 2</IntroducedBy><IntroducedByPersonalName>New User 2</IntroducedByPersonalName><WorkItemId>1</WorkItemId><QueueName>CSR_OCC_SRO_Hold</QueueName><AssignmentType>S</AssignmentType><ProcessInstanceState>2</ProcessInstanceState><QueueType>N</QueueType><QueueId>2181</QueueId><Q_DivertedByUserId>0</Q_DivertedByUserId><ActivityType>10</ActivityType><ProcessedBy>Vinayak</ProcessedBy><ProcessedByPersonalName>vinayak</ProcessedByPersonalName><URN>CSR_OCC-500271</URN><SecondaryDBFlag>N</SecondaryDBFlag><Data>
+</Data>
+</Instrument>
+<Instrument>
+<ProcessInstanceId>CSR-0000000500288-OCC</ProcessInstanceId><WorkItemName>CSR-0000000500288-OCC</WorkItemName><RouteId>25</RouteId><RouteName>CSR_OCC</RouteName><WorkStageId>21</WorkStageId><ActivityName>SRO_Hold</ActivityName><PriorityLevel>1</PriorityLevel><InstrumentStatus>N</InstrumentStatus><LockStatus>N</LockStatus><CreatedByUserName>xstutee</CreatedByUserName><CreatedByPersonalName>New User</CreatedByPersonalName><CreationDateTime>2023-06-27 15:36:37.767</CreationDateTime><WorkitemState>NOTSTARTED</WorkitemState><CheckListCompleteFlag>N</CheckListCompleteFlag><EntryDateTime>2023-06-27 15:38:26.733</EntryDateTime><IntroductionDateTime>2023-06-27 15:36:37.767</IntroductionDateTime><IntroducedBy>xstutee</IntroducedBy><IntroducedByPersonalName>New User</IntroducedByPersonalName><WorkItemId>1</WorkItemId><QueueName>CSR_OCC_SRO_Hold</QueueName><AssignmentType>S</AssignmentType><ProcessInstanceState>2</ProcessInstanceState><QueueType>N</QueueType><QueueId>2181</QueueId><Q_DivertedByUserId>0</Q_DivertedByUserId><ActivityType>10</ActivityType><ProcessedBy>xstutee</ProcessedBy><ProcessedByPersonalName>New User</ProcessedByPersonalName><URN>CSR_OCC-500288</URN><SecondaryDBFlag>N</SecondaryDBFlag><Data>
+</Data>
+</Instrument>
+<Instrument>
+<ProcessInstanceId>CSR-0000000500298-OCC</ProcessInstanceId><WorkItemName>CSR-0000000500298-OCC</WorkItemName><RouteId>25</RouteId><RouteName>CSR_OCC</RouteName><WorkStageId>21</WorkStageId><ActivityName>SRO_Hold</ActivityName><PriorityLevel>1</PriorityLevel><InstrumentStatus>N</InstrumentStatus><LockStatus>N</LockStatus><CreatedByUserName>test_srm</CreatedByUserName><CreatedByPersonalName>New User</CreatedByPersonalName><CreationDateTime>2023-06-29 21:27:28.58</CreationDateTime><WorkitemState>NOTSTARTED</WorkitemState><CheckListCompleteFlag>N</CheckListCompleteFlag><EntryDateTime>2023-06-30 17:54:58.017</EntryDateTime><IntroductionDateTime>2023-06-29 21:27:28.58</IntroductionDateTime><IntroducedBy>test_srm</IntroducedBy><IntroducedByPersonalName>New User</IntroducedByPersonalName><WorkItemId>1</WorkItemId><QueueName>CSR_OCC_SRO_Hold</QueueName><AssignmentType>S</AssignmentType><ProcessInstanceState>2</ProcessInstanceState><QueueType>N</QueueType><QueueId>2181</QueueId><Q_DivertedByUserId>0</Q_DivertedByUserId><ActivityType>10</ActivityType><ProcessedBy>test_srm</ProcessedBy><ProcessedByPersonalName>New User</ProcessedByPersonalName><URN>CSR_OCC-500298</URN><SecondaryDBFlag>N</SecondaryDBFlag><Data>
+</Data>
+</Instrument>
+</Instruments>
+<RetrievedCount>3</RetrievedCount><Count>3</Count><WorkitemCount>0</WorkitemCount><AliasProcessDefId>0</AliasProcessDefId><LastModifiedOn>2023-06-05 08:19:33.157</LastModifiedOn><SessionId>-1032784723</SessionId><UserName>srmutility</UserName><QueueId>2181</QueueId></WMFetchWorkItem_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:161)
+FetchWorkItemListMainCode: 0
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:164)
+RetrievedCount for WMFetchWorkList Call: 3
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:166)
+Number of workitems retrieved on CSR_MR Hold Check : 3
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:177)
+Parsing <Instrument> in WMFetchWorkList OutputXML: 
+<ProcessInstanceId>CSR-0000000500271-OCC</ProcessInstanceId><WorkItemName>CSR-0000000500271-OCC</WorkItemName><RouteId>25</RouteId><RouteName>CSR_OCC</RouteName><WorkStageId>21</WorkStageId><ActivityName>SRO_Hold</ActivityName><PriorityLevel>1</PriorityLevel><InstrumentStatus>N</InstrumentStatus><LockStatus>N</LockStatus><CreatedByUserName>Test 2</CreatedByUserName><CreatedByPersonalName>New User 2</CreatedByPersonalName><CreationDateTime>2023-06-25 18:46:09.287</CreationDateTime><WorkitemState>NOTSTARTED</WorkitemState><CheckListCompleteFlag>N</CheckListCompleteFlag><EntryDateTime>2023-06-26 05:12:39.453</EntryDateTime><IntroductionDateTime>2023-06-25 18:46:09.287</IntroductionDateTime><IntroducedBy>Test 2</IntroducedBy><IntroducedByPersonalName>New User 2</IntroducedByPersonalName><WorkItemId>1</WorkItemId><QueueName>CSR_OCC_SRO_Hold</QueueName><AssignmentType>S</AssignmentType><ProcessInstanceState>2</ProcessInstanceState><QueueType>N</QueueType><QueueId>2181</QueueId><Q_DivertedByUserId>0</Q_DivertedByUserId><ActivityType>10</ActivityType><ProcessedBy>Vinayak</ProcessedBy><ProcessedByPersonalName>vinayak</ProcessedByPersonalName><URN>CSR_OCC-500271</URN><SecondaryDBFlag>N</SecondaryDBFlag><Data>
+</Data>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:181)
+Current ProcessInstanceID: CSR-0000000500271-OCC
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:183)
+Processing Workitem: CSR-0000000500271-OCC
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:187)
+Current WorkItemID: 1
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:190)
+Current EntryDateTime: 2023-06-26 05:12:39.453
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:193)
+Current ws_name: SRO_Hold
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:196)
+ActivityID: 21
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:198)
+ActivityType: 10
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:200)
+ProcessDefId: 25
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:32)
+CSR_OCC SRO Hold Check data input: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>SELECT Cards_SRONo FROM RB_CSR_OCC_EXTTABLE WITH(nolock) WHERE wi_name = 'CSR-0000000500271-OCC'</Query>
+<EngineName>rakcas</EngineName>
+<SessionId>-1032784723</SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:34)
+CSR_OCC SRO Hold Check data output: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<Cards_SRONo>SRO-0000224170-Process</Cards_SRONo>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:55)
+SRO WI Status input: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select top 1 decision,actiondatetime,(select Current_WS from RB_SRO_EXTTABLE with(nolock) where WI_NAME='SRO-0000224170-Process') as CurrentWS,RejectReasons from USR_0_SRO_WIHISTORY with(nolock) where winame = 'SRO-0000224170-Process' order by actiondatetime desc</Query>
+<EngineName>rakcas</EngineName>
+<SessionId>-1032784723</SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:57)
+SRO WI Status output: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+	</Records>
+	<TotalRetrieved>0</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:177)
+Parsing <Instrument> in WMFetchWorkList OutputXML: 
+<ProcessInstanceId>CSR-0000000500288-OCC</ProcessInstanceId><WorkItemName>CSR-0000000500288-OCC</WorkItemName><RouteId>25</RouteId><RouteName>CSR_OCC</RouteName><WorkStageId>21</WorkStageId><ActivityName>SRO_Hold</ActivityName><PriorityLevel>1</PriorityLevel><InstrumentStatus>N</InstrumentStatus><LockStatus>N</LockStatus><CreatedByUserName>xstutee</CreatedByUserName><CreatedByPersonalName>New User</CreatedByPersonalName><CreationDateTime>2023-06-27 15:36:37.767</CreationDateTime><WorkitemState>NOTSTARTED</WorkitemState><CheckListCompleteFlag>N</CheckListCompleteFlag><EntryDateTime>2023-06-27 15:38:26.733</EntryDateTime><IntroductionDateTime>2023-06-27 15:36:37.767</IntroductionDateTime><IntroducedBy>xstutee</IntroducedBy><IntroducedByPersonalName>New User</IntroducedByPersonalName><WorkItemId>1</WorkItemId><QueueName>CSR_OCC_SRO_Hold</QueueName><AssignmentType>S</AssignmentType><ProcessInstanceState>2</ProcessInstanceState><QueueType>N</QueueType><QueueId>2181</QueueId><Q_DivertedByUserId>0</Q_DivertedByUserId><ActivityType>10</ActivityType><ProcessedBy>xstutee</ProcessedBy><ProcessedByPersonalName>New User</ProcessedByPersonalName><URN>CSR_OCC-500288</URN><SecondaryDBFlag>N</SecondaryDBFlag><Data>
+</Data>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:181)
+Current ProcessInstanceID: CSR-0000000500288-OCC
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:183)
+Processing Workitem: CSR-0000000500288-OCC
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:187)
+Current WorkItemID: 1
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:190)
+Current EntryDateTime: 2023-06-27 15:38:26.733
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:193)
+Current ws_name: SRO_Hold
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:196)
+ActivityID: 21
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:198)
+ActivityType: 10
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:200)
+ProcessDefId: 25
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:32)
+CSR_OCC SRO Hold Check data input: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>SELECT Cards_SRONo FROM RB_CSR_OCC_EXTTABLE WITH(nolock) WHERE wi_name = 'CSR-0000000500288-OCC'</Query>
+<EngineName>rakcas</EngineName>
+<SessionId>-1032784723</SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:34)
+CSR_OCC SRO Hold Check data output: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<Cards_SRONo>SRO-0000224178-Process</Cards_SRONo>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:55)
+SRO WI Status input: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select top 1 decision,actiondatetime,(select Current_WS from RB_SRO_EXTTABLE with(nolock) where WI_NAME='SRO-0000224178-Process') as CurrentWS,RejectReasons from USR_0_SRO_WIHISTORY with(nolock) where winame = 'SRO-0000224178-Process' order by actiondatetime desc</Query>
+<EngineName>rakcas</EngineName>
+<SessionId>-1032784723</SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:57)
+SRO WI Status output: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+	</Records>
+	<TotalRetrieved>0</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:177)
+Parsing <Instrument> in WMFetchWorkList OutputXML: 
+<ProcessInstanceId>CSR-0000000500298-OCC</ProcessInstanceId><WorkItemName>CSR-0000000500298-OCC</WorkItemName><RouteId>25</RouteId><RouteName>CSR_OCC</RouteName><WorkStageId>21</WorkStageId><ActivityName>SRO_Hold</ActivityName><PriorityLevel>1</PriorityLevel><InstrumentStatus>N</InstrumentStatus><LockStatus>N</LockStatus><CreatedByUserName>test_srm</CreatedByUserName><CreatedByPersonalName>New User</CreatedByPersonalName><CreationDateTime>2023-06-29 21:27:28.58</CreationDateTime><WorkitemState>NOTSTARTED</WorkitemState><CheckListCompleteFlag>N</CheckListCompleteFlag><EntryDateTime>2023-06-30 17:54:58.017</EntryDateTime><IntroductionDateTime>2023-06-29 21:27:28.58</IntroductionDateTime><IntroducedBy>test_srm</IntroducedBy><IntroducedByPersonalName>New User</IntroducedByPersonalName><WorkItemId>1</WorkItemId><QueueName>CSR_OCC_SRO_Hold</QueueName><AssignmentType>S</AssignmentType><ProcessInstanceState>2</ProcessInstanceState><QueueType>N</QueueType><QueueId>2181</QueueId><Q_DivertedByUserId>0</Q_DivertedByUserId><ActivityType>10</ActivityType><ProcessedBy>test_srm</ProcessedBy><ProcessedByPersonalName>New User</ProcessedByPersonalName><URN>CSR_OCC-500298</URN><SecondaryDBFlag>N</SecondaryDBFlag><Data>
+</Data>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:181)
+Current ProcessInstanceID: CSR-0000000500298-OCC
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:183)
+Processing Workitem: CSR-0000000500298-OCC
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:187)
+Current WorkItemID: 1
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:190)
+Current EntryDateTime: 2023-06-30 17:54:58.017
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:193)
+Current ws_name: SRO_Hold
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:196)
+ActivityID: 21
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:198)
+ActivityType: 10
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:200)
+ProcessDefId: 25
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:32)
+CSR_OCC SRO Hold Check data input: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>SELECT Cards_SRONo FROM RB_CSR_OCC_EXTTABLE WITH(nolock) WHERE wi_name = 'CSR-0000000500298-OCC'</Query>
+<EngineName>rakcas</EngineName>
+<SessionId>-1032784723</SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:34)
+CSR_OCC SRO Hold Check data output: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<Cards_SRONo>12345</Cards_SRONo>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:55)
+SRO WI Status input: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select top 1 decision,actiondatetime,(select Current_WS from RB_SRO_EXTTABLE with(nolock) where WI_NAME='12345') as CurrentWS,RejectReasons from USR_0_SRO_WIHISTORY with(nolock) where winame = '12345' order by actiondatetime desc</Query>
+<EngineName>rakcas</EngineName>
+<SessionId>-1032784723</SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:57)
+SRO WI Status output: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+	</Records>
+	<TotalRetrieved>0</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:177)
+Parsing <Instrument> in WMFetchWorkList OutputXML: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:181)
+Current ProcessInstanceID: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:183)
+Processing Workitem: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:187)
+Current WorkItemID: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:190)
+Current EntryDateTime: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:193)
+Current ws_name: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:196)
+ActivityID: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:198)
+ActivityType: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheck.java:200)
+ProcessDefId: 
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:77)
+Inside ConnectCabinet
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:147)
+inside checkExistingSession
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:151)
+Input XML: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>select SessionID from WFSESSIONVIEW with(nolock) where UserID in (select userindex from WFUSERVIEW with(nolock) where username='srmutility')</Query>
+<EngineName>rakcas</EngineName>
+<SessionId></SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:126)
+In WF NG Execute : 2809
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:156)
+Output XML: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+		<Record>
+			<SessionID>-1032784723</SessionID>
+		</Record>
+	</Records>
+	<TotalRetrieved>1</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:170)
+SessionID: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CommonConnection.java:85)
+got existng sessionid: -1032784723
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:32)
+CSR_OCC SRO Hold Check data input: <?xml version="1.0"?>
+<APSelect_Input>
+<Option>APSelectWithColumnNames</Option>
+<Query>SELECT Cards_SRONo FROM RB_CSR_OCC_EXTTABLE WITH(nolock) WHERE wi_name = ''</Query>
+<EngineName>rakcas</EngineName>
+<SessionId>-1032784723</SessionId>
+</APSelect_Input>
+
+[DEBUG] 03-Jan-2024 16:43:21 (CSROCCSROHoldCheckIntegration.java:34)
+CSR_OCC SRO Hold Check data output: <?xml version="1.0"?>
+<APSelectWithColumnNames_Output>
+<Option>APSelectWithColumnNames</Option>
+<Exception>
+<MainCode>0</MainCode>
+</Exception>
+<Output>
+	<Records>
+	</Records>
+	<TotalRetrieved>0</TotalRetrieved>
+</Output></APSelectWithColumnNames_Output>
+
+

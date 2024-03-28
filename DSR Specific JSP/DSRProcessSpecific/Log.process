@@ -1,0 +1,57 @@
+
+<%@ page import="java.text.SimpleDateFormat" %>
+
+<%!
+
+
+public static void WriteLog(String strMsg)
+        throws Exception
+{
+	StringBuffer strFilePath = new StringBuffer(50);
+	File dir= null;
+	FileOutputStream fos = null;
+	String sFileName = "CustomLog.Log";
+	Writer wrt = null;
+	
+	DateFormat dtFormat = new SimpleDateFormat("ddMMyyyy");
+	String sFName = "CustomLog_RakBank" + dtFormat.format(new java.util.Date())+".Log";	
+
+	try
+	{
+		strFilePath.append(System.getProperty("user.dir"));
+		//strFilePath.append("//home//OFServAdmin//bea//user_projects//domains//dbDomain");
+		//strFilePath.append(File.separatorChar);
+		//strFilePath.append("applications");
+		//strFilePath.append(File.separatorChar);
+		//strFilePath.append("webdesktop");
+		//strFilePath.append(File.separatorChar);
+		//strFilePath.append("CustomForms");
+		//strFilePath.append(File.separatorChar);
+		
+		
+		//strFilePath.append("CustomLog");
+		dir = new File(strFilePath.toString(), "CustomLog");
+		if (!dir.exists()) 
+		{
+			dir.mkdir();
+		}
+		strFilePath.append(File.separatorChar);
+		strFilePath.append("CustomLog");
+		strFilePath.append(File.separatorChar);
+		strFilePath.append(sFName);
+		java.util.Date objDate=new java.util.Date();
+		fos = new FileOutputStream(strFilePath.toString(),true);
+		wrt = new BufferedWriter(new OutputStreamWriter(fos));
+		wrt.write("[" + objDate.toString() + "]\n" + strMsg + "\n\n" );
+		wrt.flush();
+		wrt.close();
+	}
+	catch(Exception e)
+	{
+	
+		System.out.println(e.toString());
+	}	
+}
+
+
+%>

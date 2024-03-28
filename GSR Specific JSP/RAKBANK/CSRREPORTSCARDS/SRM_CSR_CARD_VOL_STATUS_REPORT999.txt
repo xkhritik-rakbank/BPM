@@ -1,0 +1,287 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+go
+
+
+ALTER PROCEDURE [dbo].[SRM_CSR_CARD_VOL_STATUS_REPORT999]
+(
+	@FROMDATE			varchar(30),
+	@TODATE				varchar(30),
+	@RequestType		varchar(40),
+	@BRANCH_CODE		varchar(4)
+    
+) 
+AS
+SET NOCOUNT ON 
+
+
+DECLARE @Query			VARCHAR(2500)
+
+SET @Query =''
+Declare @RequestType1	varchar(100)
+
+SET @FROMDATE = @FROMDATE-- + ' 00:01:01.000'
+SET @TODATE	= @TODATE-- + ' 23:59:59.000'
+ 
+---print convert(datetime,@FROMDATE,103)
+print @FROMDATE
+print @TODATE
+
+BEGIN
+
+CREATE TABLE #TMP(Status varchar(40),Count varchar(5),ProcessName varchar(40),username varchar(50))
+
+print @RequestType
+
+
+if @RequestType = 'All' OR @RequestType = 'CSR_CCB'
+Begin
+	Set @RequestType1='CSR_CCB'
+	
+	Set @Query='insert INTO #TMP(Username,Status,Count,ProcessName)'
+ 
+	Set @Query= @Query+'select ba_username as Username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end) 
+	as Status,count(*),''CSR_CCB'' as Count from currentroutelogtable a,RB_CSR_CCB_EXTTABLE b
+	where activityname=''BranchAppDecision''
+	and a.processinstanceid=b.wi_name'
+	
+	if  @BRANCH_CODE <> ''
+		Set @Query= @Query+' and b.USER_BRANCH='''+@BRANCH_CODE+''''	
+	
+	Set @Query= @Query+' and actiondatetime=(select max(actiondatetime)
+	from currentroutelogtable c where a.processinstanceid=c.processinstanceid
+and a.processinstanceid in(select distinct a.processinstanceid from currentroutelogtable a,currentroutelogtable b
+where a.processinstanceid =b.processinstanceid and a.processinstanceid like ''%CCB''
+and a.activityname=''BranchAppDecision'' and b.activityname = ''Branch_Return''
+and a.actiondatetime > b.actiondatetime)
+	and c.activityname=''BranchAppDecision'')
+	and convert(datetime,convert(varchar,actiondatetime,103),103) 
+	between convert(datetime,'''+@FROMDATE+''',102) 
+	and convert(datetime,'''+@TODATE+''',102)
+	group by ba_username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end )'
+	
+	print @Query
+	EXEC (@Query)
+
+End
+
+if @RequestType = 'All' OR @RequestType = 'CSR_CCC'
+Begin
+	Set @RequestType1='CSR_CCC'
+	
+	Set @Query='insert INTO #TMP(Username,Status,Count,ProcessName)'
+ 
+	Set @Query= @Query+'select ba_username as Username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end) 
+	as Status,count(*),''CSR_CCC'' as Count from currentroutelogtable a,RB_CSR_CCC_EXTTABLE b
+	where activityname=''BranchAppDecision''
+	and a.processinstanceid=b.wi_name'
+	
+	if  @BRANCH_CODE <> ''
+		Set @Query= @Query+' and b.USER_BRANCH='''+@BRANCH_CODE+''''	
+	
+	Set @Query= @Query+' and actiondatetime=(select max(actiondatetime)
+	from currentroutelogtable c where a.processinstanceid=c.processinstanceid
+and a.processinstanceid in(select distinct a.processinstanceid from currentroutelogtable a,currentroutelogtable b
+where a.processinstanceid =b.processinstanceid and a.processinstanceid like ''%CCC''
+and a.activityname=''BranchAppDecision'' and b.activityname = ''Branch_Return''
+and a.actiondatetime > b.actiondatetime)
+	and c.activityname=''BranchAppDecision'')
+	and convert(datetime,convert(varchar,actiondatetime,103),103) 
+	between convert(datetime,'''+@FROMDATE+''',102) 
+	and convert(datetime,'''+@TODATE+''',102)
+	group by ba_username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end )'
+
+	print @Query
+	EXEC (@Query)
+End
+if @RequestType = 'All' OR @RequestType = 'CSR_CBR'
+Begin
+	Set @RequestType1='CSR_CBR'
+	
+	Set @Query='insert INTO #TMP(Username,Status,Count,ProcessName)'
+ 
+	Set @Query= @Query+'select card_username as Username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end) 
+	as Status,count(*),''CSR_CBR'' as Count from currentroutelogtable a,RB_CSR_CBR_EXTTABLE b
+	where activityname=''CARDS_Decision''
+	and a.processinstanceid=b.wi_name'
+	
+	if  @BRANCH_CODE <> ''
+		Set @Query= @Query+' and b.USER_BRANCH='''+@BRANCH_CODE+''''	
+	
+	Set @Query= @Query+' and actiondatetime=(select max(actiondatetime)
+	from currentroutelogtable c where a.processinstanceid=c.processinstanceid
+and a.processinstanceid in(select distinct a.processinstanceid from currentroutelogtable a,currentroutelogtable b
+where a.processinstanceid =b.processinstanceid and a.processinstanceid like ''CSR%CBR''
+and a.activityname=''CARDS_Decision'' and b.activityname = ''Branch_Return''
+and a.actiondatetime > b.actiondatetime)
+	and c.activityname=''CARDS_Decision'')
+	and convert(datetime,convert(varchar,actiondatetime,103),103) 
+	between convert(datetime,'''+@FROMDATE+''',102) 
+	and convert(datetime,'''+@TODATE+''',102)
+	group by card_username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end )'
+
+	print @Query
+	EXEC (@Query)
+End
+
+if @RequestType = 'All' OR @RequestType = 'CSR_MR'
+Begin
+	Set @RequestType1='CSR_MR'
+	
+	Set @Query='insert INTO #TMP(Username,Status,Count,ProcessName)'
+ 
+	Set @Query= @Query+'select card_username as Username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end) 
+	as Status,count(*),''CSR_MR'' as Count from currentroutelogtable a,RB_CSR_MISC_EXTTABLE b
+	where activityname=''CARDS_Decision''
+	and a.processinstanceid=b.wi_name'
+	
+	if  @BRANCH_CODE <> ''
+		Set @Query= @Query+' and b.USER_BRANCH='''+@BRANCH_CODE+''''	
+	
+	Set @Query= @Query+' and actiondatetime=(select max(actiondatetime)
+	from currentroutelogtable c where a.processinstanceid=c.processinstanceid
+and a.processinstanceid in(select distinct a.processinstanceid from currentroutelogtable a,currentroutelogtable b
+where a.processinstanceid =b.processinstanceid and a.processinstanceid like ''CSR%MR''
+and a.activityname=''CARDS_Decision'' and b.activityname = ''Branch_Return''
+and a.actiondatetime > b.actiondatetime)
+	and c.activityname=''CARDS_Decision'')
+	and convert(datetime,convert(varchar,actiondatetime,103),103) 
+	between convert(datetime,'''+@FROMDATE+''',102) 
+	and convert(datetime,'''+@TODATE+''',102)
+	group by card_username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end )'
+
+	print @Query
+	EXEC (@Query)
+End
+
+if @RequestType = 'All' OR @RequestType = 'CSR_OCC'
+Begin
+	Set @RequestType1='CSR_OCC'
+	
+	Set @Query='insert INTO #TMP(Username,Status,Count,ProcessName)'
+ 
+	Set @Query= @Query+'select card_username as Username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end) 
+	as Status,count(*),''CSR_OCC'' as Count from currentroutelogtable a,RB_CSR_OCC_EXTTABLE b
+	where activityname=''Decision2''
+	and a.processinstanceid=b.wi_name'
+	
+	if  @BRANCH_CODE <> ''
+		Set @Query= @Query+' and b.USER_BRANCH='''+@BRANCH_CODE+''''	
+	
+	Set @Query= @Query+' and actiondatetime=(select max(actiondatetime)
+	from currentroutelogtable c where a.processinstanceid=c.processinstanceid
+and a.processinstanceid in(select distinct a.processinstanceid from currentroutelogtable a,currentroutelogtable b
+where a.processinstanceid =b.processinstanceid and a.processinstanceid like ''CSR%OCC''
+and a.activityname=''Decision2'' and b.activityname = ''Branch_Return''
+and a.actiondatetime > b.actiondatetime)
+	and c.activityname=''Decision2'')
+	and convert(datetime,convert(varchar,actiondatetime,103),103) 
+	between convert(datetime,'''+@FROMDATE+''',102) 
+	and convert(datetime,'''+@TODATE+''',102)
+	group by card_username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end )'
+
+	print @Query
+	EXEC (@Query)
+End
+
+if @RequestType = 'All' OR @RequestType = 'CSR_BT'
+Begin
+	Set @RequestType1='CSR_BT'
+	
+	Set @Query='insert INTO #TMP(Username,Status,Count,ProcessName)'
+ 
+	Set @Query= @Query+'select card_username as Username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end) 
+	as Status,count(*),''CSR_BT'' as Count from currentroutelogtable a,RB_CSR_BT_EXTTABLE b
+	where activityname=''CARDS_Decision''
+	and a.processinstanceid=b.wi_name'
+	
+	if  @BRANCH_CODE <> ''
+		Set @Query= @Query+' and b.USER_BRANCH='''+@BRANCH_CODE+''''	
+	
+	Set @Query= @Query+' and actiondatetime=(select max(actiondatetime)
+	from currentroutelogtable c where a.processinstanceid=c.processinstanceid
+and a.processinstanceid in(select distinct a.processinstanceid from currentroutelogtable a,currentroutelogtable b
+where a.processinstanceid =b.processinstanceid and a.processinstanceid like ''CSR%BT''
+and a.activityname=''CARDS_Decision'' and b.activityname = ''Branch_Return''
+and a.actiondatetime > b.actiondatetime)
+	and c.activityname=''CARDS_Decision'')
+	and convert(datetime,convert(varchar,actiondatetime,103),103) 
+	between convert(datetime,'''+@FROMDATE+''',102) 
+	and convert(datetime,'''+@TODATE+''',102)
+	group by card_username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end )'
+
+	print @Query
+	EXEC (@Query)
+End
+
+
+if @RequestType = 'CSR_RR' OR @RequestType = 'All'
+Begin
+Set @RequestType1='CSR_RR'
+Set @Query='insert INTO #TMP(Username,Status,Count,ProcessName)'
+ 
+	Set @Query= @Query+'select ba_username as Username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end) 
+	as Status,count(*),''CSR_RR'' as Count from currentroutelogtable a,RB_CSR_RR_EXTTABLE b
+	where activityname=''BranchAppDecision''
+	and a.processinstanceid=b.wi_name'
+	
+	if  @BRANCH_CODE <> ''
+		Set @Query= @Query+' and b.USER_BRANCH='''+@BRANCH_CODE+''''	
+	
+	Set @Query= @Query+' and actiondatetime=(select max(actiondatetime)
+	from currentroutelogtable c where a.processinstanceid=c.processinstanceid
+and a.processinstanceid in(select distinct a.processinstanceid from currentroutelogtable a,currentroutelogtable b
+where a.processinstanceid =b.processinstanceid and a.processinstanceid like ''%RR''
+and a.activityname=''BranchAppDecision'' and b.activityname = ''Branch_Return''
+and a.actiondatetime > b.actiondatetime)
+	and c.activityname=''BranchAppDecision'')
+	and convert(datetime,convert(varchar,actiondatetime,103),103) 
+	between convert(datetime,'''+@FROMDATE+''',102) 
+	and convert(datetime,'''+@TODATE+''',102)
+	group by ba_username,
+	(case when  substring(associatedfieldname,1,8)=''DATEDIFF'' then ''Discarded'' 
+	else ''Approved'' end )'
+
+	print @Query
+	EXEC (@Query)
+End
+
+End
+select distinct processname,username,(select sum(convert(numeric,count,10)) from #TMP a where status='Approved'
+and a.username=b.username
+and a.processname=b.processname)Approved
+,(select sum(convert(numeric,count,10)) from #TMP a where status='Discarded' 
+and a.username=b.username
+and a.processname=b.processname)Discarded
+from #TMP b where username is not null order by processname,username
+
+
+
+
+

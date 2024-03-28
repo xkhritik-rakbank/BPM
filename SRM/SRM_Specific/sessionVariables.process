@@ -1,0 +1,149 @@
+<!------------------------------------------------------------------------------------------------------
+//           NEWGEN SOFTWARE TECHNOLOGIES LIMITED
+
+//Group						 : Application –Projects
+//Product / Project			 : RAKBank SRM
+//Module                     : Request-Initiation 
+//File Name					 : sessionVariables.process
+//Author                     : Amandeep
+//Date written (DD/MM/YYYY)  : 05-May-2014
+//Description                : Function to return all the system variables in wfsession
+//---------------------------------------------------------------------------------------------------->
+<%!public String getSessionValues(String strVar, com.newgen.wfdesktop.session.WFSession wfsession) {
+
+            try{
+
+            if(strVar.equalsIgnoreCase("JTSIP"))
+
+                  return wfsession.getJtsIp();
+
+            else if(strVar.equalsIgnoreCase("SESSIONID"))
+
+                  return wfsession.getSessionId();
+
+            else if(strVar.equalsIgnoreCase("USERNAME"))
+
+                  return wfsession.getUserName();
+
+            else if(strVar.equalsIgnoreCase("USERPASSWORD"))
+
+                  return wfsession.getUserPassword();
+
+            else if(strVar.equalsIgnoreCase("ENGINENAME"))
+
+                  return wfsession.getEngineName();
+
+            else if(strVar.equalsIgnoreCase("DMSSESSIONID"))
+
+                  return wfsession.getDMSSessionId();
+
+            else if(strVar.equalsIgnoreCase("STARTFOLDERID"))
+
+                  return wfsession.getStartFolderId();
+
+            else if(strVar.equalsIgnoreCase("SITENAME"))
+
+                  return wfsession.getSiteName();
+
+            else if(strVar.equalsIgnoreCase("VOLUMEID"))
+
+                  return wfsession.getVolumeId();
+
+            else if(strVar.equalsIgnoreCase("VOLUMENNAME"))
+
+                  return wfsession.getVolumeName();
+
+            else if(strVar.equalsIgnoreCase("USERFAMILYNAME"))
+
+                  return wfsession.getUserFamilyName();
+
+            else if(strVar.equalsIgnoreCase("ENCODING"))
+
+                  return wfsession.getEncoding();
+
+            else if(strVar.equalsIgnoreCase("APPSERVERNAME"))
+
+                  return wfsession.getAppServerName();
+
+            else if(strVar.equalsIgnoreCase("SESSIONVAL"))
+
+                  return wfsession.getSessionVal();
+
+            else if(strVar.equalsIgnoreCase("LOCALE"))
+
+                  return wfsession.getLocale();
+
+            else if(strVar.equalsIgnoreCase("DATABASETYPE"))
+
+                  return wfsession.getStrDatabaseType();
+
+            else if(strVar.equalsIgnoreCase("NOOFQUEUES"))
+
+                  return wfsession.getNoOfQueues();
+
+            else if(strVar.equalsIgnoreCase("PERSONALNAME"))
+
+                  return wfsession.getStrPersonalName();
+
+            else if(strVar.equalsIgnoreCase("PERSONALANDFAMILYNAME"))
+
+                  return wfsession.getPersonalAndFamilyName();
+
+            else if(strVar.equalsIgnoreCase("EXPORTCABINETNAME"))
+
+                  return wfsession.getExportCabinetName();
+
+            else if(strVar.equalsIgnoreCase("EXPORTWEBSERVERNAME"))
+
+                  return wfsession.getExportWebServerName();
+
+            else if(strVar.equalsIgnoreCase("CABTYPE"))
+
+                  return wfsession.getCabType();
+
+            else if(strVar.equalsIgnoreCase("IMGDOCJTSIP"))
+
+                  return wfsession.getImgDocJtsIp();
+
+            else if(strVar.equalsIgnoreCase("IMGDOCENGINENAME"))
+
+                  return wfsession.getImgDocEngineName();
+
+            else if(strVar.equalsIgnoreCase("EXPORTSESSIONID"))
+
+                  return wfsession.getExportSessionID();
+
+            else if(strVar.equalsIgnoreCase("USERINDEX"))
+
+                  return String.valueOf(wfsession.getUserIndex());
+
+            else if(strVar.equalsIgnoreCase("IMGDOCSITEID"))
+
+                  return String.valueOf(wfsession.getImgDocSiteId());
+
+            else if(strVar.equalsIgnoreCase("IMGDOCJTSPORT"))
+
+                  return String.valueOf(wfsession.getImgDocJtsPort());
+
+            else if(strVar.equalsIgnoreCase("JTSPORT"))
+
+                  return String.valueOf(wfsession.getJtsPort());
+
+            else if(strVar.equalsIgnoreCase("SITEID"))
+
+                  return String.valueOf(wfsession.getSiteId());
+
+            else  return "";
+
+      }
+
+            catch(Exception e)                        
+
+            {
+
+                  return "";
+
+            }
+
+      }
+%>
