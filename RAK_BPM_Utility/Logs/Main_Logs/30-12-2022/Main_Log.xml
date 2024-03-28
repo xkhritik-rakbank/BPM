@@ -1,0 +1,24 @@
+[ INFO] 30-Dec-2022 13:14:44 (RAKBankUtility.java:71)
+Starting Utility
+
+[DEBUG] 30-Dec-2022 13:14:44 (CommonConnection.java:64)
+Inside ConnectCabinet
+
+[DEBUG] 30-Dec-2022 13:14:44 (CommonConnection.java:79)
+Input XML for Connect Cabinet: <?xml version="1.0"?>
+<WMConnect_Input>
+<Option>WMConnect</Option>
+<EngineName>rakcas</EngineName>
+<Participant>
+<Name>rakbpmutility</Name>
+<Password>xxxx</Password>
+<Scope></Scope>
+<UserExist>N</UserExist>
+<Locale>en-us</Locale>
+<ParticipantType>U</ParticipantType>
+</Particpant>
+</WMConnect_Input>
+
+[DEBUG] 30-Dec-2022 13:14:53 (CommonConnection.java:113)
+In WF NG Execute : 2809
+
