@@ -1,0 +1,12 @@
+<ReleaseProperty>
+	<Product>iBPS 5.0</Product>
+	<ServicePack>SP2</ServicePack>
+	<Patch>00</Patch>
+	<Hotfix>iBPS_5.0_SP2_00_000</Hotfix>
+	<date_of_build>12-08-2021</date_of_build>
+	<build_person>chetan_gupta@newgen.co.in</build_person>
+	<label>5.0_SP2_09-08-2021_CBL_15</label>
+	<Specific_build_person>deepak-rawat@newgen.co.in</Specific_build_person>
+	<Specific_date_of_build>19-01-2022</Specific_date_of_build>
+	<Specific_Hotfix>iBPS5.2.0_025</Specific_Hotfix>
+</ReleaseProperty>

@@ -1,0 +1,18 @@
+public static String convertToCamelCase(String sentence) {
+        if (sentence == null || sentence.isEmpty()) {
+            return "";
+        }
+
+        String[] words = sentence.split("\\s+");
+        StringBuilder camelCaseSentence = new StringBuilder();
+        
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i].toLowerCase();
+            camelCaseSentence.append(word.substring(0, 1).toUpperCase()).append(word.substring(1));
+            if (i < words.length - 1) {
+                camelCaseSentence.append(" ");
+            }
+        }
+
+        return camelCaseSentence.toString();
+    }

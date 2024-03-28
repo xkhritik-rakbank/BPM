@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ibm-metadata>
+  <annotated-classes name="com.newgen.iforms.servlet.filter.HttpSessionWrapperFilter"/>
+  <annotated-classes name="com.newgen.iforms.servlet.filter.IFormClickJackFilter"/>
+  <annotated-classes name="com.newgen.iforms.servlet.DownloadPDF"/>
+  <annotated-classes name="com.newgen.ibps.security.csrf.SECCSRFValidator"/>
+  <annotated-classes name="com.newgen.iforms.servlet.filter.ResponseHeaderFilter"/>
+  <annotated-classes name="com.newgen.iforms.servlet.filter.InputUserSecurity"/>
+  <annotated-classes name="com.newgen.iforms.servlet.filter.SessionCheckFilter"/>
+  <annotated-classes name="com.newgen.iforms.servlet.UploadControl"/>
+  <annotated-classes name="com.newgen.iforms.servlet.DownloadFrame"/>
+  <annotated-classes name="com.newgen.iforms.servlet.UploadFile"/>
+  <annotated-classes name="javax.faces.webapp.FacesServlet"/>
+  <annotated-classes name="com.newgen.iforms.servlet.DocumentUpload"/>
+  <annotated-classes name="com.newgen.iforms.servlet.FormUpdateSessionTime"/>
+  <annotated-classes name="com.newgen.iforms.servlet.filter.SessionTimeCheckFilter"/>
+  <annotated-classes name="com.newgen.iforms.servlet.ClearTemp"/>
+  <annotated-classes name="com.newgen.iforms.session.IFormSessionToken"/>
+  <annotated-classes name="com.newgen.iforms.servlet.filter.UUIDFilter"/>
+  <annotated-classes name="com.newgen.iforms.servlet.GetImage"/>
+  <annotated-classes name="com.newgen.iforms.servlet.GetReqToken"/>
+  <annotated-classes name="com.newgen.iforms.servlet.docDownload"/>
+  <annotated-classes name="com.newgen.iforms.Download"/>
+  <annotated-classes name="com.newgen.iforms.servlet.UploadWebService"/>
+  <annotated-classes name="com.newgen.iforms.servlet.UploadFrame"/>
+  <annotated-classes name="com.newgen.iforms.servlet.FormGetSessionTime"/>
+  <annotated-classes name="com.newgen.ibps.security.xss.SECRequestValidator"/>
+  <annotated-classes name="com.newgen.iforms.servlet.ClearCache"/>
+</ibm-metadata>
