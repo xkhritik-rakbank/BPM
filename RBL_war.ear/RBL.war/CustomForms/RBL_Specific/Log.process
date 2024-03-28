@@ -1,0 +1,116 @@
+
+<%@ page import="java.text.*" %>
+<%@ page import="org.apache.log4j.Logger" %>
+<%@ page import="org.apache.log4j.PropertyConfigurator" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.util.regex.Pattern" %>
+
+<%!
+
+final static Logger logger = Logger.getLogger("CustomLog");
+
+public static void WriteLog(String strMsg) throws Exception 
+{
+	StringBuffer strFilePath = new StringBuffer(50);
+	File dir= null;
+	FileOutputStream fos = null;
+	String sFileName = "CustomLog.Log";
+	Writer wrt = null;
+	
+	DateFormat dtFormat = new SimpleDateFormat("ddMMyyyy");
+	String sFName = "CustomLog_RakBank" + dtFormat.format(new java.util.Date())+"_RBL.Log";	
+	System.out.println(sFName);
+	try
+	{
+		strFilePath.append(System.getProperty("user.dir"));
+		System.out.println(sFileName);
+		dir = new File(strFilePath.toString(), "CustomLog");
+		if (!dir.exists()) 
+		{
+			dir.mkdir();
+		}
+		strFilePath.append(File.separatorChar);
+		strFilePath.append("CustomLog");
+		strFilePath.append(File.separatorChar);
+		strFilePath.append(sFName);
+		System.out.println(strFilePath.toString());
+		java.util.Date objDate=new java.util.Date();
+		fos = new FileOutputStream(strFilePath.toString(),true);
+		wrt = new BufferedWriter(new OutputStreamWriter(fos));
+		wrt.write("[" + objDate.toString() + "]\n" + strMsg + "\n\n" );
+		wrt.flush();
+		wrt.close();
+	}
+	catch(Exception e)
+	{
+	
+		System.out.println(e.toString());
+	}	
+}
+public static void WriteLogDropDown(String strMsg) throws Exception   
+{
+	StringBuffer strFilePath = new StringBuffer(50);
+	File dir= null;
+	FileOutputStream fos = null;
+	String sFileName = "CustomLog.Log";
+	Writer wrt = null;
+	
+	DateFormat dtFormat = new SimpleDateFormat("ddMMyyyy");
+	String sFName = "CustomLog_RakBank" + dtFormat.format(new java.util.Date())+"_RBL_DropDown.Log";	
+	System.out.println(sFName);
+	try
+	{
+		strFilePath.append(System.getProperty("user.dir"));
+		System.out.println(sFileName);
+		dir = new File(strFilePath.toString(), "CustomLog");
+		if (!dir.exists()) 
+		{
+			dir.mkdir();
+		}
+		strFilePath.append(File.separatorChar);
+		strFilePath.append("CustomLog");
+		strFilePath.append(File.separatorChar);
+		strFilePath.append(sFName);
+		System.out.println(strFilePath.toString());
+		java.util.Date objDate=new java.util.Date();
+		fos = new FileOutputStream(strFilePath.toString(),true);
+		wrt = new BufferedWriter(new OutputStreamWriter(fos));
+		wrt.write("[" + objDate.toString() + "]\n" + strMsg + "\n\n" );
+		wrt.flush();
+		wrt.close();
+	}
+	catch(Exception e)
+	{
+	
+		System.out.println(e.toString());
+	}	
+}
+
+public static void createLogFile(String ProcessName) throws Exception
+{
+	try
+	{
+		DateFormat dtFormat = new SimpleDateFormat("ddMMyyyy");
+		String sFName = "CustomLog_RakBank" + dtFormat.format(new java.util.Date())+"_"+ProcessName+".Log";
+		
+		Properties p = new Properties();
+		p.load(new FileInputStream(System.getProperty("user.dir")+"/customProcesses_log4j.properties"));
+		
+		String dynamicLog = System.getProperty("user.dir")+"/CustomLog/"+sFName;
+		
+		File fl = new File(dynamicLog);
+		if(!fl.exists())
+			fl.createNewFile();
+		
+		p.put( "log4j.appender.CustomLog.File", dynamicLog ); // overwrite "log.dir"
+		
+		PropertyConfigurator.configure( p );
+	}
+	catch(Exception e)
+	{
+		System.out.println("exception in "+ProcessName+" createLogFile:"+e );
+	}
+}
+
+%>

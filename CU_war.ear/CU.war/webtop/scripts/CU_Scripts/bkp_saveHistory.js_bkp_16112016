@@ -1,0 +1,1309 @@
+function CUDONEWI(WSNAME) {
+
+    if ((WSNAME == "CSO" && customform.document.getElementById('wdesk:Channel').value == "Customer Initiated") || WSNAME == "OPS Maker_DE") {
+        if (customform.document.getElementById("wdesk:CIFReq_Type").value == "")
+        {
+            alert("Please amend the CIF details or select any Request Type");
+            customform.document.getElementById("wdesk:FirstName_New").focus();
+            return false;
+        }
+        if (customform.document.getElementById("abcdelig_new").value == "--Select--") {
+            alert("Please select the AECB Eligible field");
+            customform.document.getElementById("abcdelig_new").focus();
+            return false;
+        }
+
+        if ((customform.document.getElementById("wdesk:comp_name_new").value != "" && customform.document.getElementById("wdesk:comp_name_new").value != null) || (customform.document.getElementById("wdesk:emp_name_new").value != "" && customform.document.getElementById("wdesk:emp_name_new").value != null) || (customform.document.getElementById("occupation_new").value != "--Select--" && customform.document.getElementById("occupation_new").value != null && customform.document.getElementById("occupation_new").value != "") || (customform.document.getElementById("wdesk:naturebusiness_new").value != "" && customform.document.getElementById("wdesk:naturebusiness_new").value != null)) {
+            if (customform.document.getElementById("wdesk:visa_new").value == "") {
+                alert("Visa is mandatory");
+                customform.document.getElementById("wdesk:visa_new").focus();
+                return false;
+            }
+            if (customform.document.getElementById("wdesk:visaExpDate_new").value == "") {
+                alert("Visa Expiry Date is mandatory");
+                customform.document.getElementById("wdesk:visaExpDate_new").focus();
+                return false;
+            }
+            if (customform.document.getElementById("wdesk:visa_new").value != "" && customform.document.getElementById("wdesk:visaExpDate_new").value != "")
+            {
+                //alert("fields filled");
+            } else {
+                alert("Visa and Visa Expiry Date is mandatory to be filled");
+                customform.document.getElementById("wdesk:visa_new").focus();
+                return false;
+            }
+        }
+        if (customform.document.getElementById("pref_email_new").value != "--Select--") {
+            if (customform.document.getElementById("pref_email_new").value == "Primary Email ID" && (customform.document.getElementById("wdesk:prim_email_exis").value == "" || customform.document.getElementById("wdesk:prim_email_exis").value == "")) {
+                if (customform.document.getElementById("wdesk:primary_emailid_new").value == "") {
+                    alert("Primary Email Id is mandatory to fill.");
+                    customform.document.getElementById("wdesk:primary_emailid_new").focus();
+                    return false;
+                }
+            }
+            if (customform.document.getElementById("pref_email_new").value == "Secondary Email ID" && (customform.document.getElementById("wdesk:sec_email_exis").value == "" || customform.document.getElementById("wdesk:sec_email_exis").value == "")) {
+                if (customform.document.getElementById("wdesk:sec_email_new").value == "") {
+                    alert("Secondary Email Id is mandatory to fill.");
+                    customform.document.getElementById("wdesk:sec_email_new").focus();
+                    return false;
+                }
+            }
+        }
+
+        //for preferred address
+        if (customform.document.getElementById("pref_add_new").value != "") {
+            if (customform.document.getElementById("pref_add_new").value == "Office") {
+                if (customform.document.getElementById("wdesk:office_pobox").value == "" && customform.document.getElementById("office_city").value == "") {
+                    if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null) {
+                        alert("Office PO Box field,City and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:office_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("office_city").value == "") {
+                    if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null) {
+                        alert("Office City field and Country are mandatory to fill");
+                        customform.document.getElementById("office_city").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("office_city").value == "" && customform.document.getElementById("wdesk:office_pobox").value == "") {
+                    alert("Office POBOX field and City are mandatory to fill");
+                    customform.document.getElementById("wdesk:office_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:office_pobox").value == "") {
+                    if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null)
+                    {
+                        alert("Office POBOX field and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:office_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("office_city").value == "") {
+                    alert("Office City field is mandatory to fill");
+                    customform.document.getElementById("office_city").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:office_pobox").value == "") {
+                    alert("Office POBOX field is mandatory to fill");
+                    customform.document.getElementById("wdesk:office_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null) {
+                    alert("Office Country field is mandatory to fill");
+                    customform.document.getElementById("office_cntrycode").focus();
+                    return false;
+                }
+            }
+            if (customform.document.getElementById("pref_add_new").value == "Home") {
+                if (customform.document.getElementById("wdesk:resi_pobox").value == "" && customform.document.getElementById("resi_city").value == "") {
+                    if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null) {
+                        alert("Residence PO Box field,City and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:resi_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("resi_city").value == "") {
+                    if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null) {
+                        alert("Residence City field and Country are mandatory to fill");
+                        customform.document.getElementById("resi_city").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("resi_city").value == "" && customform.document.getElementById("wdesk:resi_pobox").value == "") {
+
+                    alert("Residence POBOX field and City are mandatory to fill");
+                    customform.document.getElementById("wdesk:resi_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:resi_pobox").value == "") {
+                    if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null)
+                    {
+                        alert("Residence POBOX field and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:resi_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("resi_city").value == "") {
+                    alert("Residence City field is mandatory to fill");
+                    customform.document.getElementById("resi_city").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:resi_pobox").value == "") {
+                    alert("Residence POBOX field is mandatory to fill");
+                    customform.document.getElementById("wdesk:resi_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null) {
+                    alert("Residence Country field is mandatory to fill");
+                    customform.document.getElementById("resi_cntrycode").focus();
+                    return false;
+                }
+            }
+        }
+
+        if ((customform.document.getElementById("wdesk:resi_line2").value != "" && customform.document.getElementById("wdesk:resi_line2").value != null) || (customform.document.getElementById("wdesk:resi_line1").value != "" && customform.document.getElementById("wdesk:resi_line1").value != null) || (customform.document.getElementById("wdesk:resi_line3").value != "" && customform.document.getElementById("wdesk:resi_line3").value != null) || (customform.document.getElementById("resi_restype").value != "" && customform.document.getElementById("resi_restype").value != "--Select--" && customform.document.getElementById("resi_restype").value != null) || (customform.document.getElementById("wdesk:resi_line4").value != "" && customform.document.getElementById("wdesk:resi_line4").value != null) || (customform.document.getElementById("wdesk:resi_zipcode").value != "" && customform.document.getElementById("wdesk:resi_zipcode").value != null) || (customform.document.getElementById("wdesk:resi_pobox").value != "" && customform.document.getElementById("wdesk:resi_pobox").value != null) || (customform.document.getElementById("resi_city").value != "" && customform.document.getElementById("resi_city").value != null) || (customform.document.getElementById("resi_state").value != "" && customform.document.getElementById("resi_state").value != null) || (customform.document.getElementById("resi_cntrycode").value != "" && customform.document.getElementById("resi_cntrycode").value != "--Select--" && customform.document.getElementById("resi_cntrycode").value != null)) {
+            if (customform.document.getElementById("wdesk:resi_line1").value == "") {
+                alert('Please enter Residence Flat Number');
+                customform.document.getElementById("wdesk:resi_line1").focus();
+                return false;
+            }
+            if (customform.document.getElementById("resi_city").value == "") {
+                alert('Please enter Residence City');
+                customform.document.getElementById("resi_city").focus();
+                return false;
+            }
+            if (customform.document.getElementById("resi_cntrycode").value == "--Select--"||customform.document.getElementById("resi_cntrycode").value == "") {
+                alert('Please enter Residence Country');
+                customform.document.getElementById("resi_cntrycode").focus();
+                return false;
+            }
+        }
+
+        if ((customform.document.getElementById("wdesk:office_line2").value != "" && customform.document.getElementById("wdesk:office_line2").value != null) || (customform.document.getElementById("wdesk:office_line1").value != "" && customform.document.getElementById("wdesk:office_line1").value != null) || (customform.document.getElementById("wdesk:office_line3").value != "" && customform.document.getElementById("wdesk:office_line3").value != null) || (customform.document.getElementById("office_restype").value != "" && customform.document.getElementById("office_restype").value != "--Select--" && customform.document.getElementById("office_restype").value != null) || (customform.document.getElementById("wdesk:office_line4").value != "" && customform.document.getElementById("wdesk:office_line4").value != null) || (customform.document.getElementById("wdesk:office_zipcode").value != "" && customform.document.getElementById("wdesk:office_zipcode").value != null) || (customform.document.getElementById("wdesk:office_pobox").value != "" && customform.document.getElementById("wdesk:office_pobox").value != null) || (customform.document.getElementById("office_city").value != "" && customform.document.getElementById("office_city").value != null) || (customform.document.getElementById("office_state").value != "" && customform.document.getElementById("office_state").value != null) || (customform.document.getElementById("office_cntrycode").value != "" && customform.document.getElementById("office_cntrycode").value != "--Select--" && customform.document.getElementById("office_cntrycode").value != null)) {
+            if (customform.document.getElementById("wdesk:office_line1").value == "") {
+                alert('Please enter Office Flat Number');
+                customform.document.getElementById("wdesk:office_line1").focus();
+                return false;
+            }
+            if (customform.document.getElementById("office_city").value == "") {
+                alert('Please enter Office City');
+                customform.document.getElementById("office_city").focus();
+                return false;
+            }
+            if (customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == "") {
+                alert('Please enter Office Country');
+                customform.document.getElementById("office_cntrycode").focus();
+                return false;
+            }
+        }
+
+        if (WSNAME != "PBO") {
+            if (customform.document.getElementById("wdesk:TypeOfRelation_new").value != "" && customform.document.getElementById("wdesk:TypeOfRelation_new").value != null && customform.document.getElementById("wdesk:FatcaDoc_new").value != "" && customform.document.getElementById("wdesk:FatcaDoc_new").value != null && customform.document.getElementById("USrelation_new").value != "" && customform.document.getElementById("USrelation_new").value != null && customform.document.getElementById("USrelation_new").value != "--Select--") {
+                if (customform.document.getElementById("wdesk:validation").value == "N") {
+                    return true;
+                } else {
+                    alert("Please Generate the Fatca Form Template");
+                    customform.document.getElementById("Generate1").focus();
+                    return false;
+                }
+            } else {
+                if (customform.document.getElementById("wdesk:validation").value == "Y") {
+                    return true;
+                } else {
+                    alert("Please Generate the CIF Update Form Template");
+                    customform.document.getElementById("Generate").focus();
+                    return false;
+                }
+            }
+        }
+    }
+   
+    return true;
+}
+
+
+
+function validateKeys(e, act)
+{
+    var re = "";
+    var isvalid = "";
+    if (e != "") {
+        
+        act = act.toLowerCase()
+        switch (act) {
+
+            case "numeric":
+                re = /[^0-9]+/i;
+                break;
+        }
+        if (re.test(e)) {
+            if (act == 'numeric') {
+                isvalid = "not valid";
+                return isvalid;
+            }
+        }
+    }
+}
+
+function validateDatepassportexpiryCheck(WSNAME) {
+
+    if ((WSNAME == "CSO" && (customform.document.getElementById('wdesk:isWMSMECase').value == null || customform.document.getElementById('wdesk:isWMSMECase').value == "") || WSNAME == "OPS Maker_DE")) {
+        var enteredPassportDate = customform.document.getElementById("wdesk:passportExpDate_exis").value;
+        var newPassportDate = customform.document.getElementById("wdesk:passportExpDate_new").value;
+        if (newPassportDate != "")
+            enteredPassportDate = newPassportDate;
+
+        var enteredVisaDate = customform.document.getElementById("wdesk:visaExpDate_exis").value;
+        var newVisaDate = customform.document.getElementById("wdesk:visaExpDate_new").value;
+        if (newVisaDate != "")
+            enteredVisaDate = newVisaDate;
+
+        var enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_exis").value;
+        var newEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+        if (newEmiratesDate != "")
+            enteredEmiratesDate = newEmiratesDate;
+
+        var today = new Date();
+
+        var arrStartDate = enteredPassportDate.split("/");
+        var date1 = new Date(arrStartDate[2], arrStartDate[1] - 1, arrStartDate[0]);
+
+        var arrStartDate2 = enteredVisaDate.split("/");
+        var date2 = new Date(arrStartDate2[2], arrStartDate2[1] - 1, arrStartDate2[0]);
+
+        var arrStartDate3 = enteredEmiratesDate.split("/");
+        var date3 = new Date(arrStartDate3[2], arrStartDate3[1] - 1, arrStartDate3[0]);
+
+        var timeDiffPassport = date1.getTime() - today.getTime();
+        var timeDiffVisa = date2.getTime() - today.getTime();
+        var timeDiffEmirates = date3.getTime() - today.getTime();
+
+        if (timeDiffPassport < 0) {
+            alert("Passport has Expired.Case cannot be initiated.");
+            return false;
+        } else if (timeDiffVisa < 0) {
+            alert("Visa has Expired.Case cannot be initiated.");
+            return false;
+        } else if (timeDiffEmirates < 0) {
+            alert("Emirates Id has Expired.Case cannot be initiated.");
+            return false;
+        }
+    }
+    return true;
+}
+
+function decisionvalidation(WSNAME) {
+    if (WSNAME == "CSO_Doc_Scan") {
+        if (customform.document.getElementById("wdesk:Doc_Scan_Dec").value == "" || customform.document.getElementById("wdesk:Doc_Scan_Dec").value == "--Select--") {
+            alert("Please select the Decision");
+            customform.document.getElementById("Doc_Scan_Dec").focus();
+            return false;
+        } else
+            return true;
+
+    } else if (WSNAME == "OPS_Checker_Review") {
+
+        if (customform.document.getElementById("Dec_OPS_Checker").value == "--Select--" || customform.document.getElementById("Dec_OPS_Checker").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("Dec_OPS_Checker").focus();
+            return false;
+        }
+
+        if (customform.document.getElementById("Dec_OPS_Checker").value == "Reject To CSO" || customform.document.getElementById("Dec_OPS_Checker").value == "Reject To PBO") {
+            if (customform.document.getElementById("rejReasonCodes").value == "") {
+                alert("Please select the reject reason");
+                customform.document.getElementById("btnRejReason").focus();
+                return false;
+            }
+        }
+    } else if (WSNAME == "OPS Maker_DE") {
+        if (customform.document.getElementById("wdesk:OPSMakerDEDecision").value == "--Select--" || customform.document.getElementById("wdesk:OPSMakerDEDecision").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("OPSMakerDEDecision").focus();
+            return false;
+        }
+
+		if (customform.document.getElementById("wdesk:OPSMakerDEDecision").value == "Reject") {
+            if (customform.document.getElementById("rejReasonCodes").value == "") {
+                alert("Please select the reject reason");
+                customform.document.getElementById("btnRejReason").focus();
+                return false;
+            }
+        }
+
+        if (customform.document.getElementById("wdesk:CIFReq_Type").value == "")
+        {
+            alert("Please amend the CIF details or select any Request Type");
+            customform.document.getElementById("wdesk:FirstName_New").focus();
+            return false;
+        }
+        
+        if (customform.document.getElementById("abcdelig_new").value == "--Select--") {
+            alert("Please select the AECB Eligible field");
+            customform.document.getElementById("abcdelig_new").focus();
+            return false;
+        }
+
+        if ((customform.document.getElementById("wdesk:comp_name_new").value != "" && customform.document.getElementById("wdesk:comp_name_new").value != null) || (customform.document.getElementById("wdesk:emp_name_new").value != "" && customform.document.getElementById("wdesk:emp_name_new").value != null) || (customform.document.getElementById("occupation_new").value != "--Select--" && customform.document.getElementById("occupation_new").value != null && customform.document.getElementById("occupation_new").value != "") || (customform.document.getElementById("wdesk:naturebusiness_new").value != "" && customform.document.getElementById("wdesk:naturebusiness_new").value != null)) {
+            if (customform.document.getElementById("wdesk:visa_new").value == "") {
+
+                alert("Visa is mandatory");
+                customform.document.getElementById("wdesk:visa_new").focus();
+                return false;
+            }
+            if (customform.document.getElementById("wdesk:visaExpDate_new").value == "") {
+                alert("Visa Expiry Date is mandatory");
+                customform.document.getElementById("wdesk:visaExpDate_new").focus();
+                return false;
+            }
+            if (customform.document.getElementById("wdesk:visa_new").value != "" && customform.document.getElementById("wdesk:visaExpDate_new").value != "")
+            {
+                //alert("fields filled");
+            } else {
+                alert("Visa and Visa Expiry Date is mandatory to be filled");
+                customform.document.getElementById("wdesk:visa_new").focus();
+                return false;
+            }
+        }
+
+        if (customform.document.getElementById("pref_email_new").value != "--Select--") {
+            if (customform.document.getElementById("pref_email_new").value == "Primary Email ID") {
+                if (customform.document.getElementById("wdesk:primary_emailid_new").value == "") {
+                    alert("Primary Email Id is mandatory to fill.");
+                    customform.document.getElementById("wdesk:primary_emailid_new").focus();
+                    return false;
+                }
+            }
+            if (customform.document.getElementById("pref_email_new").value == "Secondary Email ID") {
+                if (customform.document.getElementById("wdesk:sec_email_new").value == "") {
+                    alert("Secondary Email Id is mandatory to fill.");
+                    customform.document.getElementById("wdesk:sec_email_new").focus();
+                    return false;
+                }
+            }
+        }
+
+        if (customform.document.getElementById("pref_add_new").value != "") {
+            if (customform.document.getElementById("pref_add_new").value == "Office") {
+                if (customform.document.getElementById("wdesk:office_pobox").value == "" && customform.document.getElementById("office_city").value == "") {
+                    if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null) {
+                        alert("Office PO Box field,City and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:office_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("office_city").value == "") {
+                    if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null) {
+                        alert("Office City field and Country are mandatory to fill");
+                        customform.document.getElementById("office_city").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("office_city").value == "" && customform.document.getElementById("wdesk:office_pobox").value == "") {
+                    alert("Office POBOX field and City are mandatory to fill");
+                    customform.document.getElementById("wdesk:office_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:office_pobox").value == "") {
+                    if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null) {
+                        alert("Office POBOX field and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:office_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("office_city").value == "") {
+                    alert("Office City field is mandatory to fill");
+                    customform.document.getElementById("office_city").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:office_pobox").value == "") {
+                    alert("Office POBOX field is mandatory to fill");
+                    customform.document.getElementById("wdesk:office_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("office_cntrycode").value == "" || customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == null) {
+                    alert("Office Country field is mandatory to fill");
+                    customform.document.getElementById("office_cntrycode").focus();
+                    return false;
+                }
+            }
+            if (customform.document.getElementById("pref_add_new").value == "Home") {
+                if (customform.document.getElementById("wdesk:resi_pobox").value == "" && customform.document.getElementById("resi_city").value == "") {
+                    if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null) {
+                        alert("Residence PO Box field,City and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:resi_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("resi_city").value == "") {
+                    if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null)
+                    {
+                        alert("Residence City field and Country are mandatory to fill");
+                        customform.document.getElementById("resi_city").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("resi_city").value == "" && customform.document.getElementById("wdesk:resi_pobox").value == "") {
+                    alert("Residence POBOX field and City are mandatory to fill");
+                    customform.document.getElementById("wdesk:resi_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:resi_pobox").value == "") {
+                    if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null)
+                    {
+                        alert("Residence POBOX field and Country are mandatory to fill");
+                        customform.document.getElementById("wdesk:resi_pobox").focus();
+                        return false;
+                    }
+                } else if (customform.document.getElementById("resi_city").value == "") {
+                    alert("Residence City field is mandatory to fill");
+                    customform.document.getElementById("resi_city").focus();
+                    return false;
+                } else if (customform.document.getElementById("wdesk:resi_pobox").value == "") {
+                    alert("Residence POBOX field is mandatory to fill");
+                    customform.document.getElementById("wdesk:resi_pobox").focus();
+                    return false;
+                } else if (customform.document.getElementById("resi_cntrycode").value == "" || customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == null) {
+                    alert("Residence Country field is mandatory to fill");
+                    customform.document.getElementById("resi_cntrycode").focus();
+                    return false;
+                }
+            }
+        }
+
+        if ((customform.document.getElementById("wdesk:resi_line2").value != "" && customform.document.getElementById("wdesk:resi_line2").value != null) || (customform.document.getElementById("wdesk:resi_line1").value != "" && customform.document.getElementById("wdesk:resi_line1").value != null) || (customform.document.getElementById("wdesk:resi_line3").value != "" && customform.document.getElementById("wdesk:resi_line3").value != null) || (customform.document.getElementById("resi_restype").value != "" && customform.document.getElementById("resi_restype").value != "--Select--" && customform.document.getElementById("resi_restype").value != null) || (customform.document.getElementById("wdesk:resi_line4").value != "" && customform.document.getElementById("wdesk:resi_line4").value != null) || (customform.document.getElementById("wdesk:resi_zipcode").value != "" && customform.document.getElementById("wdesk:resi_zipcode").value != null) || (customform.document.getElementById("wdesk:resi_pobox").value != "" && customform.document.getElementById("wdesk:resi_pobox").value != null) || (customform.document.getElementById("resi_city").value != "" && customform.document.getElementById("resi_city").value != null) || (customform.document.getElementById("resi_state").value != "" && customform.document.getElementById("resi_state").value != null) || (customform.document.getElementById("resi_cntrycode").value != "" && customform.document.getElementById("resi_cntrycode").value != "--Select--" && customform.document.getElementById("resi_cntrycode").value != null)) {
+            if (customform.document.getElementById("wdesk:resi_line1").value == "") {
+                alert('Please enter Residence Flat Number');
+                customform.document.getElementById("wdesk:resi_line1").focus();
+                return false;
+            }
+            if (customform.document.getElementById("resi_city").value == "") {
+                alert('Please enter Residence City');
+                customform.document.getElementById("resi_city").focus();
+                return false;
+            }
+            if (customform.document.getElementById("resi_cntrycode").value == "--Select--" || customform.document.getElementById("resi_cntrycode").value == "") {
+                alert('Please enter Residence Country');
+                customform.document.getElementById("resi_cntrycode").focus();
+                return false;
+            }
+        }
+
+        if ((customform.document.getElementById("wdesk:office_line2").value != "" && customform.document.getElementById("wdesk:office_line2").value != null) || (customform.document.getElementById("wdesk:office_line1").value != "" && customform.document.getElementById("wdesk:office_line1").value != null) || (customform.document.getElementById("wdesk:office_line3").value != "" && customform.document.getElementById("wdesk:office_line3").value != null) || (customform.document.getElementById("office_restype").value != "" && customform.document.getElementById("office_restype").value != "--Select--" && customform.document.getElementById("office_restype").value != null) || (customform.document.getElementById("wdesk:office_line4").value != "" && customform.document.getElementById("wdesk:office_line4").value != null) || (customform.document.getElementById("wdesk:office_zipcode").value != "" && customform.document.getElementById("wdesk:office_zipcode").value != null) || (customform.document.getElementById("wdesk:office_pobox").value != "" && customform.document.getElementById("wdesk:office_pobox").value != null) || (customform.document.getElementById("office_city").value != "" && customform.document.getElementById("office_city").value != null) || (customform.document.getElementById("office_state").value != "" && customform.document.getElementById("office_state").value != null) || (customform.document.getElementById("office_cntrycode").value != "" && customform.document.getElementById("office_cntrycode").value != "--Select--" && customform.document.getElementById("office_cntrycode").value != null)) {
+            if (customform.document.getElementById("wdesk:office_line1").value == "") {
+                alert('Please enter Office Flat Number');
+                customform.document.getElementById("wdesk:office_line1").focus();
+                return false;
+            }
+            if (customform.document.getElementById("office_city").value == "") {
+                alert('Please enter Office City');
+                customform.document.getElementById("office_city").focus();
+                return false;
+            }
+            if (customform.document.getElementById("office_cntrycode").value == "--Select--" || customform.document.getElementById("office_cntrycode").value == "") {
+                alert('Please enter Office Country');
+                customform.document.getElementById("office_cntrycode").focus();
+                return false;
+            }
+        }
+
+        var nonResident = customform.document.getElementById("nonResident_new").value;
+
+        if (nonResident == "" || nonResident == "--Select--" || nonResident == null) {
+            nonResident = customform.document.getElementById("wdesk:nonResident").value;
+        }
+        if (nonResident == "NO" && customform.document.getElementById("wdesk:Channel").value != "RM Initiated") {
+            if (customform.document.getElementById("wdesk:emiratesid_new").value == "" && customform.document.getElementById("wdesk:emirates_id").value == "") {
+                alert("Emirates ID is mandatory to fill.");
+                customform.document.getElementById("wdesk:emiratesid_new").focus();
+                return false;
+            } else {
+			if(customform.document.getElementById("wdesk:emiratesidexp_exis").value == "" && customform.document.getElementById("wdesk:emiratesidexp_new").value == "")
+			{
+				alert("Please enter Emirates id expiry date");
+				customform.document.getElementById("wdesk:emiratesidexp_new").focus();
+				return false;
+			}
+               else  if (customform.document.getElementById("wdesk:emiratesid_new").value != "") {
+                    var enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+                    if (customform.document.getElementById("wdesk:emiratesidexp_new").value != "") {
+                        enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+                    }
+                    var today = new Date();
+
+                    var arrStartDate3 = enteredEmiratesDate.split("/");
+                    var date3 = new Date(arrStartDate3[2], arrStartDate3[1] - 1, arrStartDate3[0]);
+                    var timeDiffEmirates = date3.getTime() - today.getTime();
+                    if (timeDiffEmirates < 0) {
+                        alert("Emirates Id has Expired WorkItem cannot be initiated.");
+                        return false;
+                    }
+                } else {
+                    var enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+                    if (customform.document.getElementById("wdesk:emiratesidexp_exis").value != "" && customform.document.getElementById("wdesk:emiratesidexp_exis").value != null) {
+                        enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_exis").value;
+                    }
+                    var today = new Date();
+
+                    var arrStartDate3 = enteredEmiratesDate.split("/");
+                    var date3 = new Date(arrStartDate3[2], arrStartDate3[1] - 1, arrStartDate3[0]);
+                    var timeDiffEmirates = date3.getTime() - today.getTime();
+                    if (timeDiffEmirates < 0) {
+                        alert("Emirates Id has Expired WorkItem cannot be initiated.");
+                        return false;
+                    }
+                }
+            }
+        }
+
+        if ((customform.document.getElementById("wdesk:PassportNumber_New").value == "" || customform.document.getElementById("wdesk:PassportNumber_New").value == null) && (customform.document.getElementById("wdesk:PassportNumber_Existing").value == "" || customform.document.getElementById("wdesk:PassportNumber_Existing").value == null)) {
+            alert("Passport Number is mandatory to fill");
+            customform.document.getElementById("wdesk:PassportNumber_New").focus();
+            return false;
+        } else {
+            if ((customform.document.getElementById("wdesk:passportExpDate_new").value == "" || customform.document.getElementById("wdesk:passportExpDate_new").value == null) && (customform.document.getElementById("wdesk:passportExpDate_exis").value == "" || customform.document.getElementById("wdesk:passportExpDate_exis").value == null)) {
+                alert("Please Enter the Passport Expiry date");
+                customform.document.getElementById("wdesk:passportExpDate_new").focus();
+                return false;
+            }
+        }
+
+        var FatcaDocNew = customform.document.getElementById("wdesk:FatcaDoc_new").value;
+
+        if (customform.document.getElementById("USrelation_new").value == "R" && FatcaDocNew.indexOf("W9") == -1) {
+            alert("W9 form is mandatory as US Relation is Yes- Reportable");
+            customform.document.getElementById("FatcaDocNew").focus();
+            return false;
+        } else if (customform.document.getElementById("USrelation_new").value == "N" && FatcaDocNew.indexOf("W8") == -1) {
+            alert("W8 form is mandatory as US Relation is Yes-Not Reportable");
+            customform.document.getElementById("FatcaDocNew").focus();
+            return false;
+        }
+        var today1 = new Date();
+        var enteredSignedDate = customform.document.getElementById("wdesk:SignedDate_new").value;
+        var arrStartDate4 = enteredSignedDate.split("/");
+        var date4 = new Date(arrStartDate4[2], arrStartDate4[1] - 1, arrStartDate4[0]);
+        var timeDiffSigned = date4.getTime() - today1.getTime();
+
+        if (FatcaDocNew.indexOf("W8") != -1) {
+            if ((customform.document.getElementById("wdesk:SignedDate_new").value == "" || customform.document.getElementById("wdesk:SignedDate_new").value == null) && (customform.document.getElementById("wdesk:SignedDate_exis").value == "" || customform.document.getElementById("wdesk:SignedDate_exis").value == null)) {
+                alert("Signed date is mandatory for fatca document W8 form");
+                customform.document.getElementById("wdesk:SignedDate_new").focus();
+                return false;
+            } else if (timeDiffSigned > 0) {
+                alert("Signed date should be less then or equal to Current date");
+                customform.document.getElementById("wdesk:SignedDate_new").focus();
+                return false;
+            }
+        }
+
+        var enteredPassportDate = customform.document.getElementById("wdesk:passportExpDate_exis").value;
+        if (customform.document.getElementById("wdesk:passportExpDate_new").value != "") {
+            enteredPassportDate = customform.document.getElementById("wdesk:passportExpDate_new").value;
+        }
+        var enteredVisaDate = customform.document.getElementById("wdesk:visaExpDate_exis").value;
+        if (customform.document.getElementById("wdesk:visaExpDate_new").value != "") {
+            enteredVisaDate = customform.document.getElementById("wdesk:visaExpDate_new").value;
+        }
+        var enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_exis").value;
+        if (customform.document.getElementById("wdesk:emiratesidexp_new").value != "") {
+            enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+        }
+        var today = new Date();
+
+        var arrStartDate = enteredPassportDate.split("/");
+        var date1 = new Date(arrStartDate[2], arrStartDate[1] - 1, arrStartDate[0]);
+
+        var arrStartDate2 = enteredVisaDate.split("/");
+        var date2 = new Date(arrStartDate2[2], arrStartDate2[1] - 1, arrStartDate2[0]);
+
+        var arrStartDate3 = enteredEmiratesDate.split("/");
+        var date3 = new Date(arrStartDate3[2], arrStartDate3[1] - 1, arrStartDate3[0]);
+
+        var timeDiffPassport = date1.getTime() - today.getTime();
+        var timeDiffVisa = date2.getTime() - today.getTime();
+        var timeDiffEmirates = date3.getTime() - today.getTime();
+
+        if (timeDiffPassport < 0) {
+            alert("Passport Expiry Date has Expired.WorkItem cannot be instantiated.");
+            return false;
+        } else if (timeDiffVisa < 0) {
+            alert("Visa Expiry Date has Expired.WorkItem cannot be instantiated.");
+            return false;
+        } else if (timeDiffEmirates < 0) {
+            alert("Emirates Expiry Date has Expired.WorkItem cannot be instantiated.");
+            return false;
+        }
+    } else if (WSNAME == "Archival_Activity") {
+        if (customform.document.getElementById("wdesk:ArchivalActivityDecision").value == "--Select--" || customform.document.getElementById("wdesk:ArchivalActivityDecision").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("wdesk:ArchivalActivityDecision").focus();
+            return false;
+        }
+
+        if (customform.document.getElementById("wdesk:ArchivalActivityDecision").value == "Reject") {
+            if (customform.document.getElementById("rejReasonCodes").value == "") {
+                alert("Please select the reject reason");
+                customform.document.getElementById("btnRejReason").focus();
+                return false;
+            }
+        }
+    } else if (WSNAME == "Error") {
+        if (customform.document.getElementById("ErrorDecision").value == "--Select--" || customform.document.getElementById("ErrorDecision").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("ErrorDecision").focus();
+            return false;
+        }
+
+    } else if (WSNAME == "Archival_Rejects") {
+        if (customform.document.getElementById("ArchivalRejectsDecision").value == "--Select--" || customform.document.getElementById("ArchivalRejectsDecision").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("ArchivalRejectsDecision").focus();
+            return false;
+        }
+
+    } else if (WSNAME == "PBO_Rejects") {
+        if (customform.document.getElementById("PBORejectDecision").value == "--Select--" || customform.document.getElementById("PBORejectDecision").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("PBORejectDecision").focus();
+            return false;
+        }
+
+        if (customform.document.getElementById("wdesk:PBORejectDecision").value == "Reject") {
+            if (customform.document.getElementById("rejReasonCodes").value == "") {
+                alert("Please select the reject reason");
+                customform.document.getElementById("btnRejReason").focus();
+                return false;
+            }
+        }
+    } else if (WSNAME == "CSO_Rejects") {
+        if (customform.document.getElementById("Dec_CSO_Rejects").value == "--Select--" || customform.document.getElementById("Dec_CSO_Rejects").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("Dec_CSO_Rejects").focus();
+            return false;
+        }
+    } else if (WSNAME == "Hold") {
+        if (customform.document.getElementById("Dec_Hold").value == "--Select--" || customform.document.getElementById("Dec_Hold").value == "") {
+            alert("Please select the Decision");
+            customform.document.getElementById("Dec_Hold").focus();
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function checkids1(WSNAME) {
+    if (WSNAME == "CSO") {
+        if (
+            customform.document.getElementById('totally_month_credits_amount').value == "" &&
+            customform.document.getElementById('cash_amount').value == "" &&
+            customform.document.getElementById('total_in').value == "" &&
+            customform.document.getElementById('cash_in').value == "" &&
+            customform.document.getElementById('non_cash_amount').value == "" &&
+            customform.document.getElementById('total_amount').value == "" &&
+            customform.document.getElementById('non_cash_in').value == "" &&
+            customform.document.getElementById('total_in2').value == "" &&
+            customform.document.getElementById('wdesk:politically_exposed').value == "--Select--"
+        ) {
+            customform.document.getElementById('wdesk:Request_Type_Master').value = "";
+            return false;
+        }
+
+        return true;
+
+    }
+    return true;
+}
+
+function CUSAVEDATA(IsDoneClicked) {
+
+    var customform = '';
+    var formWindow = getWindowHandler(windowList, "formGrid");
+    customform = formWindow.frames['customform'];
+    var SubCategoryID = "1";
+    var NameData = "";
+    var WSNAME = customform.document.getElementById("wdesk:WS_NAME").value;
+    var WINAME = customform.document.getElementById("wdesk:wi_name").value;
+    var checklistData = customform.document.getElementById("H_CHECKLIST").value;
+    var rejectReasons = customform.document.getElementById("rejReasonCodes").value;
+    var Decision = '';
+    if (WSNAME == 'CSO')
+        Decision = customform.document.getElementById("wdesk:Decision").value;
+    else if (WSNAME == 'CSO_Doc_Scan')
+        Decision = customform.document.getElementById("Doc_Scan_Dec").value;
+    else if (WSNAME == 'OPS_Checker_Review')
+        Decision = customform.document.getElementById("Dec_OPS_Checker").value;
+    else if (WSNAME == 'CSO_Rejects')
+        Decision = customform.document.getElementById("Dec_CSO_Rejects").value;
+
+    else if (WSNAME == 'Archival_Activity')
+        Decision = customform.document.getElementById("ArchivalActivityDecision").value;
+    else if (WSNAME == 'OPS Maker_DE')
+        Decision = customform.document.getElementById("OPSMakerDEDecision").value;
+    else if (WSNAME == 'PBO')
+        Decision = customform.document.getElementById("PBOdecision").value;
+    else if (WSNAME == 'PBO_Rejects')
+        Decision = customform.document.getElementById("PBORejectDecision").value;
+    else if (WSNAME == 'Archival_Rejects')
+        Decision = customform.document.getElementById("ArchivalRejectsDecision").value;
+    else if (WSNAME == 'Hold')
+        Decision = customform.document.getElementById("dec_hold").value;
+    else if (WSNAME == 'OPS Maker_DE')
+        Decision = customform.document.getElementById("OPSMakerDEDecision").value;
+    else if (WSNAME == 'Error')
+        Decision = customform.document.getElementById("ErrorDecision").value;
+
+    var Remarks = customform.document.getElementById("wdesk:remarks").value;
+
+    var inputs = customform.document.getElementsByTagName("input");
+    var textareas = customform.document.getElementsByTagName("textarea");
+    var selects = customform.document.getElementsByTagName("select");
+    var store = "";
+    var isElite = "";
+
+
+    var H_Checklist = "Yes"; //customform.document.getElementById("H_Checklist").value;
+    var H_RejectReasons = "Yes"; //customform.document.getElementById("H_RejectReasons").value;
+
+    for (x = 0; x < inputs.length; x++) {
+        myname = inputs[x].getAttribute("id");
+        if (myname != "") {
+            if ((inputs[x].type == 'radio')) {
+                eleName = inputs[x].getAttribute("name");
+                if (store != eleName) {
+                    store = eleName;
+                    var ele = customform.document.getElementsByName(eleName);
+                    for (var i = 0; i < ele.length; i++) {
+                        eleName2 = ele[i].id;
+                        eleName2 += "#radio";
+                        NameData += eleName + "#" + eleName2 + "~";
+                    }
+                }
+            } else if (!(inputs[x].type == 'radio')) {
+                eleName2 = inputs[x].getAttribute("name");
+                eleName2 += "#";
+                NameData += myname + "#" + eleName2 + "~";
+            }
+
+        } else if (myname.indexOf("tr_") == 0) {
+            tr_table = customform.document.getElementById(myname).value;
+        } else if (myname.indexOf("WS_LogicalName") == 0) {
+            WS_LogicalName = customform.document.getElementById(myname).value;
+        }
+    }
+
+    //For GenerateCutOfftime
+    if (WSNAME == 'CSO')
+        isElite = customform.document.getElementById("wdesk:rak_elite_customer").value;
+
+
+    //for inserting decision in decision history
+	//alert('out history');
+    var xhr;
+    if (window.XMLHttpRequest)
+        xhr = new XMLHttpRequest();
+    else if (window.ActiveXObject)
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    var abc = Math.random;
+
+    var url = "/CU/CustomForms/CU_Specific/SaveHistory.jsp";
+	
+    var param = "WINAME=" + WINAME + "&WSNAME=" + WSNAME + "&Decision=" + Decision + "&Remarks=" + Remarks + "&checklistData=" + checklistData + "&rejectReasons=" + rejectReasons + "&IsDoneClicked=" + IsDoneClicked + "&IsSaved=Y&abc=" + abc + "&isElite=" + isElite;
+	
+    xhr.open("POST", url, false);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(param);
+	
+    if (xhr.status == 200 && xhr.readyState == 4) {
+        ajaxResult = Trim(xhr.responseText);
+
+        if (ajaxResult == 'NoRecord') {
+            alert("No record found.");
+            return false;
+        } else if (ajaxResult == 'Error') {
+            alert("Some problem in creating workitem.");
+            return false;
+        }
+    } else {
+        alert("Problem in saving data");
+        return false;
+    }
+
+    //Submitted Case at CSO_Initiate
+    if (WSNAME == 'CSO') {}
+
+    return true;
+}
+
+function mainValidation(WSNAME) {
+
+    if (WSNAME == "CSO") {
+        if (customform.document.getElementById("wdesk:CIFNumber_Existing").value == "" && customform.document.getElementById("wdesk:Account_Number").value == "" &&
+            customform.document.getElementById("wdesk:Loan_Agreement_Id").value == "" && customform.document.getElementById("wdesk:Card_Number").value == "" && customform.document.getElementById("wdesk:emirates_id").value == "") {
+            alert("Please click on Search button");
+            return false;
+        }
+
+        if (customform.document.getElementById("radiaoCheck").value == "N") {
+            alert("Check Radio");
+
+            return false;
+        } else if (!customform.document.getElementById("decision")) {
+            alert(customform.document.getElementById("decision"));
+            alert("Please click on the radio button");
+            return false;
+        }
+
+        if (customform.document.getElementById("decision").value == "--Select--") {
+            alert("Please select the Decision");
+            customform.document.getElementById("decision").focus();
+            return false;
+        }
+
+        if (customform.document.getElementById("decision").value == "Reject") {
+            if (customform.document.getElementById("rejReasonCodes").value == "") {
+                alert("Please select the reject reason");
+                customform.document.getElementById("btnRejReason").focus();
+                return false;
+            }
+        }
+        var nonResident = customform.document.getElementById("nonResident_new").value;
+
+        if (nonResident == "" || nonResident == "--Select--" || nonResident == null) {
+            nonResident = customform.document.getElementById("wdesk:nonResident").value;
+        }
+        if (nonResident == "NO" && customform.document.getElementById("wdesk:Channel").value != "RM Initiated" && customform.document.getElementById("decision").value != "Reject") {
+            if (customform.document.getElementById("wdesk:emiratesid_new").value == "" && customform.document.getElementById("wdesk:emirates_id").value == "") {
+                alert("Emirates ID is mandatory to fill.");
+                customform.document.getElementById("wdesk:emiratesid_new").focus();
+                return false;
+            } else {
+				if(customform.document.getElementById("wdesk:emiratesidexp_exis").value == "" && customform.document.getElementById("wdesk:emiratesidexp_new").value == "")
+				{
+					alert("Please enter Emirates id expiry date");
+					customform.document.getElementById("wdesk:emiratesidexp_new").focus();
+					return false;
+				}
+				else if (customform.document.getElementById("wdesk:emiratesidexp_new").value != "") {
+                    var enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+                    if (customform.document.getElementById("wdesk:emiratesidexp_new").value != "") {
+                        enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+                    }
+                    var today = new Date();
+                    var arrStartDate3 = enteredEmiratesDate.split("/");
+                    var date3 = new Date(arrStartDate3[2], arrStartDate3[1] - 1, arrStartDate3[0]);
+                    var timeDiffEmirates = date3.getTime() - today.getTime();
+                    if (timeDiffEmirates < 0) {
+                        alert("Emirates Id has Expired WorkItem cannot be initiated.");
+                        return false;
+                    }
+                } else {
+                    var enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_new").value;
+                   // alert(enteredEmiratesDate);
+					if (customform.document.getElementById("wdesk:emiratesidexp_exis").value != "" && customform.document.getElementById("wdesk:emiratesidexp_exis").value != null) {
+                        enteredEmiratesDate = customform.document.getElementById("wdesk:emiratesidexp_exis").value;
+                    }
+                    var today = new Date();
+
+                    var arrStartDate3 = enteredEmiratesDate.split("/");
+                    var date3 = new Date(arrStartDate3[2], arrStartDate3[1] - 1, arrStartDate3[0]);
+                    var timeDiffEmirates = date3.getTime() - today.getTime();
+                    if (timeDiffEmirates < 0) {
+                        alert("Emirates Id has Expired WorkItem cannot be initiated.");
+                        return false;
+                    }
+                }
+            }
+        }
+        if ((customform.document.getElementById("wdesk:PassportNumber_New").value == "" || customform.document.getElementById("wdesk:PassportNumber_New").value == null) && (customform.document.getElementById("wdesk:PassportNumber_Existing").value == "" || customform.document.getElementById("wdesk:PassportNumber_Existing").value == null)) {
+            alert("Passport Number is mandatory to fill");
+            customform.document.getElementById("wdesk:PassportNumber_New").focus();
+            return false;
+        } else {
+            if ((customform.document.getElementById("wdesk:passportExpDate_new").value == "" || customform.document.getElementById("wdesk:passportExpDate_new").value == null) && (customform.document.getElementById("wdesk:passportExpDate_exis").value == "" || customform.document.getElementById("wdesk:passportExpDate_exis").value == null)) {
+                alert("Please Enter the Passport Expiry date");
+                customform.document.getElementById("wdesk:passportExpDate_new").focus();
+                return false;
+            }
+        }
+
+        var FatcaDocNew = customform.document.getElementById("wdesk:FatcaDoc_new").value;
+
+        if (customform.document.getElementById("USrelation_new").value == "R" && FatcaDocNew.indexOf("W9") == -1) {
+            alert("W9 form is mandatory as US Relation is Yes- Reportable");
+            customform.document.getElementById("FatcaDocNew").focus();
+            return false;
+        } else if (customform.document.getElementById("USrelation_new").value == "N" && FatcaDocNew.indexOf("W8") == -1) {
+            alert("W8 form is mandatory as US Relation is Yes-Not Reportable");
+            customform.document.getElementById("FatcaDocNew").focus();
+            return false;
+        }
+        var today1 = new Date();
+        var enteredSignedDate = customform.document.getElementById("wdesk:SignedDate_new").value;
+        var arrStartDate4 = enteredSignedDate.split("/");
+        var date4 = new Date(arrStartDate4[2], arrStartDate4[1] - 1, arrStartDate4[0]);
+        var timeDiffSigned = date4.getTime() - today1.getTime();
+
+        if (FatcaDocNew.indexOf("W8") != -1) {
+            if ((customform.document.getElementById("wdesk:SignedDate_new").value == "" || customform.document.getElementById("wdesk:SignedDate_new").value == null) && (customform.document.getElementById("wdesk:SignedDate_exis").value == "" || customform.document.getElementById("wdesk:SignedDate_exis").value == null)) {
+                alert("Signed date is mandatory for fatca document W8 form");
+                customform.document.getElementById("wdesk:SignedDate_new").focus();
+                return false;
+            } else if (timeDiffSigned > 0) {
+                alert("Signed date should be less then or equal to Current date");
+                customform.document.getElementById("wdesk:SignedDate_new").focus();
+                return false;
+            }
+        }
+
+        var xhr;
+        if (window.XMLHttpRequest)
+            xhr = new XMLHttpRequest();
+        else if (window.ActiveXObject)
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        var reqtype = "validateSegment";
+        var customer_type = customform.document.getElementById("CustomerType_new").value;
+
+        var url = "/CU/CustomForms/CU_Specific/fetchSegment.jsp";
+
+        var param = "customer_type=" + customer_type;
+        xhr.open("POST", url, false);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(param);
+
+        if (xhr.status == 200 && xhr.readyState == 4) {
+            ajaxResult = xhr.responseText;
+            ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm, '');
+
+            if (ajaxResult.indexOf("Exception") == 0) {
+                alert("SOl Id is not Set for this user.");
+                return false;
+            }
+
+            customform.document.getElementById("wdesk:SegmentValidFlag").value = ajaxResult;
+            if (customform.document.getElementById("wdesk:SegmentValidFlag").value == "Y" && customform.document.getElementById("IndustrySegment_new").value == "--Select--") {
+                alert("Industry Segment is mandatory to select");
+                customform.document.getElementById("IndustrySegment_new").focus();
+                return false;
+            } else if (customform.document.getElementById("wdesk:SegmentValidFlag").value == "Y" && customform.document.getElementById("IndustrySubSegment_new").value == "--Select--") {
+                alert("Industry Sub Segment is mandatory to select");
+                customform.document.getElementById("IndustrySubSegment_new").focus();
+                return false;
+            }
+        } else {
+            alert("Problem in getting SegmentValidFlag.");
+            return false;
+        }
+    }
+    if (WSNAME == "PBO") {
+        if (customform.document.getElementById("wdesk:CIFNumber_Existing").value == "" && customform.document.getElementById("wdesk:Account_Number").value == "" &&
+            customform.document.getElementById("wdesk:Loan_Agreement_Id").value == "" && customform.document.getElementById("wdesk:Card_Number").value == "" && customform.document.getElementById("wdesk:emirates_id").value == "") {
+            alert("Please click on Search button");
+            return false;
+        }
+
+        if (customform.document.getElementById("radiaoCheck").value == "N") {
+            alert("Please select a radio to load custom details.");
+            return false;
+        }
+
+        return true;
+    }
+
+    return true;
+}
+
+
+function sendSMSToCustomer(customform) {
+//alert('in sendSMSToCustomer')
+    var workstepname = customform.document.getElementById("wdesk:WS_NAME").value;
+	var SelectedCIF = customform.document.getElementById("wdesk:SelectedCIF").value;
+	var csodecision="";
+	if(workstepname == "CSO")
+	{
+		 csodecision = customform.document.getElementById("decision").value;
+	}	
+    var winame = customform.document.getElementById("wdesk:wi_name").value;
+    var xhr;
+    if (window.XMLHttpRequest)
+        xhr = new XMLHttpRequest();
+    else if (window.ActiveXObject)
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+
+    var url = "/CU/CustomForms/CU_Specific/SendSMSToCustomer.jsp";
+
+    var param="winame="+winame+"&workstepname="+workstepname+"&SelectedCIF="+SelectedCIF+"&csodecision="+csodecision;
+    xhr.open("POST", url, false);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(param);
+	
+    if (xhr.status == 200 && xhr.readyState == 4) {
+        ajaxResult = xhr.responseText;
+    
+	    ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm, '');
+
+        if (ajaxResult.indexOf("Exception") == 0) {
+            alert("Some problem in sending mail");
+            return false;
+        }
+    } else {
+        alert("Problem in sending mail");
+        return false;
+    }
+}
+
+function CUSAVEGRID(IsDoneClicked, WINAME, WSNAME, signature_update, dormancy_activation, sole_to_joint, joint_to_sole) {
+
+    if (WSNAME == "CSO") {
+        var url = '/CU/CustomForms/CU_Specific/insertGridData.jsp';
+        var param = "WINAME=" + WINAME + "&signature_update=" + signature_update + "&dormancy_activation=" + dormancy_activation + "&sole_to_joint=" + sole_to_joint + "&joint_to_sole=" + joint_to_sole;
+
+        var xhr;
+        var ajaxResult;
+        if (window.XMLHttpRequest)
+            xhr = new XMLHttpRequest();
+        else if (window.ActiveXObject)
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+
+        xhr.open("POST", url, false);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(param);
+    
+		if (xhr.status == 200)
+            return true; //document.getElementById(doc_field).value = xhr.responseText;
+
+        else {
+            alert("Error while fetching accounts");
+            return false;
+        }
+    } else {
+        return true;
+    }
+
+    return true;
+}
+
+function insert(str, index, value) {
+    return str.substr(0, index) + value + str.substr(index);
+}
+
+function CUCIFUPDATE(IsDoneClicked, WINAME, WSNAME, phone1, phone1CCode, phone1Number, phone1Ext, phone2, phone2CCode, phone2Number, phone2Ext, phone3, phone3CCode, phone3Number, phone3Ext, phone4, phone4CCode, phone4Number, phone4Ext, phone5, phone5CCode, phone5Number, phone5Ext, phone6, phone6CCode, phone6Number, phone6Ext, primaryemail, primaryemailvalue, secondaryemail, secondaryemailvalue, doc_emiratesid, emiratesid_new, emiratesidexp_new, doc_passport, passport_num_new, passportExpDate_new, doc_visa, visa_new, visaExpDate_new, residence_address, resi_line1, resi_line2, resi_line3, resi_line4, resi_restype, resi_pobox, resi_zipcode, resi_state, resi_city, resi_cntrycode, office_address, office_line1, office_line2, office_line3, office_line4, office_restype, office_pobox, office_zipcode, office_state, office_city, office_cntrycode) {
+    
+    var temp = "";
+    var str = "";
+    if (WSNAME == "CSO") {
+    
+        temp = phone1.indexOf("<PhnCountryCode>") + "<PhnCountryCode>".length;
+        str = phone1.substring(temp, phone1.indexOf("</PhnCountryCode>"));
+        if (str == "")
+            phone1 = insert(phone1, temp, phone1CCode);
+        temp = phone1.indexOf("<PhoneNo>") + "<PhoneNo>".length;
+        str = phone1.substring(temp, phone1.indexOf("</PhoneNo>"));
+        if (str == "")
+            phone1 = insert(phone1, temp, phone1Number);
+        temp = phone1.indexOf("<PhnExtn>") + "<PhnExtn>".length;
+        str = phone1.substring(temp, phone1.indexOf("</PhnExtn>"));
+        if (str == "")
+            phone1 = insert(phone1, temp, phone1Ext);
+
+        customform.document.getElementById("phone1").value = phone1;
+
+        temp = phone2.indexOf("<PhnCountryCode>") + "<PhnCountryCode>".length;
+        str = phone2.substring(temp, phone2.indexOf("</PhnCountryCode>"));
+        if (str == "")
+            phone2 = insert(phone2, temp, phone2CCode);
+        temp = phone2.indexOf("<PhoneNo>") + "<PhoneNo>".length;
+        str = phone2.substring(temp, phone2.indexOf("</PhoneNo>"));
+        if (str == "")
+            phone2 = insert(phone2, temp, phone2Number);
+        temp = phone2.indexOf("<PhnExtn>") + "<PhnExtn>".length;
+        str = phone2.substring(temp, phone2.indexOf("</PhnExtn>"));
+        if (str == "")
+            phone2 = insert(phone2, temp, phone2Ext);
+
+        customform.document.getElementById("phone2").value = phone2;
+
+        temp = phone3.indexOf("<PhnCountryCode>") + "<PhnCountryCode>".length;
+        str = phone3.substring(temp, phone3.indexOf("</PhnCountryCode>"));
+        if (str == "")
+            phone3 = insert(phone3, temp, phone3CCode);
+        temp = phone3.indexOf("<PhoneNo>") + "<PhoneNo>".length;
+        str = phone3.substring(temp, phone3.indexOf("</PhoneNo>"));
+        if (str == "")
+            phone3 = insert(phone3, temp, phone3Number);
+        temp = phone3.indexOf("<PhnExtn>") + "<PhnExtn>".length;
+        str = phone3.substring(temp, phone3.indexOf("</PhnExtn>"));
+        if (str == "")
+            phone3 = insert(phone3, temp, phone3Ext);
+
+        customform.document.getElementById("HomePhone").value = phone3;
+
+        temp = phone4.indexOf("<PhnCountryCode>") + "<PhnCountryCode>".length;
+        str = phone4.substring(temp, phone4.indexOf("</PhnCountryCode>"));
+        if (str == "")
+            phone4 = insert(phone4, temp, phone4CCode);
+        temp = phone4.indexOf("<PhoneNo>") + "<PhoneNo>".length;
+        str = phone4.substring(temp, phone4.indexOf("</PhoneNo>"));
+        if (str == "")
+            phone4 = insert(phone4, temp, phone4Number);
+        temp = phone4.indexOf("<PhnExtn>") + "<PhnExtn>".length;
+        str = phone4.substring(temp, phone4.indexOf("</PhnExtn>"));
+        if (str == "")
+            phone4 = insert(phone4, temp, phone4Ext);
+
+        customform.document.getElementById("OfficePhone").value = phone4;
+
+        temp = phone5.indexOf("<PhnCountryCode>") + "<PhnCountryCode>".length;
+        str = phone5.substring(temp, phone5.indexOf("</PhnCountryCode>"));
+        if (str == "")
+            phone5 = insert(phone5, temp, phone5CCode);
+        temp = phone5.indexOf("<PhoneNo>") + "<PhoneNo>".length;
+        str = phone5.substring(temp, phone5.indexOf("</PhoneNo>"));
+        if (str == "")
+            phone5 = insert(phone5, temp, phone5Number);
+        temp = phone5.indexOf("<PhnExtn>") + "<PhnExtn>".length;
+        str = phone5.substring(temp, phone5.indexOf("</PhnExtn>"));
+        if (str == "")
+            phone5 = insert(phone5, temp, phone5Ext);
+
+        customform.document.getElementById("HomeCountryPhone").value = phone5;
+
+        temp = phone6.indexOf("<PhnCountryCode>") + "<PhnCountryCode>".length;
+        str = phone6.substring(temp, phone6.indexOf("</PhnCountryCode>"));
+        if (str == "")
+            phone6 = insert(phone6, temp, phone6CCode);
+        temp = phone6.indexOf("<PhoneNo>") + "<PhoneNo>".length;
+        str = phone6.substring(temp, phone6.indexOf("</PhoneNo>"));
+        if (str == "")
+            phone6 = insert(phone6, temp, phone6Number);
+        temp = phone6.indexOf("<PhnExtn>") + "<PhnExtn>".length;
+        str = phone6.substring(temp, phone6.indexOf("</PhnExtn>"));
+        if (str == "")
+            phone6 = insert(phone6, temp, phone6Ext);
+
+        customform.document.getElementById("Fax").value = phone6;
+
+
+        // Email ------------------------------------------------------------------
+
+        temp = primaryemail.indexOf("<EmailID>") + "<EmailID>".length;
+        str = primaryemail.substring(temp, primaryemail.indexOf("</EmailID>"));
+        if (str == "")
+            primaryemail = insert(primaryemail, temp, primaryemailvalue);
+
+        customform.document.getElementById("primaryemail").value = primaryemail;
+
+        temp = secondaryemail.indexOf("<EmailID>") + "<EmailID>".length;
+        str = secondaryemail.substring(temp, secondaryemail.indexOf("</EmailID>"));
+        if (str == "")
+            secondaryemail = insert(secondaryemail, temp, secondaryemailvalue);
+
+        customform.document.getElementById("secondaryemail").value = secondaryemail;
+
+        temp = doc_emiratesid.indexOf("<DocId>") + "<DocId>".length;
+        str = doc_emiratesid.substring(temp, doc_emiratesid.indexOf("</DocId>"));
+        if (str == "")
+            doc_emiratesid = insert(doc_emiratesid, temp, emiratesid_new);
+
+        temp = doc_emiratesid.indexOf("<DocExpDt>") + "<DocExpDt>".length;
+        str = doc_emiratesid.substring(temp, doc_emiratesid.indexOf("</DocExpDt>"));
+        if (str == "")
+            doc_emiratesid = insert(doc_emiratesid, temp, emiratesidexp_new);
+
+        customform.document.getElementById("doc_emiratesid").value = doc_emiratesid;
+
+        temp = doc_passport.indexOf("<DocId>") + "<DocId>".length;
+        str = doc_passport.substring(temp, doc_passport.indexOf("</DocId>"));
+        if (str == "")
+            doc_passport = insert(doc_passport, temp, passport_num_new);
+
+        temp = doc_passport.indexOf("<DocExpDt>") + "<DocExpDt>".length;
+        str = doc_passport.substring(temp, doc_passport.indexOf("</DocExpDt>"));
+        if (str == "")
+            doc_passport = insert(doc_passport, temp, passportExpDate_new);
+
+        customform.document.getElementById("doc_passport").value = doc_passport;
+
+		temp = doc_visa.indexOf("<DocId>") + "<DocId>".length;
+        str = doc_visa.substring(temp, doc_visa.indexOf("</DocId>"));
+        if (str == "")
+            doc_visa = insert(doc_visa, temp, visa_new);
+
+        temp = doc_visa.indexOf("<DocExpDt>") + "<DocExpDt>".length;
+        str = doc_visa.substring(temp, doc_visa.indexOf("</DocExpDt>"));
+        if (str == "")
+            doc_visa = insert(doc_visa, temp, visaExpDate_new);
+
+        customform.document.getElementById("doc_visa").value = doc_visa;
+
+        temp = residence_address.indexOf("<AddrLine1>") + "<AddrLine1>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</AddrLine1>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_line1);
+
+        temp = residence_address.indexOf("<AddrLine2>") + "<AddrLine2>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</AddrLine2>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_line2);
+
+        temp = residence_address.indexOf("<AddrLine3>") + "<AddrLine3>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</AddrLine3>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_line3);
+
+        temp = residence_address.indexOf("<AddrLine4>") + "<AddrLine4>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</AddrLine4>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_line4);
+       
+	    temp = residence_address.indexOf("<ResType>") + "<ResType>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</ResType>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_restype);
+
+        temp = residence_address.indexOf("<POBox>") + "<POBox>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</POBox>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_pobox);
+
+        temp = residence_address.indexOf("<ZipCode>") + "<ZipCode>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</ZipCode>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_zipcode);
+
+        temp = residence_address.indexOf("<State>") + "<State>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</State>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_state);
+
+        temp = residence_address.indexOf("<City>") + "<City>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</City>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_city);
+
+        temp = residence_address.indexOf("<CountryCode>") + "<CountryCode>".length;
+        str = residence_address.substring(temp, residence_address.indexOf("</CountryCode>"));
+        if (str == "")
+            residence_address = insert(residence_address, temp, resi_cntrycode);
+
+        customform.document.getElementById("residence_address").value = residence_address;
+
+        temp = office_address.indexOf("<AddrLine1>") + "<AddrLine1>".length;
+        str = office_address.substring(temp, office_address.indexOf("</AddrLine1>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_line1);
+
+        temp = office_address.indexOf("<AddrLine2>") + "<AddrLine2>".length;
+        str = office_address.substring(temp, office_address.indexOf("</AddrLine2>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_line2);
+
+        temp = office_address.indexOf("<AddrLine3>") + "<AddrLine3>".length;
+        str = office_address.substring(temp, office_address.indexOf("</AddrLine3>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_line3);
+
+        temp = office_address.indexOf("<AddrLine4>") + "<AddrLine4>".length;
+        str = office_address.substring(temp, office_address.indexOf("</AddrLine4>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_line4);
+       
+	    temp = office_address.indexOf("<ResType>") + "<ResType>".length;
+        str = office_address.substring(temp, office_address.indexOf("</ResType>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_restype);
+
+        temp = office_address.indexOf("<POBox>") + "<POBox>".length;
+        str = office_address.substring(temp, office_address.indexOf("</POBox>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_pobox);
+
+        temp = office_address.indexOf("<ZipCode>") + "<ZipCode>".length;
+        str = office_address.substring(temp, office_address.indexOf("</ZipCode>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_zipcode);
+
+        temp = office_address.indexOf("<State>") + "<State>".length;
+        str = office_address.substring(temp, office_address.indexOf("</State>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_state);
+
+        temp = office_address.indexOf("<City>") + "<City>".length;
+        str = office_address.substring(temp, office_address.indexOf("</City>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_city);
+
+        temp = office_address.indexOf("<CountryCode>") + "<CountryCode>".length;
+        str = office_address.substring(temp, office_address.indexOf("</CountryCode>"));
+        if (str == "")
+            office_address = insert(office_address, temp, office_cntrycode);
+
+        customform.document.getElementById("office_address").value = office_address;
+
+        return true;
+    } else {
+        return true;
+    }
+}

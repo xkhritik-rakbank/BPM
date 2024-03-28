@@ -1,0 +1,1514 @@
+
+body{    
+    scrollbar-base-color: #DEDEDE; 
+    scrollbar-arrow-color: green;
+    scrollbar-DarkShadow-Color: green; 
+    scrollbar-face-color:7DCD72;
+    scrollbar-3dlight-color:#ffffff;
+    scrollbar-track-color:RGB(247,247,247);
+    scrollbar-shadow-color:#ffffff;
+    scrollbar-highlight-color:#ffffff;
+} 
+
+BODY.EWGeneral {
+    BACKGROUND-COLOR: white; MARGIN-LEFT: 6px; MARGIN-TOP: 0px
+}
+
+
+BODY.EWGeneral1 {
+	BACKGROUND-COLOR: white; MARGIN-LEFT: $3$px; MARGIN-RIGHT: $3$px; MARGIN-TOP: 0px
+}
+
+#tablewi {                                              
+    overflow: auto;
+                         height: &430&px;
+}
+.EWLTGreen {
+	COLOR: RGB(155,231,80); FONT: bold ^8^pt verdana ; CURSOR: pointer;
+}
+
+.EWGreen{
+        COLOR: green; FONT: bold ^8^pt verdana ;
+}
+
+.EWWhite {
+	COLOR: #FFFFFF; FONT: bold ^8^pt verdana ;
+}
+
+.EWTableContentsLTGreen{
+    COLOR: RGB(255,231,80); FONT: ^8^pt verdana; HEIGHT:&16&px; text-decoration: none; CURSOR: pointer;}
+}
+
+
+
+#tablewi TABLE{
+    BORDER-COLLAPSE: collapse; 
+}
+
+#tablewi TH{
+    border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; WHITE-SPACE : nowrap; COLOR: green; FONT: bold verdana ^9^px; TEXT-ALIGN: left; VERTICAL-ALIGN: middle; padding-left: $15$px;
+}
+#tablewi TD{
+        border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; WHITE-SPACE : nowrap; text-decoration: none;
+}
+
+#reminderwi TABLE{
+    BORDER-COLLAPSE: collapse; 
+}
+
+#reminderwi TH{
+ 	border-bottom: &1&px solid #666; border-top: &1&px solid #666; WHITE-SPACE : nowrap; COLOR: #009900; FONT: bold verdana ^9^px; TEXT-ALIGN: left; VERTICAL-ALIGN: middle;
+}
+
+#reminderwi TD{
+        border-bottom: &1&px solid #666; border-top: &1&px solid #666; WHITE-SPACE : nowrap; text-decoration: none;
+}
+
+.EWTableWi{
+	FONT: ^8^pt verdana; HEIGHT: &16&px; padding-left: $15$px;
+}
+
+.EWTableWiSort{
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt verdana; HEIGHT: &16&px; padding-left: $15$px;  border-bottom: &1&px solid #989898;
+        border-top: &1&px solid #989898;
+}
+
+TD.EWTableContents {
+	FONT: ^8^pt verdana; HEIGHT: &16&px; text-decoration: none;
+}
+TD.EWTableContentsText {
+	FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left: $15$px
+}
+TD.EWTableContentsNum {
+	FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right;
+}
+.EWTableContentsBlue {
+	COLOR: blue; FONT: ^8^pt verdana; HEIGHT: &16&px; text-decoration: none; CURSOR: pointer;
+}
+.EWTableContentsTextBlue {
+	COLOR: blue; FONT: ^8^pt verdana; HEIGHT: &16&px;
+}
+.EWTableContentsNumBlue {
+	COLOR: blue; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right; text-decoration: none;
+}
+.EWTableContentsRed {
+	COLOR: red; FONT: ^8^pt verdana; HEIGHT: &16&px; text-decoration: none; CURSOR: pointer;
+}
+.EWTableContentsTextRed {
+	COLOR: red; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN:left;
+}
+
+.EWTableContentsNumRed {
+	COLOR: red; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right;
+}
+
+.EWTableContentsOlive {
+	COLOR: olive; FONT: ^8^pt verdana; HEIGHT: &16&px; text-decoration: none; CURSOR: pointer;}
+
+.EWTableContentsTextOlive {
+	COLOR: olive;FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN:left;
+}
+
+.EWTableContentsNumOlive {
+	COLOR: olive; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right;
+}
+
+.EWTableContentsTeal {
+	COLOR: teal; FONT: ^8^pt Verdana; HEIGHT: &16&px; text-decoration: none; CURSOR: pointer;}
+
+.EWTableContentsTextTeal {
+	COLOR: teal; FONT: ^8^pt Verdana; HEIGHT: &16&px; TEXT-ALIGN:left;
+}
+
+.EWTableContentsNumTeal {
+	COLOR: teal; FONT: ^8^pt Verdana; HEIGHT: &16&px; TEXT-ALIGN: right;
+}
+
+.EWTableContentsOrange{
+        COLOR: #CD8500; FONT: ^8^pt Verdana; HEIGHT: &16&px; TEXT-ALIGN: right;
+}
+
+.EWTableContentsGreen{
+	COLOR: green; FONT: ^8^pt verdana; HEIGHT: &16&px; text-decoration: none; CURSOR: pointer;}
+
+.EWTableContentsGreenDt{
+	COLOR: green; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left :$5$px; border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; text-decoration: none;  BACKGROUND-COLOR: #f6f6f6;   BORDER-COLLAPSE: collapse;
+}
+
+.EWTableContentsGraynDt{
+	 COLOR: #666666; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left :$5$px; border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; text-decoration: none;  BACKGROUND-COLOR: #f6f6f6;   BORDER-COLLAPSE: collapse;
+}
+
+.EWTableContentsTextGreen {
+	COLOR: #666666; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left :$5$px;
+}
+
+.EWTableContentsTextGreenDt {
+	COLOR: #666666; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left :$5$px; border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; text-decoration: none;  BORDER-COLLAPSE: collapse;
+}
+
+.EWTableContentsNumGreen {
+	COLOR: #666666; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right;
+}
+
+.EWTableLinkWi{
+	FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left: $15$px; text-decoration: none;
+}
+
+.EWTableLinkWiSort{
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left: $15$px; text-decoration: none;
+}
+.EWTableLinkWiNum{
+	FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right; padding-left: $15$px; text-decoration: none;
+}
+
+.EWTableLinkWiSortNum{
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right; padding-left: $15$px; text-decoration: none;
+}
+.EWTableTextWi {
+	FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left: $15$px;
+}
+
+.EWTableTextWiSortDoc{
+	COLOR: green; BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left: $5$px; border-bottom: &1&px solid #989898;
+        border-top: &1&px solid #989898; white-space: nowrap;
+}
+.EWTableTextWiSort {
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left: $15$px;
+}
+
+
+.EWTableNumWi {
+	FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right; padding-right: $10$px; padding-left: $10$px;
+}
+
+.EWTableNumWiSort {
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: right; padding-right: $10$px; padding-left: $10$px;
+}
+
+.EWLabelWi{
+    COLOR: green; FONT: bold ^8^pt Verdana;
+}
+
+a{
+    text-decoration: none;
+}
+
+.EWButton {
+	BACKGROUND-COLOR: white; COLOR: green; FONT: bold ^8^pt Verdana; text-align : center;
+}
+
+HR.EWHLine {
+    COLOR: #c0c0c0;
+}
+
+ul { 
+    list-style-image: url("icon1.gif") 
+}
+
+.EWMsg1{
+    COLOR: #595959; FONT: ^10^pt Verdana;
+}
+
+.EWTableContentsGreenNW{
+    COLOR: green; FONT: ^11^px Verdana; HEIGHT: &16&px; text-decoration: none; CURSOR: pointer; white-space: nowrap;
+}
+
+.EWTableContentsNW{
+    FONT: ^8^pt verdana; text-decoration: none; CURSOR: pointer;
+}
+
+.EWTableQ{
+    border-left: $1$px solid #989898;
+    border-right: $1$px solid #989898;
+    padding-left: $5$px;
+    color: green;
+}
+.ettila {
+    font-weight: bold;
+    font-family: Verdana;
+        font-size: ^9^px;
+    color: #009900;
+    text-decoration: none;
+    cursor: pointer;        
+}
+
+.ettilanone{
+    font-weight: bold;
+    font-family: Verdana;
+        font-size: ^9^px;
+    color: #009900;
+    text-decoration: none;
+}
+
+.ettilaDt {
+    font-family: Verdana;
+        font-size: ^9^px;
+    font-weight: bold;
+    color: #009900;
+        height: &20&px;
+    text-decoration: none;
+        border-bottom: &1&px solid #989898;
+        border-top: &1&px solid #989898;
+    TEXT-ALIGN: left; 
+    VERTICAL-ALIGN: middle; 
+    padding-left: $5$px;
+    background-image: url('../webtop/images/bck.gif'); 
+}
+
+.ettilaDt1 {
+    font-family: Verdana;
+    font-size: ^9^px;
+    font-weight: bold;
+    color: #009900;
+    height: &20&px;
+    text-decoration: none;
+    border-bottom: &1&px solid #989898;
+    border-top: &1&px solid #989898;
+    TEXT-ALIGN: left; 
+    VERTICAL-ALIGN: middle; 
+    padding-left: $5$px;
+    background-image: url('../../webtop/images/bck.gif'); 
+}
+
+.ettilaDt2 {
+    font-family: Verdana;
+    font-size: ^9^px;
+    font-weight: bold;
+    color: #009900;
+    height: &20&px;
+    text-decoration: none;
+    border-bottom: &1&px solid #989898;
+    border-top: &1&px solid #989898;
+    TEXT-ALIGN: left; 
+    VERTICAL-ALIGN: middle; 
+    padding-left: $5$px;
+    background-image: url('../../../webtop/images/bck.gif'); 
+}
+
+.ettilaDtSpc{
+
+    font-family: Verdana;
+    font-size: ^9^px;
+    font-weight: bold;
+    color: #009900;
+    VERTICAL-ALIGN: middle; 
+} 
+
+
+
+.ettilaInt {
+    font-weight: bold;
+    font-family: Verdana;
+        font-size: ^11^px;
+    color: #009900;
+    text-decoration: none;
+}
+
+.ettilaIntCol {
+    font-weight: bold;
+    font-family: Verdana;
+        font-size: ^11^px;
+    color: #009900;
+    text-decoration: none;
+        width: $20$px;
+    text-align: center;
+}
+
+.ettilaBg {
+    font-weight: bold;
+    font-family: Verdana;
+        font-size: ^9^px;
+    color: #009900;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: url('../webtop/images/green1.gif'); 
+    padding-left: $5$px;
+}
+
+.divBtmLinkEn {
+    cursor: pointer; font-size: ^8^pt; font-weight: bold; font-family: Verdana; color: green; TEXT-DECORATION: none ;
+}
+.divBtmLink {
+      font-size: 8pt; font-weight: bold; font-family: Verdana; color: green; TEXT-DECORATION: none ;
+}
+
+.divBtmLinkDis {
+    font-size: ^8^pt; font-weight: bold; font-family: Verdana; color: gray; TEXT-DECORATION: none ;
+}
+
+
+.style3 {
+    font-weight: bold;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: ^14^px;
+    color: #666666;
+    text-decoration: none;
+}
+.ettila1 {
+    font-weight: bold;
+    font-family: Verdana;
+        font-size: ^9^px;
+    color: silver;
+    text-decoration: none;        
+}
+
+.EWEnabledLink {
+	COLOR: green; FONT: bold ^8^pt Verdana; TEXT-DECORATION: none
+}
+.EWEnabledLink:hover {
+    COLOR: #B50000;
+}
+
+.EWDisabledLink {
+	COLOR: silver; FONT: bold ^8^pt Verdana; TEXT-DECORATION: none
+}
+
+.EWLabel1 {
+	COLOR: green; FONT: ^8^pt verdana;
+}
+
+.EWLabelDis {
+	color: #999999;; FONT: ^8^pt verdana;
+}
+
+.EWLabel1Spc1 {
+	COLOR: green; FONT: bold ^8^pt verdana;
+}
+
+
+
+.EWLabelLnk {
+	FONT: bold ^8^pt verdana; text-decoration: underline; cursor: pointer; COLOR: green;
+}
+
+.EWCombo {
+	FONT: ^10^pt verdana;
+}
+.EWComboSpc {
+	FONT: ^8^pt verdana;
+         margin: &6&px $0$px &0&px $0$px;
+}
+.EWComboSpc2 {
+	FONT: ^8^pt verdana;
+}
+
+.EWLabelGreen {
+	COLOR: green; FONT: bold ^8^pt verdana;
+}
+
+.EWComboSpc1 {
+	FONT: ^9^pt Arial;
+         margin: &0&px $0$px &3&px $0$px;
+}
+
+.EWLabel3 {
+	COLOR: black; FONT:  ^8^pt Verdana;
+}
+
+.EWLabel3red {
+	COLOR: red; FONT: ^8^pt Verdana;
+}
+
+.EWSubHeaderText {
+    background-image: url('../../webtop/images/green1.gif');  COLOR: green; FONT: bold ^8^pt Verdana; TEXT-ALIGN: left; VERTICAL-ALIGN: middle; padding-left: $5$px;  border-bottom: &1&px solid #989898;
+    border-top: &1&px solid #989898;
+}
+
+.EWSubHeaderText1 {
+    background-image: url('../../../webtop/images/green1.gif');  COLOR: green; FONT: bold ^8^pt Verdana; TEXT-ALIGN: left; VERTICAL-ALIGN: middle; padding-left: $5$px;  border-bottom: &1&px solid #989898;
+    border-top: 1px solid #989898;  
+}
+
+.EWSubHeaderText2 {
+    background-image: url('../../webtop/images/green1.gif');  COLOR: green; FONT: bold ^8^pt Verdana; TEXT-ALIGN: left; VERTICAL-ALIGN: middle; padding-left: $5$px;  border-bottom: &1&px solid #989898;
+    border-top: &1&px solid #989898;
+}
+
+.EWGreyHeader {
+    BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold ^8^pt Verdana; TEXT-ALIGN: center; VERTICAL-ALIGN: middle
+} 
+
+table.myFaces_panelTabbedPane{
+    border-style: none !important; 
+    padding: 0 !important;
+    border-spacing: 0 !important;
+    empty-cells: show !important ;
+}
+
+.myFaces_panelTabbedPane_activeHeaderCell{
+    border-top: 0px none  !important;
+    border-right: 0px  none !important;
+    border-bottom: 0px none !important;
+    border-left: 0px none !important;
+    text-align: center !important;
+}
+.myFaces_panelTabbedPane_inactiveHeaderCell,
+.myFaces_panelTabbedPane_disabledHeaderCell{
+    border-top: 0px  none !important;
+    border-right: 0px  none !important;
+    border-bottom: 0px none !important;
+    border-left: 0px  none !important;
+    text-align: center !important;
+    background-color: none !important;
+}
+.myFaces_panelTabbedPane_activeHeaderCell input,
+.myFaces_panelTabbedPane_inactiveHeaderCell input,
+.myFaces_panelTabbedPane_disabledHeaderCell label{
+    border-style: none !important;
+    width: 100% !important;
+}
+.myFaces_panelTabbedPane_activeHeaderCell input{
+    cursor: pointer !important;
+    background-color: transparent !important;
+    /* background-color: inherit; */
+}
+.myFaces_panelTabbedPane_inactiveHeaderCell input{
+    cursor: pointer !important;
+    background-color: none !important;
+}
+.myFaces_panelTabbedPane_disabledHeaderCell label{
+    cursor: normal !important;
+    background-color: none !important;
+}
+.myFaces_panelTabbedPane_emptyHeaderCell{
+    border-style: none !important;
+}
+.myFaces_panelTabbedPane_activeHeaderCell input:hover,
+.myFaces_panelTabbedPane_inactiveHeaderCell input:hover{
+	/* border-top: orange solid $2$px; */
+}
+
+.myFaces_panelTabbedPane_subHeaderCell{
+ 	height: &2&px !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    border-left: 0px  none !important;
+    border-top: 0px  none !important;
+    border-bottom: 0px none !important;
+    border-right: 0px  none !important;
+}
+.myFaces_panelTabbedPane_subHeaderCell_active{
+    border-left: 0px  none !important;
+    border-top: 0px  none !important;
+    border-bottom: 0px none !important;
+    border-right: 0px  none !important;
+}
+.myFaces_panelTabbedPane_subHeaderCell_inactive{
+    border-left: 0px  none !important;
+    border-top: 0px  none !important;
+    border-bottom: 0px none !important;
+    border-right: 0px  none !important;
+}
+.myFaces_panelTabbedPane_subHeaderCell_first{
+    border-left: 0px  none !important;
+    border-top: 0px  none !important;
+    border-bottom: 0px none !important;
+    border-right: 0px  none !important;
+}
+.myFaces_panelTabbedPane_subHeaderCell_last{
+    border-left: 0px  none !important;
+    border-top: 0px  none !important;
+    border-bottom: 0px none !important;
+    border-right: 0px  none !important;
+}
+
+.myFaces_panelTabbedPane_pane{
+    border-top: 0px none !important;
+    border-right: 0px  none !important;
+    border-bottom: 0px  none !important;
+    border-left: 0px  none !important;
+    padding-bottom: 0px !important;
+    padding-top: 10px  !important;
+    padding-left: 10px  !important;
+    padding-right: 10px  !important;
+
+}
+.EWTableContentsText1{
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt Arial;   VERTICAL-ALIGN: middle; width :100% ; height :&25&px; text-indent: $10$px; text-align :left;
+}
+
+td.TabClsIn input {
+    font-size: 70% !important;
+    font-weight: bold !important;
+    font-family: verdana;
+    COLOR: Green !important;
+
+} 
+
+td.TabCls input {
+
+    font-size: 70% !important;
+    font-family: verdana;
+    COLOR: green !important;
+    font-weight: bold !important;
+}
+td.TabClsInMoz input {
+    font-size: 75% !important;
+    font-family: verdana;
+    font-weight: bold !important;
+    COLOR: green !important;
+
+} 
+
+td.TabClsMoz input {
+
+    font-size: 75% !important;
+    font-family: verdana;
+    COLOR: green !important;
+    font-weight: bold !important;
+}
+.TabClsInMoz {
+    width: $120$px !important;
+    font-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_gr.gif'); 
+    padding: 0px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset ; !important;
+    padding: 0px;
+}
+
+.TabClsIn {
+    width: 20% !important;
+    font-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_gr.gif'); 
+    padding: 0px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset ; !important;
+    padding: 0px;
+}
+
+
+.TabClsMoz {
+    width: $120$px !important;
+    font-size: 100% !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_bl.gif'); 
+    padding: 0px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset  !important;
+    padding: 0px;
+    background-repeat: no-repeat !important;
+}
+.TabCls {
+    width: 20% !important;
+    font-size: 100% !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_bl.gif'); 
+    padding: 0px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset  !important;
+    padding: 0px;
+    background-repeat: no-repeat !important;
+}
+td.TabClsPrfIn input {
+    font-size: 76% !important;
+    font-weight: bold !important;
+    font-family: Verdana;
+    COLOR: green !important;    
+} 
+
+td.TabClsPrf input {
+
+    font-size: 76% !important;
+    COLOR: green !important;
+    font-weight: bold !important;
+    font-family: Verdana;
+}
+
+.TabClsPrfIn {
+    width: 20% !important;
+    font-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_gr.gif'); 
+    padding: 0px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset ; !important;
+    padding: 0px;
+}
+
+
+.TabClsPrf {
+    width: 20% !important;
+    font-size: 100% !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_bl.gif'); 
+    padding-left: $2$px !important;
+    padding-right: $2$px !important;
+    padding-bottom: &2&px !important;
+    padding-top: &2&px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset  !important;
+    padding: 0px;
+    background-repeat: no-repeat !important;
+}
+
+.myFaces_panelTabbedPane_inactiveHeaderCell input{
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.myFaces_panelTabbedPane_subHeaderCell_first{
+    border-left: 0px outset transparent;
+}
+.myFaces_panelTabbedPane_subHeaderCell_last{
+    border-top: 0px outset transparent;
+    border-right: 0px outset transparent;
+}
+
+TD.RWTable1 {
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^6^pt Verdana; HEIGHT: &7&px; WIDTH:40%; COLOR: green; border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; }
+
+TD.RWTable2 {
+	COLOR: #666666; FONT: ^6^pt Verdana; HEIGHT: &7&px; WIDTH: $460$px;  border-bottom: &1&px solid #989898; border-top: &1&px solid #989898;}
+
+TD.RWTable3 {
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^6^pt Verdana; HEIGHT: &7&px; }
+
+TD.RWTable4 {
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^6^pt Verdana; HEIGHT: &7&px; }
+
+TD.RWTable5 {
+	BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt Verdana; HEIGHT: &7&px; WIDTH:30%; text-align: left; padding-left: $10$px; border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; COLOR: green;}
+
+TD.RWTable6 {
+	  FONT: ^8^pt Verdana; HEIGHT: &7&px; WIDTH:20%; text-align: left; padding-left: $10$px;  border-bottom: &1&px solid #989898; border-top: &1&px solid #989898;}
+
+TD.RWTable7 {
+	  FONT: ^8^pt Verdana; HEIGHT: &7&px; WIDTH:$460$px; text-align: left; padding-left: $10$px;  border-bottom: &1&px solid #989898; border-top: &1&px solid #989898;}
+
+.SubTabCls {
+    border-top: 0px outset white;
+}
+
+td.HTabClsIn input {
+    font-size: 75% !important;
+    font-family: verdana;
+    font-weight: bold !important;
+    COLOR: green !important;
+} 
+
+td.HTabCls input {
+
+    font-size: 75% !important;
+    font-family: verdana;
+    COLOR: green !important;
+    font-weight: bold !important;
+}
+
+.HTabClsIn {
+    width: 15% !important;
+    font-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_gr.gif'); 
+    padding-left: $2$px !important;
+    padding-right: $2$px !important;
+    padding-bottom: &2&px !important;
+    padding-top: &2&px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset ; !important;
+    padding: 0px;
+}
+
+
+.HTabCls {
+    width: 15% !important;
+    font-size: 100% !important;
+    background-color: #FFFFFF !important;
+    background-image: url('../../../webtop/images/tab_blank_bl.gif'); 
+    padding-left: $2$px !important;
+    padding-right: $2$px !important;
+    padding-bottom: &2&px !important;
+    padding-top: &2&px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-top: 0px none;     !important;
+    border-right: 0px outset ; !important;
+    border-bottom: 0px outset ; !important;
+    border-left: 0px outset  !important;
+    padding: 0px;
+    background-repeat: no-repeat !important;
+}
+
+.EWLabelBlack {
+	COLOR: green; FONT: ^8^pt verdana; TEXT-ALIGN: center
+}
+
+.EWTableContents {
+	 HEIGHT: &16&px;
+}
+
+.SWTableContents {
+	BACKGROUND-COLOR: #f6f6f6; HEIGHT: &16&px; WIDTH:100%;}
+
+.EWLabel {
+	FONT: bold ^8^pt verdana; TEXT-ALIGN: center
+}
+
+.EWLabelSp {
+	COLOR: green; FONT: bold ^8^pt verdana;
+}
+
+TD.Prev{
+    WIDTH: 95%; text-align: right; 
+}
+
+
+TD.Next{
+    WIDTH: 5%; 
+}
+
+.EWDisabledOption {
+	COLOR: silver; FONT: bold ^8^pt Verdana;
+}
+
+.EWExp {
+    COLOR: #666666; 
+        FONT: ^8^pt verdana;
+    TEXT-ALIGN: left; 
+        padding-left: $5$px;
+    text-decoration: none;
+}
+
+.EWExpRed {
+    COLOR: red; 
+        FONT: ^8^pt verdana;
+    TEXT-ALIGN: left; 
+        padding-left: $5$px;
+    text-decoration: none;
+}
+
+.EWCmnt {
+    COLOR: #666666;
+        FONT: ^8^pt verdana;
+    TEXT-ALIGN: left; 
+        padding-left: $5$px;
+    text-decoration: none;
+        border-bottom: &1&px solid #D8D8D8;
+}
+
+.EWSel{
+    cursor: pointer; 
+    background-color: #EEF3E2;
+}
+
+.EWSimple{
+    cursor: pointer; 
+    background-color: #FFFFFF;
+}
+
+.EWHover{
+    cursor: pointer; 
+    background-color: #FEF9ED;
+}
+
+.ettilaExp {
+    font-family: Verdana;
+        font-size: ^9^px;
+    font-weight: bold;
+    color: #009900;
+    text-decoration: none;
+    cursor: pointer;        
+        border-bottom: &1&px solid #666;
+        border-top: &1&px solid #666;
+    TEXT-ALIGN: left; 
+    VERTICAL-ALIGN: middle; 
+        padding-left: $5$px;
+}
+
+.EWLabelCmnt{
+        FONT: bold Italic ^9^px Verdana;
+    color: #009900;
+    text-decoration: Underline;
+    TEXT-ALIGN: left; 
+    VERTICAL-ALIGN: middle; 
+}
+
+.EWLabelBold{
+        COLOR: black; FONT: bold ^8^pt Verdana
+}
+
+.EWMessage {
+	COLOR: #B50000; FONT: ^8^pt Verdana  ; TEXT-ALIGN: center
+}
+
+
+.ColumnSpc{
+    WIDTH :20%;
+
+}
+
+.ColumnSpc1{
+    WIDTH :80%;
+
+}
+
+.EWCab{
+    white-space: nowrap;
+    vertical-align : top;
+}
+
+.DataTable{
+    BORDER-COLLAPSE: collapse;
+
+}
+
+
+.EWSubHeaderUsr {
+	background-image: url('/webdesktop/webtop/images/green1.gif'); COLOR: green; FONT: bold ^8^pt Verdana; TEXT-ALIGN: left; VERTICAL-ALIGN: middle;
+}
+
+.EWSubHeader {
+    background-image: url('../webtop/images/green1.gif'); COLOR: green; FONT: bold ^9^pt Verdana; TEXT-ALIGN: center; VERTICAL-ALIGN: middle;
+}
+
+.EWSubHeader1 {
+    background-image: url('../webtop/images/green1.gif'); COLOR: green; FONT: bold ^8^pt Verdana;  VERTICAL-ALIGN: middle;
+}
+
+.EWSubHeader2 {
+    background-image: url('../../webtop/images/green1.gif'); COLOR: green; FONT: bold ^9^pt Verdana; TEXT-ALIGN: center; VERTICAL-ALIGN: middle;
+}
+
+
+
+.EWKey{
+    color: green; FONT: bold ^8^pt Verdana; CURSOR: pointer;
+}
+
+.EWTableContentsGreen1{
+	COLOR: green; FONT:  ^8^pt verdana;
+}
+
+.EWWhite1 {
+	COLOR: RGB(155,231,80); FONT: bold ^8^pt verdana ;
+}
+
+.EWTableContentsTextGreenMsg {
+	COLOR: #666666; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: centre; padding-left :$5$px; border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; text-decoration: none;  BORDER-COLLAPSE: collapse;
+}
+
+.EWTableContentsGreenNWGray{
+    COLOR: gray; FONT: ^11^px Verdana; HEIGHT: &16&px; text-decoration: none;
+} 
+
+#fail TABLE{
+    BORDER-COLLAPSE: collapse;  
+}
+#fail TH{
+    background-image: url('../../webtop/images/green1.gif'); COLOR: green; width: 33%;     FONT: bold ^8^pt Verdana;  TEXT-ALIGN: left; VERTICAL-ALIGN: middle;       border-bottom: &1&px solid #989898;   text-decoration: none;
+}
+#fail TD{
+    COLOR: #666666; FONT: ^8^pt Verdana; HEIGHT: &16&px; TEXT-ALIGN: left; width: 33%;    border-bottom: &1&px solid #989898; border-top: &1&px solid #989898; text-decoration: none;
+}
+
+.EWErrorMessage{
+font: bold ^8^pt Verdana; color: green; text-align: center;
+}
+
+.EWTableContentsGreenFail{
+    COLOR: green; FONT: ^8^pt verdana; HEIGHT: &16&px; text-decoration: none;   white-space: nowrap;
+} 
+
+.ScrollTableHead {
+    behavior: url("../webtop/css/syncscroll.htc");
+    overflow: hidden;
+}
+
+.ScrollTableBody {
+    overflow: auto;
+
+}
+
+div.scrollTableContainer {
+    overflow: auto;
+    position: relative;
+}
+
+/* The different widths below are due to the way the scroll bar is implamented */
+
+/* Modern browsers (but especially firefox ) */
+html>/**/body div.scrollTableContainer table>tbody	{  
+
+    overflow: auto; 
+    overflow-x: hidden;
+}
+
+div.scrollTableContainer thead tr	{
+    position:relative; 
+    top: expression( offsetParent.scrollTop); /*IE5+ only*/
+    /* fixes the header being over too far in IE, doesn't seem to affect FF */
+    left: $-1$px;
+}
+
+/*prevent Mozilla scrollbar from hiding cell content*/
+div.scrollTableContainer td:last-child {padding-right: $20$px;}
+
+.ColumnTableClass1{
+    text-align: right;
+}
+
+.ColumnTableClass2{
+    text-align: left;
+}
+.ColumnSpc3{
+    width: 25%;
+
+}
+
+.ColumnSpc4{
+    width: 75%;
+    text-align: right;
+
+}
+
+.EWTableLinkWiRem{
+	FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left:  $5$px; text-decoration: none;
+}
+
+
+.class1{               
+    text-align: center;
+    height: &20&px;
+    background-color: rgb(192,225,205);
+    white-space: nowrap;
+}
+.class2{
+    text-align: left;
+    border-style: none;
+    white-space: nowrap;
+}
+.class3{
+    text-align: right;
+    border-style: none;
+    white-space: nowrap;
+}
+.botop{
+    border-top: &1&px solid black;
+    border-bottom: &1&px solid black;
+
+}
+.label{
+    color: black;
+    font-family: Arial;
+    font-size: ^9^pt;
+    font-size-adjust: none;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: normal;
+    text-align: left;
+    padding-left :$10$px;
+    padding-right :$10$px;
+}
+.docOperation {
+    color: black;
+    font-family: Arial;
+    font-size: ^9^pt;
+    font-size-adjust: none;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: normal;
+    text-align: left;
+    white-space: nowrap;
+    text-align: center;
+    padding-right: $20$px;
+}
+
+.comboStyle{
+  font: ^10^px verdana ;
+  width :$100$px;
+  background-color: RGB(192,225,205);
+}
+
+.EWLabelDisabledLnk {
+	FONT: bold ^8^pt verdana; text-decoration: underline; cursor: none; COLOR: gray;
+}
+
+.EWFixWCombo{
+FONT: ^8^pt Verdana;
+width :$150$px;
+height :&20&px;
+}
+
+.EWDisTextField{
+    width :$130$px;
+    height :&20&px;
+    FONT: ^8^pt Verdana;
+    Background-color : #EBECE4;
+    COLOR :#000000;
+}
+
+.EWDisableTextField{
+    width :$150$px;
+    height :&20&px;
+    FONT: ^8^pt Verdana;;
+    Background-color : #EBECE4;
+    COLOR :#000000;
+}
+.EWEnalbleTextField{
+    width :$150$px;
+    height :&20&px;
+    FONT: ^8^pt Verdana;
+}
+
+.LableWth{
+    WIDTH: 20%;
+    white-space : nowrap;
+    text-align :left;
+}
+.ValueWth{
+    WIDTH: 80%;
+    text-align :left;
+}
+.PANEL{
+    width: 100%;
+    text-align : left ;
+    white-space: nowrap;
+    border-collapse: collapse;
+}
+
+.EWSubHeaderTextNew {
+	COLOR: green; FONT: bold ^8^pt Verdana; TEXT-ALIGN: left; VERTICAL-ALIGN: middle; padding-left: $5$px;  border-bottom: &1&px solid #989898;
+        border-top: &1&px solid #989898;
+}
+
+.rowHeight{
+    height: &25&px;
+}
+
+.EWTableContentsTodo{
+	COLOR: green; FONT: ^8^pt verdana; HEIGHT: &25&px; TEXT-ALIGN: left; padding-left :$5$px; border-bottom: &1&px solid #989898; text-decoration: none;  BACKGROUND-COLOR: #f6f6f6;   BORDER-COLLAPSE: collapse; width: 60%
+}
+
+.EWTableContentsTextTodo {
+	COLOR: #666666; FONT: ^8^pt verdana; HEIGHT: &25&px; TEXT-ALIGN: left; padding-left :$5$px; border-bottom: &1&px solid #989898; text-decoration: none; BACKGROUND-COLOR: #fefefe;  BORDER-COLLAPSE: collapse; width: 40%
+}
+
+.equiPartiton{
+    width :  100%;
+    text-align :center;
+    vertical-align : top;
+    COLOR: blue; FONT: bold ^9^pt Arial; TEXT-ALIGN: center; BACKGROUND-COLOR: #f6f6f6;
+    white-space :nowrap
+}
+
+.appDivClass{
+    height :&450&px;
+    width  :$400$px;
+}
+
+.docPanelRowStyle{
+width :100%; height :&15&px; border-width :0px;
+}
+.docPanelColumnStyle{
+width :100%; height :&20&px; VERTICAL-ALIGN : top ;
+}
+.docPanelStyle{
+width :100%; height :&600&px; VERTICAL-ALIGN: top ;  border-width :0px; padding: 0px;
+}
+.docOperationPanel{
+    width :100% ; height :&40&px ; text-align :top ;  border-width :0px ;
+}
+.docName{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold ^9^pt Arial; TEXT-ALIGN: left; VERTICAL-ALIGN: middle ; width :35%;
+}
+.rightdocName{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold ^9^pt Arial; TEXT-ALIGN: right; VERTICAL-ALIGN: middle ; width :50%;
+}
+.docCombo{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold ^9^pt Arial; TEXT-ALIGN: left; VERTICAL-ALIGN: middle ; width :15%;
+}
+.docOperation{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold ^9^pt Arial; TEXT-ALIGN: left; VERTICAL-ALIGN: middle ;width :20%; white-space :nowrap;
+}
+.iconstyle{
+  height :&35&px;
+}
+
+#features{
+FONT: ^9^pt Arial;
+}
+
+.content{
+    position: relative;
+  padding-left: $4$px;
+  padding-right: $4$px;
+  padding-top: &4&px;
+  padding-bottom: &4&px;
+  margin-top: &16&px;
+  margin-bottom: &16&px;
+  margin-left: $16$px;
+  margin-right: $16$px;
+  width: $600$px;
+  height: &400&px;
+  border-top: solid red &2&px;
+  border-bottom: solid red &2&px;
+  border-left: solid red $2$px;
+  border-right: solid red $2$px;
+    color:maroon;
+    background-color:tan;
+    font-family: arial;
+  font-size: ^16^pt;
+}
+
+.msg_text{
+    font-family: arial;
+    font-weight: light;
+  font-size: ^14^pt;
+    color: blue;
+}
+
+.dialog{
+    position: absolute;
+  border-spacing: ^2^px;
+    border-style: inset inset inset inset;
+    border-color: black black black black;
+    border-collapse: separate;
+    background-color: white;
+  padding-left: $4$px;
+  padding-right: $4$px;
+  padding-top: &4&px;
+  padding-bottom: &4&px;
+}
+
+.waitDialog{
+    position: absolute;
+    background-color: white;
+  border-spacing: ^2^px;
+  padding-left: $4$px;
+  padding-right: $4$px;
+  padding-top: &4&px;
+  padding-bottom: &4&px;
+}
+
+.non-modal{
+}
+
+.modal{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000px;
+}
+
+#customform{height :98%; width :100%;border :0;}
+
+.LabelBoldGreen {
+FONT: ^8^pt Arial ;
+    color :#008000;
+}
+.WDLabel {
+FONT: ^8^pt Arial ; color :#008000;
+}
+
+.WDLabelGreySmall{
+FONT :^8^pt Arial ; color: #989898;
+}
+
+.CabErrorMessage {
+	font :bold ^8^pt Arial; color :#666666; text-align:center;
+}
+
+.ColumnSpcCab{
+    WIDTH :60%;
+    text-align :left;
+
+}
+
+.ColumnSpcCab1{
+    WIDTH :40%;
+
+}
+.ComplexCoumn1{
+    WIDTH :25%;
+    text-align :left;
+
+}
+.ComplexCoumn2{
+    WIDTH :75%;
+    text-align :middle;
+
+}
+.EWDisableButton {
+
+	BACKGROUND-COLOR: white; COLOR: silver; FONT: bold ^8^pt Verdana; text-align : center;
+}
+
+.EWDivBorder{
+    border-top: &1&px solid rgb(150,150,150);
+    border-bottom: &1&px solid rgb(150,150,150);
+    border-left: $1$px solid rgb(150,150,150);
+    border-right: $1$px solid rgb(150,150,150);
+    width: 95%;
+    overflow: auto;
+}
+
+.EWDivBorderDis{
+    border: 0px; width: 95%; overflow: hidden;
+}
+
+.EWInfo{
+    color: gray; font: ^8^pt Arial; text-align :right;
+}
+.ColumnLeft{ 
+    text-align :left;
+}
+.ColumnSpc10{
+    WIDTH :10%;
+}
+.ColumnSpc20{
+    WIDTH :20%;
+}
+.ColumnSpc30{
+    WIDTH :30%;
+}
+.ColumnSpc100{
+    WIDTH :100%;
+}
+.ColumnSpcRight{
+    WIDTH :30%;
+    text-align :left;
+}
+.ColumnSpc17{
+    WIDTH :17%;
+}
+.ColumnSpc5{
+    WIDTH :5%;
+}
+.LoginInfo{
+    color: gray; font: ^8^pt Arial; text-align :left;
+}
+.EWLTSilver {
+	COLOR: silver; FONT: bold ^8^pt verdana ;cursor: none;
+}
+
+.ColumnSpc40Left{
+    WIDTH :30%;
+    text-align :left;
+}
+.ColumnSpc60Left{
+    WIDTH :70%;
+    text-align :left;
+}
+
+.wdeskbody{    
+    scrollbar-base-color: #DEDEDE; 
+    scrollbar-arrow-color: green;
+    scrollbar-DarkShadow-Color: green; 
+    scrollbar-face-color:7DCD72;
+    scrollbar-3dlight-color:#ffffff;
+    scrollbar-track-color:RGB(247,247,247);
+    scrollbar-shadow-color:#ffffff;
+    scrollbar-highlight-color :#ffffff;
+    margin :0px;
+    height: 100%;
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+}
+.wdeskbodyResize{    
+    scrollbar-base-color: #DEDEDE; 
+    scrollbar-arrow-color: green;
+    scrollbar-DarkShadow-Color: green; 
+    scrollbar-face-color:7DCD72;
+    scrollbar-3dlight-color:#ffffff;
+    scrollbar-track-color:RGB(247,247,247);
+    scrollbar-shadow-color:#ffffff;
+    scrollbar-highlight-color :#ffffff;
+    margin :0px;
+    height: 100%; 
+}
+.QBck{
+    BACKGROUND-COLOR: white;
+}
+.EWTableQRed1{
+    border-left: $1$px solid #989898;
+    border-right: $1$px solid #989898;
+    padding-left: $5$px;
+    color: red;
+}
+.ettila2 {
+    font-weight: bold;
+    font-family: Verdana;
+        font-size: ^9^px;
+    color: green;
+    text-decoration: none;        
+}
+.LabelBoldGreen1 {
+    FONT : ^8^pt Arial ;
+    color : green;
+}
+.WDLabel1 {
+    FONT: ^8^pt Arial ;
+    color : green;
+}
+.LabelBoldGreen2 {
+FONT: ^8^pt Arial ;
+    color : green;
+}
+.EWTableContentsGreen2{
+    COLOR: green; FONT:  ^8^pt verdana;
+}
+.BackGrundColorGreen{
+    background-color : green;
+}
+
+.EWQLHeader {
+    COLOR: #FFFFFF; FONT: bold ^8^pt verdana ;
+}
+.EWLabel5 {
+    COLOR: green; FONT:  ^8^pt Verdana;
+} 
+.SucessLogOut{
+    color: green;
+}
+.EWEnabledLinkRed{
+    COLOR: #B50000; FONT:  ^8^pt Verdana; TEXT-DECORATION: none
+}
+.EWEnabledLinkGreen{
+    COLOR: green; FONT:  ^8^pt Verdana; TEXT-DECORATION: none
+}
+.tablecontent1{
+    COLOR: #666666; FONT: ^8^pt verdana; HEIGHT: &16&px; TEXT-ALIGN: left; padding-left :$5$px; padding-left: $5$px;    border-bottom: &1&px solid #989898; border-top: &1&px solid #989898;
+}
+.tablecontent{
+    BACKGROUND-COLOR: #f6f6f6; FONT: ^8^pt Verdana; HEIGHT:&16&px; TEXT-ALIGN:left;  COLOR: green;  border-bottom: &1&px solid silver; border-top: &1&px solid silver;padding-left:$5$px;
+}
+.tablecontentAdvSearch1{
+    FONT: ^8^pt Verdana; HEIGHT:&16&px; TEXT-ALIGN:left;    border-bottom: &1&px solid silver; border-top: &1&px solid silver;padding-left:^5^px;
+}
+.EWTableColorGreen{
+    color:green;
+}
+.EWbgcolorOrange{
+    background-color :#FF6347;
+}
+.EWColorWhite{
+    color :#fff;
+}
+.EWColorGray{
+    COLOR: gray;
+}
+
+.EWBodybgcolorBlack{
+    BACKGROUND-COLOR: black;
+}
+.EWTablebgcolorWhite{
+    BACKGROUND-COLOR: white;
+}
+.EWTableColorRed{
+    color:red;
+}
+.EWBordercolorWhite{
+    border-color:white;
+}
+.EWDivColorGray{
+    background-color:#AAAAAA;
+}
+.EWDivColorSilver{
+    background-color:silver;
+}
+.EWColorSilver{
+    color:silver;
+}
+.EWbgcolorGray{
+    background-color:RGB(163,163,163);
+}
+.EWPanelTableContent{
+    color:green;
+    font-family:Arial;
+    font-size:^8^pt;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+}
+
+.EWLabelLnk {
+    FONT: bold ^8^pt verdana; text-decoration: underline; cursor: pointer; COLOR: green;
+}
+.EWLabel1 {
+    COLOR: green; FONT: 8pt verdana;
+}
+.EWLabelDisabledLnk {
+    FONT: bold ^8^pt verdana; text-decoration: underline; cursor: none; COLOR: gray;
+}
+.EWPanelbgcolor{
+    background-color : lightgrey;
+    text-align:center;
+    height:&20&px;
+
+}
+
+.EWPanelBlank{
+}
+
+
+.EWTextcolorBlue{
+    color: blue;
+}
+.EWTextGray{
+    color:#666666;
+}
+.EWbgcolorwhite{
+    background-color:#FFFFF2;
+}
+.EWbgcolorBlue{
+    background-color:blue;
+}
+.EWColorOrange{
+    color:#cc6600;
+}
+.EWColorBlack{
+    color:black;
+}
+
+.EWbodybgcolor{
+    background-color: RGB(247,247,247);
+
+}
+.PMControlText {
+    COLOR: black; FONT: ^8^pt Arial ;
+}
+.LoginInfoWhite{
+    color: white; font: ^8^pt Arial; text-align :left;
+}

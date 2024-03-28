@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ibm-metadata>
+  <annotated-classes name="com.newgen.mvcbeans.controller.ajax.handler.SAPHandler"/>
+  <annotated-classes name="com.newgen.mvcbeans.controller.session.WiSessionData"/>
+  <annotated-classes name="com.newgen.mvcbeans.view.SAPView"/>
+  <annotated-classes name="com.newgen.mvcbeans.view.closewi"/>
+  <annotated-classes name="com.newgen.mvcbeans.controller.document.GenRespWoDocController"/>
+  <annotated-classes name="com.newgen.filter.XssFilter"/>
+  <annotated-classes name="com.newgen.mvcbeans.controller.document.CropDocController"/>
+  <annotated-classes name="com.newgen.mvcbeans.controller.workdesk.WDWorkitems"/>
+  <annotated-classes name="com.newgen.filter.ClickjackFilter"/>
+  <annotated-classes name="com.newgen.mvcbeans.model.DEFormModel"/>
+  <annotated-classes name="com.newgen.mvcbeans.controller.session.FailedWiSession"/>
+  <annotated-classes name="com.newgen.mvcbeans.controller.workdesk.WDDesignLayout"/>
+  <annotated-classes name="com.newgen.wfdesktop.session.WDSession"/>
+</ibm-metadata>

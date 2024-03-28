@@ -1,0 +1,442 @@
+function OnDoneValidation(flag)
+{
+		var WSNAME = customform.document.getElementById("wdesk:Current_WS").value;
+		var diffDays='';
+		
+		if(customform.document.getElementById("selectDecision").value=='')//Decision will always be mandatory for all workstep
+		{
+			alert('Decision is mandatory');
+			customform.document.getElementById('selectDecision').focus(true);
+			return false;
+		}	
+		if(WSNAME=="AttachAdditionalDocs" || WSNAME=="Attach_Final_Docs")
+		{
+			var deferralHeld=customform.document.getElementById("wdesk:Deferral_Held").value;
+			var ApprovingAuth=customform.document.getElementById("wdesk:Approving_Authority").value;
+			var DocTypeDeferred=customform.document.getElementById("wdesk:Doc_Type_Deferred").value;
+			var DeferralExpDate=customform.document.getElementById("wdesk:Deferral_ExpDate").value;
+			if(deferralHeld=="")
+			{
+					alert("Deferral Held is mandatory");
+					return false;
+					
+			}
+			else if (deferralHeld=="Yes"){
+				if(ApprovingAuth.trim()==""){
+					alert("Approving Authority(Name)is mandatory,If Deferral Held is Yes");
+					return false;
+				}
+				else if(DocTypeDeferred.trim()==""){
+					alert("Document Type Deferred is mandatory,If Deferral Held is Yes");
+					return false;
+				}
+				else if(DeferralExpDate.trim()==""){
+					alert("Deferral Expiry Date is mandatory,If Deferral Held is Yes");
+					return false;
+				}
+			}
+		}
+		if(WSNAME == "CBWC_Maker")
+		{
+			customform.document.getElementById("wdesk:Maker_Done_On").value=customform.document.getElementById("currentDate").value;
+			if(customform.document.getElementById("selectDecision").value=="Approve")
+			{
+				if(!AttachedDocType("CB_Doc,WC_Doc,BO_Report"))
+					return false;
+			}
+			
+		}		
+		if(WSNAME=="CBWC_Checker" || WSNAME=="Control_Maker" || WSNAME=="Control_Checker" || WSNAME=="AU_Officer" || WSNAME=="AU_Manager" || WSNAME=="Credit_DocChecker" || WSNAME=="Credit_Manager" || WSNAME=="RO_Reject")
+		{
+			var makerDoneDate = customform.document.getElementById("wdesk:Maker_Done_On").value;
+			if(makerDoneDate==null || makerDoneDate=='')
+			{
+				return true;
+			}
+			var currentdate = new Date();
+			var datetime =(currentdate.getMonth()+1)+ "/"
+			+ currentdate.getDate() + "/" 
+			+ currentdate.getFullYear() + " "  
+			+ currentdate.getHours() + ":"  
+			+ currentdate.getMinutes() + ":" 
+			+ currentdate.getSeconds();
+			
+			//var makerDoneDate = customform.document.getElementById("wdesk:Maker_Done_On").value;
+			
+			var a = makerDoneDate.split(" ");
+			var d = a[0].split("/");
+			var t = a[1].split(":");
+			var newDate=d[1]+'/'+d[0]+'/'+d[2]+' '+t[0]+':'+t[1]+':'+t[2];
+			
+			makerDoneDate = new Date(newDate);
+			var currentdate = new Date();
+			var datetime =(currentdate.getMonth()+1)+ "/"
+			+ currentdate.getDate() + "/" 
+			+ currentdate.getFullYear() + " "  
+			+ currentdate.getHours() + ":"  
+			+ currentdate.getMinutes() + ":" 
+			+ currentdate.getSeconds();
+			var submitDate = new Date(datetime);
+			var utc1 = Date.UTC(makerDoneDate.getFullYear(), makerDoneDate.getMonth(), makerDoneDate.getDate());
+			var utc2 = Date.UTC(submitDate.getFullYear(), submitDate.getMonth(), submitDate.getDate());
+
+			var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+			diffDays=Math.floor((utc2 - utc1) / _MS_PER_DAY);
+		}
+		if(WSNAME == "AU_Analyst")
+		{
+			customform.document.getElementById('wdesk:Dec_AU_Analyst').value=customform.document.getElementById('selectDecision').value;
+		}
+		
+		if(WSNAME == "CBWC_Checker")
+		{
+			var currCheckList=customform.document.getElementById('H_CHECKLIST').value;
+			var workitemNo = customform.document.getElementById('wdesk:WI_NAME').value;
+			currCheckList=alreadyRaised(workitemNo,currCheckList);
+			if(currCheckList.indexOf('001~[Raised')==-1)
+			{
+				var autoUIDExp=checkForUIDException();
+				currCheckList=customform.document.getElementById('H_CHECKLIST').value;
+			}
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+				else
+				{
+					if(currCheckList.indexOf('001~[Raised')!=-1)//Means this exception is raised as of now 1-means Risk exception
+					{
+						alert("UID Exception had been raised");
+						customform.document.getElementById('wdesk:UID_Exp_Flag').value='Y';		
+					}
+					else
+					{
+						//alert("UID Exception was never raised");
+						customform.document.getElementById('wdesk:UID_Exp_Flag').value='N';
+					}
+				}
+			}
+			
+		}
+		if(WSNAME == "Control_Maker")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+			/*if(customform.document.getElementById("selectDecision").value == "Reperform Checks")
+			{
+				if(!(parseInt(diffDays)>30))
+				{
+					alert("You cannot select this decision as it has not been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}*/
+			customform.document.getElementById('wdesk:Dec_Control_Maker').value=customform.document.getElementById('selectDecision').value;
+		}
+		if(WSNAME == "Control_Checker")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+			/*if(customform.document.getElementById("selectDecision").value == "Reperform Checks")
+			{
+				if(!(parseInt(diffDays)>30))
+				{
+					alert("You cannot select this decision as it has not been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}*/
+			customform.document.getElementById('wdesk:Dec_Control_Checker').value=customform.document.getElementById('selectDecision').value;
+		}
+
+		if(WSNAME == "AU_Officer")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+		}
+		if(WSNAME == "CROPS_DocsChecker")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(customform.document.getElementById("wdesk:Dec_Control_Maker").value == "Reject")
+				{
+					alert("You cannot select Approve decision as CBWC Maker's decision was Reject");
+					return false;
+				}
+				if(customform.document.getElementById("wdesk:Dec_Control_Checker").value == "Reject")
+				{
+					alert("You cannot select Approve decision as CBWC Checker's decision was Reject");
+					return false;
+				}
+			}
+		}
+		if(WSNAME == "AU_Manager")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+		}
+		if(WSNAME == "Credit_DocChecker")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+		}
+		if(WSNAME == "Credit_Analyst")
+		{
+			/*if(CheckDecimal(customform.document.getElementById("wdesk:Approved_Amount"))==false ||
+			CheckDecimal(customform.document.getElementById("wdesk:Approved_Tenor"))==false)
+			{
+			
+				alert("Enter only numeric value for tenorApproved and approvedAmount");
+				return false;
+			}*/
+			
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+		}
+		if(WSNAME == "Credit_Manager")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+		}
+		/*if(WSNAME == "CROPS_DataEntryMaker")
+		{
+			if(ValidateAlphaNumeric(customform.document.getElementById("wdesk:Agreement_Number"))==false)
+			{
+				alert("Please enter only alphanumeric characters for Agreement_Number");
+				return false;
+			}
+		}*/
+		
+		//Added for clearing Others Exception till the wi moved to Exit
+		if(WSNAME == "CROPS_DataEntChecker")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				var currCheckList=customform.document.getElementById('H_CHECKLIST').value;
+				var workitemNo = customform.document.getElementById('wdesk:WI_NAME').value;
+				currCheckList=alreadyRaised(workitemNo,currCheckList);
+				if(currCheckList.indexOf('003~[Raised')!=-1)
+				{
+					alert("Please clear Others Exception");
+					return false;
+				}	
+			}
+		}
+		
+		if(WSNAME == "RO_Reject")
+		{
+			if(customform.document.getElementById("selectDecision").value == "Approve")
+			{
+				if(parseInt(diffDays)>30)
+				{
+					alert("You cannot select Approve decision as it has been more than 30 days since CBWC maker Approved");
+					return false;
+				}
+			}
+		}
+		
+		if(customform.document.getElementById("selectDecision").value=='Reject'||customform.document.getElementById("selectDecision").value=='Reject to RO'||customform.document.getElementById("selectDecision").value=='Reject to CBWC Maker'||customform.document.getElementById("selectDecision").value=='Reject to Credit' || customform.document.getElementById("selectDecision").value=='Reject to CROPS Maker' || customform.document.getElementById("selectDecision").value=='Send to Credit Analyst')
+		{
+			if(customform.document.getElementById("wdesk:Remarks").value== "")
+			{
+			  alert("Please provide remarks");
+			  customform.document.getElementById('wdesk:Remarks').focus(true);
+			  return false;
+			}
+			if(customform.document.getElementById('rejReasonCodes').value=='' || customform.document.getElementById('rejReasonCodes').value=='NO_CHANGE')
+			{
+			  alert("Please provide reject reason.");
+			  customform.document.getElementById('RejectReason').focus(true);
+			  return false;
+			}
+		}		
+		return true;	
+}
+function alreadyRaised(WorkitemName,H_Checklist) {
+	var xhr;
+	var ajaxResult;
+	ajaxResult="";
+	var reqType = "RBL_ISExceptionRaised";
+
+	if(window.XMLHttpRequest)
+		 xhr=new XMLHttpRequest();
+	else if(window.ActiveXObject)
+		 xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		 
+	H_Checklist=H_Checklist.replace(/#/g,'`')
+	
+	var url = "/RBL/CustomForms/RBL_Specific/HandleAjaxProcedures.jsp";
+	var param="WorkitemName="+WorkitemName+"&reqType="+reqType+"&H_Checklist="+H_Checklist;
+
+	 xhr.open("POST",url,false);
+	 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	 xhr.send(param);
+
+	if (xhr.status == 200) {
+		ajaxResult = xhr.responseText;
+		ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+	}
+	else {
+		alert("Error while getting exception status");
+		return "";
+	}
+	return ajaxResult;
+}
+function getDateTimeAtDone() {
+	var monthNames = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+	now = new Date();
+	year = "" + now.getFullYear();
+	month = "" + monthNames[now.getMonth()];
+	day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+	hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+	minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+	second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
+	return day + "/" + month + "/" + year + "  " + hour + ":" + minute + ":" + second;
+}
+
+function checkForUIDException()
+{
+	var flag=true;
+	var UIDTable=customform.document.getElementById("UIDGrid");
+	if(UIDTable.rows.length>3) 
+	{
+	  //then need to raise UID Exception
+	  var WSNAME = customform.document.getElementById("wdesk:Current_WS").value;
+	  var currCheckList=customform.document.getElementById('H_CHECKLIST').value;
+	  var currUser=customform.document.getElementById('CurrentUserName').value;
+	  //alert('found '+currCheckList.indexOf('001~[Raised'));
+	  if(currCheckList.indexOf('001~[Raised')==-1)//Means this exception is not raised as of now 1-means UID exception
+	  {
+		if(currCheckList=='')
+			currCheckList='001~[Raised-'+currUser+'-'+WSNAME+'-'+getDateTimeAtDone()+']';
+		else
+			currCheckList=currCheckList+'#'+'001~[Raised-'+currUser+'-'+WSNAME+'-'+getDateTimeAtDone()+']';
+		
+		customform.document.getElementById('H_CHECKLIST').value=currCheckList;
+		flag=true;
+	  }
+	  flag=true;
+	}
+	else{
+	
+	flag=false;
+	}
+	return flag;
+}
+function CheckDecimal(id) 
+{ 
+	var decimal=  /^[-+]?[0-9]+\.[0-9]+$/; 
+	var numbers = /^[0-9]+$/;
+	if(id.value.match(decimal)||id.value.match(numbers)) 
+	{ 
+		return true;
+	}
+	else
+	{ 
+		return false;
+	}
+}
+
+function ValidateDate(expiryDate)
+{
+		var arrDate_and_time = expiryDate.split('-');
+		expiryDate = arrDate_and_time[0];
+
+		if(expiryDate!='')
+		{
+			var now = new Date();
+			var month = now.getMonth()+1;
+			if(month<10)
+				month = "0"+month;
+			var currdate = now.getDate()+"/"+month+"/"+now.getFullYear();
+
+			var regExp = /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/;
+
+			if(parseInt(expiryDate.replace(regExp, "$3$2$1"))<parseInt(currdate.replace(regExp, "$3$2$1")))
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		 
+}
+
+
+function AttachedDocType(sDocTypeNames)
+{
+	//var arrAvailableDocList = window.parent.getInterfaceData("D");
+	var arrAvailableDocList = document.getElementById('wdesk:docCombo');
+	if (arrAvailableDocList == null || arrAvailableDocList == 'null')
+		arrAvailableDocList = customform.document.getElementById('wdesk:docCombo');
+	var arrSearchDocList = sDocTypeNames.split(",");
+	//alert("arrSearchDocList"+arrSearchDocList);
+	var bResult=false;
+	// condition added for not to check mandatory when decision is reject on 05092017
+
+	for(var iSearchCounter=0;iSearchCounter<arrSearchDocList.length;iSearchCounter++)
+	{
+		bResult=false;
+		for(var iDocCounter=0;iDocCounter<arrAvailableDocList.length;iDocCounter++)
+		{
+			//alert("arrSearchDocList---"+arrSearchDocList[iSearchCounter]);
+			//alert("arrAvailableDocList---"+arrAvailableDocList[iDocCounter].name);
+			//if(arrAvailableDocList[iDocCounter].name == arrSearchDocList[iSearchCounter]){
+			if (arrAvailableDocList[iDocCounter].text.toUpperCase().indexOf(arrSearchDocList[iSearchCounter].toUpperCase()) >= 0) {
+				bResult = true;
+				break;
+			}
+		}
+		if(!bResult){
+		alert("Please attach " + arrSearchDocList[iSearchCounter]+" to proceed further.");
+		return false;
+		}
+	}            
+		
+	return true;
+}

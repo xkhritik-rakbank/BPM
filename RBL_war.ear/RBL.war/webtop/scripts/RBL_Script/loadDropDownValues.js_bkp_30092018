@@ -1,0 +1,176 @@
+function loadDropDownValues(currWorkstep,loggedInUser)
+	{
+		//alert("inside loaddropdown");
+		//if(currWorkstep=='Introduction')
+		//{
+			var dropwDownId=['nationality','demographic','industysubseg','custsegment','custsubsegment','producttype'];
+			
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			for(var i=0;i<dropwDownId.length;i++)
+			{	
+				url = '/RBL/CustomForms/RBL_Specific/DropDownLoad.jsp';
+				var param="&reqType=selectDecision&WSNAME="+currWorkstep;
+				xhr.open("POST",url,false);
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.send(param);
+				if (xhr.status == 200)
+				{
+					 ajaxResult = xhr.responseText;
+					 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+					 if(ajaxResult=='-1')
+					 {
+						alert("Error while loading dropdown values for "+dropwDownId[i]);
+						return false;
+					 }				 
+					 values = ajaxResult.split("~");
+					 for(var j=0;j<values.length;j++)
+					 {
+						var opt = document.createElement("option");
+						opt.text = values[j];
+						opt.value =values[j];
+						document.getElementById(dropwDownId[i]).options.add(opt);
+					 }				 
+				}
+				else 
+				{
+					alert("Error while Loading Drowdown "+dropwDownId[i]+" for the current workstep");
+					return false;
+				}
+			}
+		//}
+		
+		loadDecisionFromMaster(currWorkstep);
+		getSOLIDOfLoggedInUser(currWorkstep,loggedInUser);
+    }
+	
+	
+function loadDecisionFromMaster(currWorkstep)
+{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		
+			url = '/RBL/CustomForms/RBL_Specific/DropDownLoad.jsp?reqType=selectDecision&WSNAME='+currWorkstep;
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult=='-1')
+				 {
+					alert("Error while loading dropdown values for decision");
+					return false;
+				 }				 
+				 values = ajaxResult.split("~");
+				 for(var j=0;j<values.length;j++)
+				 {
+					var opt = document.createElement("option");
+					opt.text = values[j];
+					opt.value =values[j];
+					document.getElementById('selectDecision').options.add(opt);
+				 }				 
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown decision.");
+				return false;
+			}
+}	
+function loadLoanTypeFromMaster(currWorkstep,loanTypeSelected)
+{
+	var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		
+			url = '/RBL/CustomForms/RBL_Specific/DropDownLoad.jsp?reqType=LoanType&WSNAME='+currWorkstep;
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult=='-1')
+				 {
+					alert("Error while loading dropdown values for decision");
+					return false;
+				 }				 
+				 values = ajaxResult.split("~");
+				 for(var j=0;j<values.length;j++)
+				 {
+					var opt = document.createElement("option");
+					opt.text = values[j];
+					opt.value =values[j];
+					if(values[j]==loanTypeSelected)
+						opt.selected='selected';
+					document.getElementById('wdesk:Loan_type').options.add(opt);
+				 }				 
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown decision.");
+				return false;
+			}
+}
+
+
+function getSOLIDOfLoggedInUser(currWorkstep,loggedInUser)
+{
+	if(currWorkstep=='Introduction')
+	{
+			
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			
+			var url = "/RBL/CustomForms/RBL_Specific/getSOLIDOfUser.jsp"
+			var param ="userName="+loggedInUser;
+			xhr.open("POST",url,false);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(param);
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult=='-1')
+				 {
+					alert("Error while loading comment for users.");
+					return false;
+				 }
+				 else	
+				 {
+					document.getElementById("wdesk:Sol_Id").value=ajaxResult;	
+					document.getElementById("loggedInUserComment").innerHTML='&nbsp;'+ajaxResult;
+				 }
+			}
+			else 
+			{
+				alert("Exception while Loading comment for users");
+				return false;
+			}
+	}
+	else
+	{
+			document.getElementById("loggedInUserComment").innerHTML='&nbsp;'+document.getElementById("wdesk:Sol_Id").value;
+			document.getElementById("loggedInUserComment").innerHTML='&nbsp;'+document.getElementById("wdesk:Sol_Id").value;
+	}
+}

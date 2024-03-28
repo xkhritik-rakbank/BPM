@@ -1,0 +1,330 @@
+//           NEWGEN SOFTWARE TECHNOLOGIES LIMITED
+
+//Group						 : Application –Projects
+//Product / Project			 : RAKBank 
+//Module                     : Request-Initiation          
+//File Name					 : DropDownCity.jsp          
+//Author                     : Amitabh,Nikita
+// Date written (DD/MM/YYYY) : 07-Nov-2017
+//Description                : Fetching drop down and searchable drop down for country,city and state
+//---------------------------------------------------------------------------------------------------->
+function loadDropDownValues(currWorkstep,loggedInUser)
+	{
+		if (currWorkstep != 'Exit' && currWorkstep != 'Reject')
+			loadDecisionFromMaster(currWorkstep);
+			
+		var CountryOfBirth=document.getElementById("COUNTRY_OF_BIRTH").value;
+		loadCountryOfBirth(CountryOfBirth);
+		//getSOLIDOfLoggedInUser(currWorkstep,loggedInUser);
+		
+    }
+	
+function searchablecountrydropdown(currWorkstep)
+	{
+		if(currWorkstep=='Introduction')
+		{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			url = '/OECD/CustomForms/OECD_Specific/DropDownCountry.jsp';
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult.indexOf("Exception")==0)
+				 {
+					alert("Unknown Exception while working with request type "+reqType);
+					return false;
+				 }							 
+				document.getElementById("AutocompleteValuesCountry").value=ajaxResult;
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown "+reqType+" for the current workstep");
+				return false;
+			}
+		}
+    }
+
+	function searchablecountdropdown(currWorkstep)
+	{
+		if(currWorkstep=='Introduction')
+		{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			url = '/OECD/CustomForms/OECD_Specific/DropDownCountry.jsp';
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult.indexOf("Exception")==0)
+				 {
+					alert("Unknown Exception while working with request type "+reqType);
+					return false;
+				 }							 
+				document.getElementById("AutocompleteValuesCount").value=ajaxResult;
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown "+reqType+" for the current workstep");
+				return false;
+			}
+		}
+    }
+function searchablecitydropdown(currWorkstep)
+	{
+		if(currWorkstep=='Introduction')
+		{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			url = '/OECD/CustomForms/OECD_Specific/DropDownCity.jsp';
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult.indexOf("Exception")==0)
+				 {
+					alert("Unknown Exception while working with request type "+reqType);
+					return false;
+				 }							 
+				document.getElementById("AutocompleteValuesCity").value=ajaxResult;
+			
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown "+reqType+" for the current workstep");
+				return false;
+			}
+		}
+    }	
+	
+function setAutocompleteData() 
+{
+	//alert("setAutocompleteData");
+		var data = "";
+		var ele = document.getElementById("AutocompleteValuesCountry");
+		if (ele)
+			
+			//data = "country_search="+ele.value;
+			data = ele.value;
+		if (data != null && data != "") {
+			//data = data.replace('{', '').replace('}', '');
+			var temp = data.split("=");
+			var values = temp[0].split("~");
+
+			//added for country field smart search by siva 
+			$(document).ready(function() {
+				$("#COUNTRY_OF_BIRTH").autocomplete({source: values}); 
+				$("#NATIONALITY").autocomplete({source: values}); 
+			});				
+		}
+		
+		
+		data = "";
+		ele = document.getElementById("AutocompleteValuesCity");
+		if (ele)
+		
+			data = ele.value;
+		if (data != null && data != "") {
+			var temp = data.split("=");
+			var values = temp[0].split("~");
+			//added for city field smart search by siva 
+			$(document).ready(function() {
+				$("#CITY_OF_BIRTH").autocomplete({source: values});
+				
+			});				
+		}
+	
+
+		data = "";
+		ele = document.getElementById("AutocompleteValuesCount");
+		if (ele)
+		
+			data = ele.value;
+		if (data != null && data != "") {
+			var temp = data.split("=");
+			var values = temp[0].split("~");
+			//added for city field smart search by siva 
+			$(document).ready(function() {
+				$("#CRS_UNDOCUMENTED_FLAG").autocomplete({source: values});
+				
+			});				
+		}
+	
+}
+
+function validatecountry(req,countryvalidate)
+	{
+		//alert("inside validate");
+		//countryvalidate = countryvalidate.replaceAll1(", ", ",");
+		countryvalidate=countryvalidate.split("~");
+		var match ='';
+		document.getElementById(req).value = myTrim(document.getElementById(req).value);
+		for(var i=0;i<=countryvalidate.length;i++)
+		{
+				if(document.getElementById(req).value==countryvalidate[i])
+				match='matched';
+		}
+		if(match !='matched')
+		{
+			document.getElementById(req).value="";
+			return false;
+		}
+			
+	}
+function myTrim(x) 
+	{
+		return x.replace(/^\s+|\s+$/gm,'');
+	}
+function setComboValueToTextBox(dropdown, inputTextBoxId) 
+	{
+		//alert("document.getElementById(wdesk:CURRENT_WS).value"+document.getElementById("wdesk:CURRENT_WS").value);
+			if(document.getElementById("wdesk:CURRENT_WS").value=='Introduction' || dropdown.id=='selectDecision' || dropdown.id=='custsegment' || dropdown.id=='CrsUndocReason')
+			{
+				document.getElementById(inputTextBoxId).value = dropdown.value;
+				
+			}
+	}
+
+function loadDecisionFromMaster(currWorkstep)
+{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		
+			url = '/OECD/CustomForms/OECD_Specific/DropDownLoad.jsp?reqType=selectDecision&WSNAME='+currWorkstep;
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult=='-1')
+				 {
+					alert("Error while loading dropdown values for decision");
+					return false;
+				 }				 
+				 values = ajaxResult.split("~");
+				 for(var j=0;j<values.length;j++)
+				 {
+					var opt = document.createElement("option");
+					opt.text = values[j];
+					opt.value =values[j];
+					document.getElementById('selectDecision').options.add(opt);
+				 }				 
+			}
+			else 
+			{
+				//alert("Error while Loading Drowdown decision.");
+				return false;
+			}
+}
+	
+function loadCountryOfBirth(CountryOfBirth)
+{
+	if(CountryOfBirth!="")
+	{
+		var url = '';
+		var xhr;
+		var ajaxResult;		
+		if(window.XMLHttpRequest)
+		xhr=new XMLHttpRequest();
+		else if(window.ActiveXObject)
+		xhr=new ActiveXObject("Microsoft.XMLHTTP");
+	
+		url = '/OECD/CustomForms/OECD_Specific/DropDownLoad.jsp?reqType=CountryCode&WSNAME='+CountryOfBirth;
+		xhr.open("GET",url,false);
+		xhr.send(null);
+		if (xhr.status == 200)
+		{
+			 ajaxResult = xhr.responseText;
+			 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+			 //alert("ajaxResult--"+ajaxResult);
+			 if(ajaxResult=='-1')
+			 {
+				alert("Error while loading values for CountryOfBirth");
+				return false;
+			 }	
+			 else if(ajaxResult!='')
+				document.getElementById('COUNTRY_OF_BIRTH').value=ajaxResult;
+			 
+			else 	
+				document.getElementById('COUNTRY_OF_BIRTH').value=CountryOfBirth;					 			 
+		}
+		else 
+		{
+			alert("Exception while Loading Country Of Birth.");
+			return false;
+		}
+	}
+	else
+		document.getElementById('COUNTRY_OF_BIRTH').value="";
+}	
+/*function getSOLIDOfLoggedInUser(currWorkstep,loggedInUser)
+{	
+	if(currWorkstep=='Attach_Cust_Doc')
+	{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			url = '/OECD/CustomForms/OECD_Specific/getSOLIDOfUser.jsp?userName='+loggedInUser;
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult=='-1')
+				 {
+					alert("Error while loading comment for users.");
+					return false;
+				 }
+				 else	
+				 {
+					document.getElementById("wdesk:SOLID").value=ajaxResult;	
+					document.getElementById("loggedInUserComment").innerHTML='&nbsp;'+ajaxResult;
+				 }
+			}
+			else 
+			{
+				alert("Exception while Loading comment for users");
+				return false;
+			}
+	}
+	else
+	{
+			document.getElementById("loggedInUserComment").innerHTML='&nbsp;'+document.getElementById("wdesk:SOLID").value;
+	}
+}*/

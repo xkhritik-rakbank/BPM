@@ -1,0 +1,71 @@
+<!--------------------------------------------------------------------------------------------------------
+//           NEWGEN SOFTWARE TECHNOLOGIES LIMITED
+
+//Group						 : Application –Projects
+//Product / Project			 : RAKBank 
+//Module                     : Request-Screen Form Painitng
+//File Name					 : Log.process          
+//Author                     : Amandeep
+// Date written (DD/MM/YYYY) : 2-Feb-2015
+//Description                : Standard file to write custom logs
+//---------------------------------------------------------------------------------------------------->
+
+<%@ page import="java.text.*" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.util.regex.Pattern" %>
+
+<%!
+public static void WriteLog(String strMsg)    
+{
+	StringBuffer strFilePath = new StringBuffer(50);
+	File dir= null;
+	FileOutputStream fos = null;
+	String sFileName = "CustomLog.Log";
+	Writer wrt = null;
+	
+	DateFormat dtFormat = new SimpleDateFormat("ddMMyyyy");
+	String sFName = "CustomLog_RakBank" + dtFormat.format(new java.util.Date())+"_SRB.Log";	
+	System.out.println(sFName);
+	try
+	{
+		strFilePath.append(System.getProperty("user.dir"));
+		System.out.println(sFileName);
+		dir = new File(strFilePath.toString(), "CustomLog");
+		if (!dir.exists()) 
+		{
+			dir.mkdir();
+		}
+		strFilePath.append(File.separatorChar);
+		strFilePath.append("CustomLog");
+		strFilePath.append(File.separatorChar);
+		strFilePath.append(sFName);
+		System.out.println(strFilePath.toString());
+		java.util.Date objDate=new java.util.Date();
+		fos = new FileOutputStream(strFilePath.toString(),true);
+		wrt = new BufferedWriter(new OutputStreamWriter(fos));
+		wrt.write("[" + objDate.toString() + "]\n" + strMsg + "\n\n" );
+		wrt.flush();
+		wrt.close();
+	}
+	catch(Exception e)
+	{
+	
+		System.out.println(e.toString());
+	}	
+}
+
+// below method is used to Mask specific tag value 
+public static String maskXmlTags(String InputXML,String Tag)
+{
+	Pattern p = Pattern.compile("(?<="+Tag+")([-\\s\\w]*)((?:[a-zA-Z0-9][-_\\s]*){0})");
+	Matcher m = p.matcher(InputXML);
+	StringBuffer maskedResult = new StringBuffer();
+	while (m.find()) 
+	{
+		String thisMask = m.group(1).replaceAll("[^-_\\s]", "*");
+		m.appendReplacement(maskedResult, thisMask + "$2");
+	}
+	m.appendTail(maskedResult);
+	return maskedResult.toString();
+}
+%>

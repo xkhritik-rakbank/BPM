@@ -1,0 +1,111 @@
+<!------------------------------------------------------------------------------------------------------
+//           NEWGEN SOFTWARE TECHNOLOGIES LIMITED
+
+//Group						 : Application –Projects
+//Product / Project			 : RAKBank Telegraphic Transfer
+//Module                     : Integration Calls 
+//File Name					 : SRBIntegration.jsp
+//Author                     : Amitabh Pandey
+//Date written (DD/MM/YYYY)  : 16-01-2017
+//Description                : File to handle all the integration calls for SRB process (Initial Draft)
+//---------------------------------------------------------------------------------------------------->
+
+<!------------------------------------------------------------------------------------------------------
+//           NEWGEN SOFTWARE TECHNOLOGIES LIMITED
+-------------------------Revision History---------------------------------------------------------------
+Revision 	Date 			Author 			Description
+//---------------------------------------------------------------------------------------------------->
+<%@ include file="Log.process"%>
+<%@ page import="com.newgen.custom.wfdesktop.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.exception.*" %>
+<%@ page import="com.newgen.custom.*" %>
+<%@ page import="java.io.*,java.util.*"%>
+<jsp:useBean id="customSession" class="com.newgen.custom.wfdesktop.session.WFCustomSession" scope="session"/>
+<%
+    String outputData="";
+	String inputData="";
+	WFCustomXmlResponse WFCustomXmlResponseData=null;
+	WFCustomXmlList objWorkList=null;
+	try{
+		 WriteLog("\nInside SRB GetDuplicateWorkitem.jsp\n");
+		String wi_name = request.getParameter("WI_NAME");
+		String tr_table = request.getParameter("tr_table");
+		String cif_type = request.getParameter("cif_type");
+		String WSNAME = request.getParameter("WSNAME");
+		String CategoryID = request.getParameter("CategoryID");	
+		String SubCategoryID = request.getParameter("SubCategoryID");
+		String condition = request.getParameter("condition");	
+		String sJtsIp = customSession.getJtsIp();
+		int iJtsPort = customSession.getJtsPort();
+		String sCabName=customSession.getEngineName();	
+		String sSessionId = customSession.getDMSSessionId();
+		String IntroductionDateTime = "";
+		String intoducedBy = "";
+		String SOLID = "";
+		String Query="";
+		String WI_NAME="";
+		String temp_table="<table id='duplicateWorkItemID' width='100%' border=1><TBODY><tr width=100% class='EWLabelRB2' bgcolor= '#990033'><input type='text' name='Header' readOnly size='24' style='display:none' value='Service Request Module Details'><td colspan=4 align=left class='EWLabelRB2'><b>Duplicate Work-items</b></td></tr>";
+		
+		temp_table=temp_table+"<tr class='EWNormalGreenGeneral1'><th><b>Work-item Number</b></th><th><b>Initiated Date</b></th><th><b>Initiated By</b></th><th><b>SOL ID</b></th></tr>";
+		
+		WriteLog("\nInside SRB GetDuplicateWorkitem for wi_name "+wi_name);
+		WriteLog("\nWSNAME "+WSNAME);
+		WriteLog("\ncondition "+condition);
+		if(WSNAME.equals("CSO"))
+		{
+			Query="SELECT EXT.WI_NAME,IntroductionDateTime,intoducedBy,SOLID from RB_SRB_EXTTABLE EXT,"+tr_table+" TR "+condition+" AND 					EXT.WI_NAME=TR.WI_NAME AND EXT.WI_NAME!='"+wi_name+"'";
+		}
+		else
+		Query="SELECT DUPLICATEWI_NAME AS WI_NAME ,IntroductionDateTime,intoducedBy,SOLID from USR_0_SRB_DUPLICATEWORKITEMS where WI_NAME='"+wi_name+"'";
+		
+		inputData = "<?xml version='1.0'?><APSelectWithColumnNames_Input><Option>APSelectWithColumnNames</Option><Query>" + Query + "</Query><EngineName>" + customSession.getEngineName() + "</EngineName><SessionId>" + customSession.getDMSSessionId() + "</SessionId></APSelectWithColumnNames_Input>";
+			
+		WriteLog("Query For GetDuplicateWorkitem Input-->"+inputData);		
+		outputData = WFCustomCallBroker.execute(inputData, customSession.getJtsIp(), customSession.getJtsPort(), 1);
+		WriteLog("GetDuplicateWorkitem Output-->"+outputData);
+		WFCustomXmlResponseData=new WFCustomXmlResponse();
+		WFCustomXmlResponseData.setXmlString((outputData));
+		String maincode = WFCustomXmlResponseData.getVal("MainCode");	
+		int recordcount = Integer.parseInt(WFCustomXmlResponseData.getVal("TotalRetrieved"));
+		if(maincode.equals("0") && recordcount>0)
+		{	
+			objWorkList = WFCustomXmlResponseData.createList("Records","Record"); 
+			for(objWorkList.reInitialize(true);objWorkList.hasMoreElements(true);objWorkList.skip(true))
+				{ 
+					WI_NAME = objWorkList.getVal("WI_NAME");
+					IntroductionDateTime = objWorkList.getVal("IntroductionDateTime");
+					intoducedBy = objWorkList.getVal("intoducedBy");
+					SOLID = objWorkList.getVal("SOLID");
+					WriteLog("WI_NAME Is-->"+WI_NAME);
+					WriteLog("IntroductionDateTime-->"+IntroductionDateTime);
+					WriteLog("intoducedBy-->"+intoducedBy);
+					WriteLog("SOLID-->"+SOLID);
+					temp_table = temp_table + "<tr class='EWNormalGreenGeneral1'><td>"+WI_NAME+"</td><td>"+IntroductionDateTime+"</td><td>"+intoducedBy+"</td><td>"+SOLID+"</td></tr>";
+				}
+				temp_table=temp_table+"</TBODY></TABLE>";
+				WriteLog("Final Return Result "+temp_table);
+				out.clear();
+				//out.println(temp_table+"~"+"0");
+				out.println(temp_table);
+		}
+		else if(maincode.equals("0") && recordcount==0)
+		{
+			out.clear();
+			out.println("");
+		}
+		else
+		{
+		out.clear();
+		out.println("-1");
+		}
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+		WriteLog("Exception in getting duplicate workitem list "+outputData);
+		out.clear();
+		out.println("-1");
+	}
+%>

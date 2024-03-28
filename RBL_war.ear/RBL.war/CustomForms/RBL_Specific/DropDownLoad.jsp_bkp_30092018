@@ -1,0 +1,94 @@
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="java.text.*"%>
+<%@ page import="java.net.*"%>
+<%@ page import="com.newgen.custom.wfdesktop.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.exception.*" %>
+<%@ page import="com.newgen.custom.*" %>
+<%@ page import="java.math.*"%>
+<%@ include file="./Log.process"%>
+<jsp:useBean id="customSession" class="com.newgen.custom.wfdesktop.session.WFCustomSession" scope="session"/>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<HTML>
+<HEAD>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+</HEAD>
+</HTML>
+<%
+		WriteLog("inside dropdownlaod2.jsp");
+		String reqType = request.getParameter("reqType");	
+		String WSNAME= request.getParameter("WSNAME");
+		WriteLogDropDown("WSNAME"+WSNAME);
+		String returnValues = "";
+		String query = "";
+		String sCabName=customSession.getEngineName();	
+		String sSessionId = customSession.getDMSSessionId();
+		String sJtsIp = customSession.getJtsIp();
+		int iJtsPort = customSession.getJtsPort();
+		WFCustomXmlResponse xmlParserData=null;
+		WFCustomXmlList objWorkList=null;
+		String sInputXML = "";
+		String sOutputXML = "";
+		String subXML="";
+		String params="";
+		
+		if(reqType.equals("selectDecision"))
+		{
+			query = "SELECT Decision FROM USR_0_RBL_DECISION_MASTER with(nolock) WHERE WORKSTEP_NAME=:WSNAME order by Decision";
+			params = "WSNAME=="+WSNAME;
+		}
+		else if(reqType.equals("LoanType"))
+		{
+			query = "SELECT Loan_Type FROM USR_0_RBL_LoanType with(nolock) WHERE ISACTIVE=:ISACTIVE order by Loan_Type";
+			params = "ISACTIVE==Y";
+		}
+		
+		sInputXML = "<?xml version='1.0'?><APSelectWithNamedParam_Input><Option>APSelectWithNamedParam</Option><Query>" + query + "</Query><Params>"+params+"</Params><EngineName>" + sCabName + "</EngineName><SessionId>" + sSessionId + "</SessionId></APSelectWithNamedParam_Input>";
+		WriteLogDropDown("\nInput XML -- "+sInputXML);
+	
+		sOutputXML = WFCustomCallBroker.execute(sInputXML, sJtsIp, iJtsPort, 1);
+		WriteLogDropDown("Output XML ---- "+sOutputXML);
+
+		xmlParserData=new WFCustomXmlResponse();
+		xmlParserData.setXmlString((sOutputXML));
+		String mainCodeValue = xmlParserData.getVal("MainCode");
+		WriteLogDropDown("maincode"+mainCodeValue);
+		
+		int recordcount=0;
+		try
+		{
+			recordcount=Integer.parseInt(xmlParserData.getVal("TotalRetrieved"));
+		}
+		catch(Exception e)	
+		{
+		}
+		WriteLogDropDown("recordcount -- "+recordcount);
+	if(mainCodeValue.equals("0"))
+	{
+		objWorkList = xmlParserData.createList("Records","Record"); 
+		for(objWorkList.reInitialize(true);objWorkList.hasMoreElements(true);objWorkList.skip(true))
+		{
+			if (reqType.equals("LoanType"))
+				returnValues = returnValues + objWorkList.getVal("Loan_Type")  + "~";			
+			else if (reqType.equals("selectDecision"))
+				returnValues = returnValues + objWorkList.getVal("Decision")  + "~";
+			
+		}	
+		returnValues =  returnValues.substring(0,returnValues.length()-1);
+		WriteLogDropDown("returnValues -- "+returnValues);
+		out.clear();
+		out.print(returnValues);	
+	}
+	else
+	{
+		WriteLogDropDown("Exception in loading dropdown values -- ");
+		out.clear();
+		out.print("-1");
+	}
+	
+%>

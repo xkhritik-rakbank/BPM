@@ -1,0 +1,149 @@
+<!------------------------------------------------------------------------------------------------------
+//           NEWGEN SOFTWARE TECHNOLOGIES LIMITED
+
+//Group						 : Application –Projects
+//Product / Project			 : RAKBank SRM
+//Module                     : Request-Initiation 
+//File Name					 : sessionVariables.process
+//Author                     : Amandeep
+//Date written (DD/MM/YYYY)  : 05-May-2014
+//Description                : Function to return all the system variables in customSession
+//---------------------------------------------------------------------------------------------------->
+<%!public String getSessionValues(String strVar, customSession) {
+
+            try{
+
+            if(strVar.equalsIgnoreCase("JTSIP"))
+
+                  return customSession.getJtsIp();
+
+            else if(strVar.equalsIgnoreCase("SESSIONID"))
+
+                  return customSession.getDMSSessionId();
+
+            else if(strVar.equalsIgnoreCase("USERNAME"))
+
+                  return customSession.getUserName();
+
+            else if(strVar.equalsIgnoreCase("USERPASSWORD"))
+
+                  return customSession.getUserPassword();
+
+            else if(strVar.equalsIgnoreCase("ENGINENAME"))
+
+                  return customSession.getEngineName();
+
+            else if(strVar.equalsIgnoreCase("DMSSESSIONID"))
+
+                  return customSession.getDMSSessionId();
+
+            else if(strVar.equalsIgnoreCase("STARTFOLDERID"))
+
+                  return customSession.getStartFolderId();
+
+            else if(strVar.equalsIgnoreCase("SITENAME"))
+
+                  return customSession.getSiteName();
+
+            else if(strVar.equalsIgnoreCase("VOLUMEID"))
+
+                  return customSession.getVolumeId();
+
+            else if(strVar.equalsIgnoreCase("VOLUMENNAME"))
+
+                  return customSession.getVolumeName();
+
+            else if(strVar.equalsIgnoreCase("USERFAMILYNAME"))
+
+                  return customSession.getUserFamilyName();
+
+            else if(strVar.equalsIgnoreCase("ENCODING"))
+
+                  return customSession.getEncoding();
+
+            else if(strVar.equalsIgnoreCase("APPSERVERNAME"))
+
+                  return customSession.getAppServerName();
+
+            else if(strVar.equalsIgnoreCase("SESSIONVAL"))
+
+                  return customSession.getSessionVal();
+
+            else if(strVar.equalsIgnoreCase("LOCALE"))
+
+                  return customSession.getLocale();
+
+            else if(strVar.equalsIgnoreCase("DATABASETYPE"))
+
+                  return customSession.getStrDatabaseType();
+
+            else if(strVar.equalsIgnoreCase("NOOFQUEUES"))
+
+                  return customSession.getNoOfQueues();
+
+            else if(strVar.equalsIgnoreCase("PERSONALNAME"))
+
+                  return customSession.getStrPersonalName();
+
+            else if(strVar.equalsIgnoreCase("PERSONALANDFAMILYNAME"))
+
+                  return customSession.getPersonalAndFamilyName();
+
+            else if(strVar.equalsIgnoreCase("EXPORTCABINETNAME"))
+
+                  return customSession.getExportCabinetName();
+
+            else if(strVar.equalsIgnoreCase("EXPORTWEBSERVERNAME"))
+
+                  return customSession.getExportWebServerName();
+
+            else if(strVar.equalsIgnoreCase("CABTYPE"))
+
+                  return customSession.getCabType();
+
+            else if(strVar.equalsIgnoreCase("IMGDOCJTSIP"))
+
+                  return customSession.getImgDocJtsIp();
+
+            else if(strVar.equalsIgnoreCase("IMGDOCENGINENAME"))
+
+                  return customSession.getImgDocEngineName();
+
+            else if(strVar.equalsIgnoreCase("EXPORTSESSIONID"))
+
+                  return customSession.getExportSessionID();
+
+            else if(strVar.equalsIgnoreCase("USERINDEX"))
+
+                  return String.valueOf(customSession.getUserIndex());
+
+            else if(strVar.equalsIgnoreCase("IMGDOCSITEID"))
+
+                  return String.valueOf(customSession.getImgDocSiteId());
+
+            else if(strVar.equalsIgnoreCase("IMGDOCJTSPORT"))
+
+                  return String.valueOf(customSession.getImgDocJtsPort());
+
+            else if(strVar.equalsIgnoreCase("JTSPORT"))
+
+                  return String.valueOf(customSession.getJtsPort());
+
+            else if(strVar.equalsIgnoreCase("SITEID"))
+
+                  return String.valueOf(customSession.getSiteId());
+
+            else  return "";
+
+      }
+
+            catch(Exception e)                        
+
+            {
+
+                  return "";
+
+            }
+
+      }
+%>

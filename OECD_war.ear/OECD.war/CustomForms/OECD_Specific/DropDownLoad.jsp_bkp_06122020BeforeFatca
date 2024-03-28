@@ -1,0 +1,119 @@
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="java.text.*"%>
+<%@ page import="java.net.*"%>
+<%@ page import="com.newgen.custom.wfdesktop.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.exception.*" %>
+<%@ page import="com.newgen.custom.*" %>
+<%@ page import="java.math.*"%>
+<%@ include file="../OECD_Specific/Log.process"%>
+<jsp:useBean id="customSession" class="com.newgen.custom.wfdesktop.session.WFCustomSession" scope="session"/>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<HTML>
+<HEAD>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+</HEAD>
+</HTML>
+<%
+		String reqType = request.getParameter("reqType");	
+		WriteLog("reqType------------"+reqType);
+		String WSNAME= request.getParameter("WSNAME");
+		if (WSNAME != null) {WSNAME=WSNAME.replace("'","''");}
+		WriteLog("WSNAME-------------"+WSNAME);
+		String returnValues = "";
+		String query = "";
+		String sCabName=customSession.getEngineName();	
+		String sSessionId = customSession.getDMSSessionId();
+		String sJtsIp = customSession.getJtsIp();
+		int iJtsPort = customSession.getJtsPort();
+		WFCustomXmlResponse xmlParserData=null;
+		WFCustomXmlList objWorkList=null;
+		String sInputXML = "";
+		String sOutputXML = "";
+		String subXML="";
+		String params="";
+		
+		
+		if (reqType.equals("selectDecision"))
+		{
+			query = "SELECT Decision FROM USR_0_OECD_DECISION_MASTER with(nolock) WHERE WORKSTEP_NAME=:WSNAME order by Decision";
+			params = "WSNAME=="+WSNAME;
+		}			
+
+		else if (reqType.equals("custsegment"))
+		{
+			query = "SELECT Segment FROM USR_0_OECD_Segment with (nolock) where 1=:ONE order by Segment";
+			params = "ONE==1";
+		}	
+		
+		else if (reqType.equals("CrsUndocReason"))
+		{
+			query = "SELECT UndocFlagReason FROM USR_0_OECD_CRSUndocFlgReason with (nolock) where 1=:ONE order by UndocFlagReason";
+			params = "ONE==1";
+		}
+		
+		else if (reqType.equals("CountryCode"))
+		{
+			query = "select countryName from USR_0_OECD_CountryMaster with (nolock) where countryCode=:CountryOfBirth ";
+			params = "CountryOfBirth=="+WSNAME;
+		}
+		
+		sInputXML = "<?xml version='1.0'?><APSelectWithNamedParam_Input><Option>APSelectWithNamedParam</Option><Query>" + query + "</Query><Params>"+params+"</Params><EngineName>" + sCabName + "</EngineName><SessionId>" + sSessionId + "</SessionId></APSelectWithNamedParam_Input>";
+		WriteLog("\nInput XML -- "+sInputXML);
+	
+		sOutputXML = WFCustomCallBroker.execute(sInputXML, sJtsIp, iJtsPort, 1);
+		WriteLog("Output XML ---- "+sOutputXML);
+
+		xmlParserData=new WFCustomXmlResponse();
+		xmlParserData.setXmlString((sOutputXML));
+		String mainCodeValue = xmlParserData.getVal("MainCode");
+		WriteLog("maincode"+mainCodeValue);
+		
+		int recordcount=0;
+		try
+		{
+			recordcount=Integer.parseInt(xmlParserData.getVal("TotalRetrieved"));
+		}
+		catch(Exception e)	
+		{
+		}
+		WriteLog("recordcount -- "+recordcount);
+	if(mainCodeValue.equals("0"))
+	{
+		if (recordcount >=1)
+		{
+			objWorkList = xmlParserData.createList("Records","Record"); 
+			for(objWorkList.reInitialize(true);objWorkList.hasMoreElements(true);objWorkList.skip(true))
+			{				
+				  if (reqType.equals("selectDecision"))
+					returnValues = returnValues + objWorkList.getVal("Decision")  + "~";	
+				  else if (reqType.equals("custsegment"))
+					returnValues = returnValues + objWorkList.getVal("Segment")  + "~";
+				  else if (reqType.equals("CrsUndocReason"))
+					returnValues = returnValues + objWorkList.getVal("UndocFlagReason")  + "~";	
+				  else if (reqType.equals("CountryCode"))
+					returnValues = returnValues + objWorkList.getVal("countryName")  + "~";		
+			}	
+			returnValues =  returnValues.substring(0,returnValues.length()-1);
+			WriteLog("returnValues -- "+returnValues);
+			out.clear();
+			out.print(returnValues);
+		} else
+		{
+			out.clear();
+			out.print("");
+		}		
+	}
+	else
+	{
+		WriteLog("Exception in loading dropdown values -- ");
+		out.clear();
+		out.print("-1");
+	}
+	
+%>

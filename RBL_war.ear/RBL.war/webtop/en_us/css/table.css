@@ -1,0 +1,54 @@
+#mailing{
+ width:100px;
+}
+.accordion-inner{
+background-color: #FEFAEF;
+}
+
+.panel-title1{
+background-color: #FEFAEF;
+}
+.accordion-heading1{
+background-color: #FEFAEF;
+padding:2px;
+padding-top:2px;
+padding-bottom:2px;
+}
+.text{
+color:#000000;
+font-size: 15px;
+}
+#gridExpValOfTrans1{
+border-right: none;
+}
+#gridAddressDetails tr td{ 
+width:5px;
+}
+.widthSel {
+width: 18%;
+}
+
+
+ .panel-title1 > .small, .panel-title1 > .small > a, .panel-title1 > a, .panel-title1 > small, .panel-title1 > small > a {
+                
+            }
+			
+#gridAddressDetails{
+width:20px;
+}	
+
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:150px;
+  overflow:auto;  
+ 
+}
+#body{
+height:auto;
+width:auto;
+}
+.colwidth{
+width:160px;
+}

@@ -1,0 +1,55 @@
+<%@page pageEncoding="UTF-8"%>
+
+<%@ page import="com.newgen.custom.wfdesktop.exception.*, com.newgen.custom.wfdesktop.session.*,com.newgen.custom.wfdesktop.util.*,com.newgen.custom.wfdesktop.xmlapi.*,java.util.*, java.io.*,java.net.*"%>
+
+<jsp:useBean id="customSession" class="com.newgen.custom.wfdesktop.session.WFCustomSession" scope="session"/>
+
+<%
+String sContextPath = "/webdesktop";
+String customContext = "/CAC";
+String multiTenancyVar = null;
+String jtsIP = null;
+String jtsPort = null;
+String appServerName = null;
+String dmsSessionId = null;
+String strLocale = null;
+int nUserIndex = 0;
+String strUserName = null;
+String strEngineName = null;
+int nDebugValue = 0;
+String strDatabaseType = null;
+String routeName = null;
+
+try{	
+	multiTenancyVar = request.getParameter("wdesk:MultiTenancyVar");
+	jtsIP = request.getParameter("wdesk:JTSIP");
+	jtsPort = request.getParameter("wdesk:JTSPort");
+	appServerName = request.getParameter("wdesk:AppServerName");
+	dmsSessionId = request.getParameter("wdesk:SessionID");
+	strLocale = request.getParameter("wdesk:Locale");
+	nUserIndex = Integer.parseInt(request.getParameter("wdesk:UserIndex"));
+	strUserName = request.getParameter("wdesk:UserName");
+	strEngineName = request.getParameter("wdesk:EngineName");
+	nDebugValue = Integer.parseInt(request.getParameter("wdesk:DebugValue"));
+	strDatabaseType = request.getParameter("wdesk:DatabaseType");
+	routeName = request.getParameter("wdesk:RouteName");
+	customContext = request.getParameter("wdesk:Context");
+
+	customSession.setM_strMultiTenancyVar(multiTenancyVar);
+	customSession.setJtsIp(jtsIP);
+	customSession.setJtsPort(Integer.parseInt(jtsPort));
+	customSession.setAppServerName(appServerName);
+	customSession.setDMSSessionId(dmsSessionId);
+	customSession.setLocale(strLocale);
+	customSession.setUserIndex(nUserIndex);
+	customSession.setUserName(strUserName);
+	customSession.setEngineName(strEngineName);
+	customSession.setDebugValue(nDebugValue);
+	customSession.setStrDatabaseType(strDatabaseType);
+	customSession.setRouteName(routeName);
+}
+catch(Exception e)
+{
+	e.printStackTrace();
+}
+%>

@@ -1,0 +1,258 @@
+//           NEWGEN SOFTWARE TECHNOLOGIES LIMITED
+//Group						 : Application –Projects
+//Product / Project			 : RAKBank 
+//Module                     : Request-Initiation          
+//File Name					 : DropDownCity.jsp          
+//Author                     : Amitabh
+// Date written (DD/MM/YYYY) : 07-Nov-2017
+//Description                : Fetching drop down and searchable drop down for country,city and state
+//---------------------------------------------------------------------------------------------------->
+/*function loadOECDGridValues(currWorkstep,WINAME)
+	{
+		//alert("loadFormGridValues");
+		//if(currWorkstep!='Initiation')
+		//{
+				var url = '';
+				var xhr;
+				var ajaxResult;		
+				if(window.XMLHttpRequest)
+				xhr=new XMLHttpRequest();
+				else if(window.ActiveXObject)
+				xhr=new ActiveXObject("Microsoft.XMLHTTP");
+				
+				url = '/OECD/CustomForms/OECD_Specific/loadOECDGridData.jsp?WI_NAME='+WINAME;
+				xhr.open("GET",url,false);
+				xhr.send(null);
+				if (xhr.status == 200)
+				{
+					 ajaxResult = xhr.responseText;
+					 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+					 if(ajaxResult=='-1')
+					 {
+						alert("Error while loading customer OECD data.");
+						return false;
+					 }
+					 else
+					 {
+						 ajaxResult=ajaxResult.split('|');
+						 for(var i=0;i<ajaxResult.length;i++)
+						 {
+							var ajaxResultRow=ajaxResult[i].split('~');
+							populateOECDgridData(ajaxResultRow);
+						 }	
+					 }		
+				}
+				else 
+				{
+					alert("Exception while loading customer OECD data.");
+					return false;
+				}
+		
+		loadDropDownElementAtNextWS(currWorkstep);//Loading saved dropdown Values which are saved in database
+		
+		//Workstep condition is commented since values are retrieved from Web Service
+		if(currWorkstep!='Introduction')
+		{
+			$(document).ready(function(){
+			$(':text').prop('disabled',true);
+			$('select').prop('disabled',true);	
+			$(':button').prop('disabled',true);
+			});
+			document.getElementById('selectDecision').disabled=false;
+			document.getElementById('history').disabled=false;
+			document.getElementById('Exception_History').disabled=false;
+			document.getElementById('RejectReason').disabled=false;	
+			
+			if(currWorkstep=='Control')
+				{	
+					document.getElementById('RETAIL_OR_CORPORATE').disabled=false;							
+				}
+		}
+}	
+
+function loadCIFGridValues(currWorkstep,WINAME)
+	{
+		//alert("loadFormGridValues");
+		//if(currWorkstep!='Initiation')
+		//{
+				var url = '';
+				var xhr;
+				var ajaxResult;		
+				if(window.XMLHttpRequest)
+				xhr=new XMLHttpRequest();
+				else if(window.ActiveXObject)
+				xhr=new ActiveXObject("Microsoft.XMLHTTP");
+				
+				url = '/OECD/CustomForms/OECD_Specific/loadCIFGridData.jsp?WI_NAME='+WINAME;
+				xhr.open("GET",url,false);
+				xhr.send(null);
+				if (xhr.status == 200)
+				{
+					 ajaxResult = xhr.responseText;
+					 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+					 if(ajaxResult=='-1')
+					 {
+						alert("Error while loading customer OECD data.");
+						return false;
+					 }
+					 else
+					 {
+						 //ajaxResult=ajaxResult.split('|');
+						/* for(var i=0;i<ajaxResult.length;i++)
+						 {
+							var ajaxResultRow=ajaxResult[i].split('~');
+							populateOECDgridData(ajaxResultRow);
+						 }
+						 return ajaxResult;
+					 }		
+				}
+				else 
+				{
+					alert("Exception while loading customer OECD data.");
+					return false;
+				}
+		
+		//loadDropDownElementAtNextWS(currWorkstep);//Loading saved dropdown Values which are saved in database
+		
+		//Workstep condition is commented since values are retrieved from Web Service
+		if(currWorkstep!='Introduction')
+		{
+			$(document).ready(function(){
+			$(':text').prop('disabled',true);
+			$('select').prop('disabled',true);	
+			$(':button').prop('disabled',true);
+			});
+			document.getElementById('selectDecision').disabled=false;
+			document.getElementById('history').disabled=false;
+			document.getElementById('Exception_History').disabled=false;
+			document.getElementById('RejectReason').disabled=false;	
+			
+			if(currWorkstep=='Control')
+				{	
+					document.getElementById('RETAIL_OR_CORPORATE').disabled=false;							
+				}
+		}
+}*/
+function disableAllFieldsAtNextWorkstep(currWorkstep)
+{
+	if(currWorkstep!='Introduction')
+	{
+		document.getElementById("CHANNEL").disabled=true;
+		document.getElementById("CIF_NUMBER_INI").disabled=true;
+		document.getElementById("NAME_INI").disabled=true;
+		document.getElementById("CIF_NUMBER").disabled=true;
+		document.getElementById("CIF_TYPE").disabled=true;
+		document.getElementById("CUST_SEGMENT").disabled=true;
+		document.getElementById("CUST_SUBSEGMENT").disabled=true;
+		document.getElementById("NFE_TYPE").disabled=true;
+		document.getElementById("Country_of_Incorp").disabled=true;
+		document.getElementById("CUST_NAME").disabled=true;
+		document.getElementById("PREF_ADDRESS").disabled=true;
+		document.getElementById("NATIONALITY").disabled=true;
+		document.getElementById("DOB").disabled=true;
+		document.getElementById("CITY_OF_BIRTH").disabled=true;
+		document.getElementById("COUNTRY_OF_BIRTH").disabled=true;
+		document.getElementById("CRS_UNDOCUMENTED_FLAG").disabled=true;
+		document.getElementById("CRS_UNDOCUMENTED_REASON").disabled=true;
+		document.getElementById("ViewSignature").disabled=true;
+	}
+	if(currWorkstep=='OPS_Maker'||currWorkstep=='OPS_Checker')
+	document.getElementById("ViewSignature").disabled=false;
+
+}	
+
+function addOECDRow(){
+//if(docTypesString1!='')
+	//{
+	
+		var currWorkstep=document.getElementById("wdesk:CURRENT_WS").value;
+		var WINAME=document.getElementById("wdesk:WINAME").value;
+		var OecdDetails = loadOECDGridValues(currWorkstep,WINAME);
+		//alert("OecdDetails"+OecdDetails);
+		var arrayRow=OecdDetails.split('|');
+		var table = document.getElementById("OECDGrid");
+		var arrayIdentificationDocFieldsForSave=['countryoftaxresidence','taxpayeridentificationno','notinreason'];
+		for(var k=0;k<arrayRow.length;k++)
+		{
+			var table_len=(table.rows.length);
+			var row = table.insertRow(table_len);
+			var arrayCellValues=arrayRow[k].split('~');
+			var countryoftaxresidence=arrayCellValues[0];
+			var taxpayeridentificationno=arrayCellValues[1];
+			var notinreason=arrayCellValues[2];
+			
+			var cell = row.insertCell(0);
+			var countryofresid = 'countryoftaxresidence'+table_len;
+			var autoComplete='AutocompleteValuesCountry';
+			cell.innerHTML="<input type='text' size='42' maxlength='100' onblur='validatecountry(\""+countryofresid+"\",document.getElementById(\""+autoComplete+"\").value);' id='countryoftaxresidence"+table_len+"'>";
+			document.getElementById("countryoftaxresidence"+table_len).value=countryoftaxresidence;
+			
+			var cell = row.insertCell(1);
+			cell.innerHTML="<input type='text' size='23' maxlength='100' style='width:170px' id='taxpayeridentificationno"+table_len+"'>";
+			document.getElementById("taxpayeridentificationno"+table_len).value=taxpayeridentificationno;
+			
+			var cell = row.insertCell(2);
+			cell.innerHTML="<input type ='text' size='23' maxlength='100' style='width:230px;' id='notinreason"+table_len+"'>";
+			document.getElementById("notinreason"+table_len).value=notinreason;
+			
+			disableOECDGridColumns();
+		}
+}
+	
+
+function loadOECDGridValues(currWorkstep,WINAME)
+{
+		//if(currWorkstep!='Initiation')
+		//{
+			
+			//alert("here i am in loadOECDGridValues");
+				var url = '';
+				var xhr;
+				var ajaxResult;		
+				if(window.XMLHttpRequest)
+				xhr=new XMLHttpRequest();
+				else if(window.ActiveXObject)
+				xhr=new ActiveXObject("Microsoft.XMLHTTP");
+				
+				url = '/OECD/CustomForms/OECD_Specific/loadOECDGridData.jsp?WI_NAME='+WINAME;
+				//alert("url"+url);
+				xhr.open("GET",url,false);
+				xhr.send(null);
+				if (xhr.status == 200)
+				{
+					 ajaxResult = xhr.responseText;
+					 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+					 //alert("ajaxResult"+ajaxResult);
+					 if(ajaxResult=="-1")
+					 {
+						alert("Error while loading OECD details ");
+						return false;
+					 }
+					 else
+					 {
+						// alert("The ajax result is "+ajaxResult);
+						 return ajaxResult; 		
+					 }		
+				}
+				else 
+				{
+					alert("Error while Loading OECD Grid Data.");
+					return false;
+				}
+		//}
+}
+
+function disableOECDGridColumns()
+{
+	var table = document.getElementById("OECDGrid");
+	var rowCount=(table.rows.length);
+	if(rowCount>=1)//When no row added in grid
+	{
+		for (var i = 1; i < rowCount; i++)   
+		{	
+			document.getElementById('countryoftaxresidence'+i).disabled=true;
+			document.getElementById('taxpayeridentificationno'+i).disabled=true;
+			document.getElementById('notinreason'+i).disabled=true;
+		}
+	}
+}
