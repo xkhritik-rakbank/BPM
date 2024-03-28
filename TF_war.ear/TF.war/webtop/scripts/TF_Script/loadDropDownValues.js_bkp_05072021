@@ -1,0 +1,581 @@
+function loadDropDownValues(currWorkstep,loggedInUser,WINAME,FlagValue)
+	{		
+		producttypedropdown(currWorkstep);			
+		loadlodgementdate(WINAME,currWorkstep);		
+		loadcommngrid(WINAME,FlagValue,currWorkstep);
+		loadInvoiceGridValues(FlagValue,WINAME);
+		var ServiceRequestCode = document.getElementById("wdesk:ServiceRequestCode").value;
+		loadModeOfDelivery(ServiceRequestCode);
+		
+		//code added to set IslamicOrconventions on load
+		if(currWorkstep=='CSO' && FlagValue!='Y'){
+		var IslamicOrconventions = document.getElementById("IslamicOrconventions");
+		setComboValueToTextBox(IslamicOrconventions,'wdesk:Islamic_Or_conventions');
+		}
+	}
+	
+	
+function disablegridColumns(currWorkstep)
+{
+	/*if(currWorkstep=='CSM_Approval' || currWorkstep=='TF_Call_Back' || currWorkstep=='Returned_Doc_Maker' || currWorkstep=='TF_Document_Approver' || currWorkstep=='TF_Hold' || currWorkstep=='CSO_Reject' || currWorkstep=='Receive_Doc_Branch' || currWorkstep=='Print_and_Dispatch' || currWorkstep=='TF_Checker' || currWorkstep=='Del_Retention_Expire' || currWorkstep=='TF_Archival')
+	{
+	    var ChecklistWiname= document.getElementById("CHECKLIST_WSNAME").value;
+		//alert("ChecklistWiname checklist combo for "+ChecklistWiname);	    
+		var table = document.getElementById("checklistGrid");
+		var rowCount=(table.rows.length);
+		var arrayIdentificationDocFieldsForSave=['SRId','checklistdesc','Y','N','NA','remarks'];
+		if(ChecklistWiname==currWorkstep)
+		{
+			for (var i = 1; i < rowCount; i++)
+			{
+				for (var j = 0; j < arrayIdentificationDocFieldsForSave.length; j++) 
+				{
+					document.getElementById(arrayIdentificationDocFieldsForSave[j]+i).disabled=false;			
+		        }
+	        }	
+		}
+		else
+		{
+			for (var i = 1; i < rowCount; i++)
+			{
+				for (var j = 0; j < arrayIdentificationDocFieldsForSave.length; j++) 
+				{
+					document.getElementById(arrayIdentificationDocFieldsForSave[j]+i).disabled=true;			
+		        }
+	        }
+			
+		}
+	  //alert("disabled checklist grid");
+	}*/
+	if(currWorkstep!='CSO')
+	{
+		//alert("disabled checklist combo for "+currWorkstep);
+	    //document.getElementById("ChecklistFor").disabled=true;	    
+		var table = document.getElementById("DocumentGRid");
+		var rowCount=(table.rows.length);
+		var arrayIdentificationDocFieldsForSave=['DocName','originals','copies'];
+			for (var i = 1; i < rowCount; i++)
+			{
+				for (var j = 0; j < arrayIdentificationDocFieldsForSave.length; j++) 
+				{
+			   document.getElementById(arrayIdentificationDocFieldsForSave[j]+i).disabled=true;
+			
+		        }
+	        }
+			
+		if(currWorkstep == "TF_Document_Approver")
+			document.getElementById("Event_Button").disabled=false;
+		
+		else
+			document.getElementById("Event_Button").disabled=true;
+	  //alert("disabled checklist grid");
+	}
+	if(currWorkstep=='TF_Maker' || currWorkstep=='TF_Call_Back' || currWorkstep=='Returned_Doc_Maker' || currWorkstep=='TF_Document_Approver' || currWorkstep=='TF_Hold' || currWorkstep=='CSO_Reject' || currWorkstep=='Receive_Doc_Branch' || currWorkstep=='Print_and_Dispatch' || currWorkstep=='TF_Checker' || currWorkstep=='Del_Retention_Expire' || currWorkstep=='TF_Archival' || currWorkstep=='Returned_Doc_Checker' || currWorkstep=='CSM_Approval')
+	{
+		//alert("disabled checklist combo for "+currWorkstep);
+	    document.getElementById("invoicenumber").disabled=true;	
+		document.getElementById("wdesk:CounterParty").disabled=true;
+		var table = document.getElementById("InvoiceDetailsGrid");
+		var rowCount=(table.rows.length);
+		var arrayIdentificationDocFieldsForSave=['selected','invoicenumber'];
+			for (var i = 1; i < rowCount; i++)
+			{
+				for (var j = 0; j < arrayIdentificationDocFieldsForSave.length; j++) 
+				{
+			   document.getElementById(arrayIdentificationDocFieldsForSave[j]+i).disabled=true;
+			
+		        }
+	        }	
+	  //alert("disabled checklist grid");
+	    document.getElementById("modeofcommunicationcombo").disabled=true;	
+		document.getElementById("templatecombo").disabled=true;
+		document.getElementById("communicationDate").disabled=true;
+		document.getElementById("CommunicationTime").disabled=true;
+		document.getElementById("description").disabled=true;		
+		var table = document.getElementById("CommunicationdtlsGrid");
+		var rowCount=(table.rows.length);
+		var arrayCommunicationFieldsForSave=['modeofcommunicationcombo','communicationDate','CommunicationTime','description','DATE'];
+			for (var i = 1; i < rowCount; i++)
+			{
+				for (var j = 0; j < arrayCommunicationFieldsForSave.length; j++) 
+				{
+			   document.getElementById(arrayCommunicationFieldsForSave[j]+i).disabled=true;
+			
+		        }
+	        }
+	}
+	
+	
+}
+	
+function loadDecisionFromMaster(currWorkstep)
+{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		
+			url = '/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+			var param = "reqType="+encodeURIComponent('selectDecision')+"&WSNAME="+encodeURIComponent(currWorkstep);
+			//param = encodeURIComponent(param);
+			xhr.open("POST", url, false);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(param);
+			if (xhr.status == 200)
+			{
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult=='-1')
+				 {
+					alert("Error while loading dropdown values for decision");
+					return false;
+				 }				 
+				 values = ajaxResult.split("~");
+				 for(var j=0;j<values.length;j++)
+				 {
+					var opt = document.createElement("option");
+					opt.text = values[j];
+					opt.value =values[j];
+					document.getElementById('selectDecision').options.add(opt);
+				 }				 
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown decision.");
+				return false;
+			}
+}	
+
+
+function producttypedropdown(currWorkstep)
+	{
+		if(currWorkstep=='CSO')
+		{
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			url = '/TF/CustomForms/TF_Specific/DropDownServiceRequest.jsp';
+			xhr.open("GET",url,false);
+			xhr.send(null);
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult.indexOf("Exception")==0)
+				 {
+					alert("Unknown Exception while working with request type ");
+					return false;
+				 }							 
+				document.getElementById("AutocompleteValues").value=ajaxResult;
+				//alert("document.getElementById(AutocompleteValues).value--"+document.getElementById("AutocompleteValues").value);
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown for the current workstep");
+				return false;
+			}
+		}
+    }
+	
+	function loadChecklistdropdown(WINAME,currWorkstep,Checklist_Name)
+	{
+		if(Checklist_Name != ''){
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			var ApplicationFormCode=document.getElementById("wdesk:ServiceRequestCode").value;
+			url ='/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+			var param = "reqType="+encodeURIComponent('loadchecklist')+"&WINAME="+encodeURIComponent(WINAME)+"&Checklist_Name="+encodeURIComponent(Checklist_Name)+"&ServiceRequestCode="+ApplicationFormCode;
+			//param = encodeURIComponent(param);
+			xhr.open("POST", url, false);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(param);
+			
+			
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult=="")
+				 {
+					//alert("No Checklist data Saved For given "+WINAME);
+				 }
+				 else if(ajaxResult.indexOf("Exception")==0)
+				 {
+					alert("Unknown Exception while working with request type ");
+					return false;
+				 }					 	
+                 //alert("ajaxResult is"+ajaxResult);		
+				  if(ajaxResult.indexOf('|')!=-1)
+				  {
+					 ajaxResult=ajaxResult.split('|');
+					 for(var i=0;i<ajaxResult.length;i++)
+					 {
+						addrowchecklist(ajaxResult[i],currWorkstep)
+					 }
+				  }
+				  else				  
+					addrowchecklist(ajaxResult,currWorkstep);				
+				
+			}
+			else 
+			{
+				alert("Error while Loading Drowdown for the current workstep");
+				return false;
+			}
+		}
+		
+    }
+
+function deleteRowsFromGridWithIndex()
+{
+	var r = confirm("Do you want to delete the row?");
+	if (r == true) {
+		var row = window.event.srcElement;
+		row = row.parentNode.parentNode;
+		var rowindex=row.rowIndex;
+		var table = document.getElementById("ChecklistTable");
+		var rowCount = table.rows.length;
+		if(rowCount==4)//means only one row added then no need to update id's.Just delete the row
+		{
+			table.deleteRow(rowindex);
+		}
+		else if((rowCount-1)==rowindex)//means last row is being deleated then no need to update id's.Just delete the row
+		{
+			table.deleteRow(rowindex);
+		}
+		else
+		{
+			var arrayUIDFieldsForSave=['checklistdesc','option','remarks'];
+			
+				for(var k=0;k<arrayUIDFieldsForSave.length;k++)
+				 {
+					for(var j=rowindex;j<(rowCount-1);j++)
+					{
+						var currentRowId=parseInt(j)+1;
+						document.getElementById(arrayUIDFieldsForSave[k]+currentRowId).id = arrayUIDFieldsForSave[k] + (j);
+					}
+				 }
+				 table.deleteRow(rowindex);
+		}
+	}
+}
+
+
+function loadlodgementdate(WINAME,currWorkstep)
+{
+		if(currWorkstep !="CSO")
+		{	
+		//alert("insidee checklist"+WINAME);
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			url ='/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+			var param = "reqType="+encodeURIComponent('loadlodgementdate')+"&WINAME="+encodeURIComponent(WINAME);
+			//param = encodeURIComponent(param);
+			xhr.open("POST", url, false);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(param);
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult.indexOf("Exception")==0)
+				 {
+					alert("Unknown Exception while working with request type ");
+					return false;
+				 }	
+				  var date;
+				  var dateformat;
+				 if(ajaxResult.indexOf("-")!=-1)
+				 {
+					 date=ajaxResult.split(" ");
+					 //alert("date 0 is"+date[0]);	
+					 //alert("date 1 is"+date[1]);
+					 dateformat=date[0].split("-");
+					 //alert("date 0 is"+dateformat[2]);	
+					 //alert("date 1 is"+dateformat[1]);
+					 //alert("date 1 is"+dateformat[0]);
+				 }
+				 else if(ajaxResult.indexOf("/")!=-1)
+				 {
+					 date=ajaxResult.split(" ");
+					 //alert("date 0 is"+date[0]);	
+					 //alert("date 1 is"+date[1]);
+					 dateformat=date[0].split("/");
+					 //alert("date 0 is"+dateformat[2]);	
+					 //alert("date 1 is"+dateformat[1]);
+					 //alert("date 1 is"+dateformat[0]);
+				 }
+				 else
+				 {
+					alert("check the lodgementDate"); 
+					return false;
+				 }					
+				 document.getElementById("LodgementDate").value=dateformat[2]+"/"+dateformat[1]+"/"+dateformat[0];		//dd/mm/yyyy format
+			}
+			else 
+			{
+				alert("Error while Loading date for the workstep"+currWorkstep);
+				return false;
+			}
+		}
+		
+}
+
+	function loadcommngrid(WINAME,FlagValue,currWorkstep)
+	{
+		if(FlagValue=='Y'){
+		//alert("insidee checklist"+WINAME);
+			var url = '';
+			var xhr;
+			var ajaxResult;		
+			if(window.XMLHttpRequest)
+			xhr=new XMLHttpRequest();
+			else if(window.ActiveXObject)
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			
+			url ='/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+			var param = "reqType="+encodeURIComponent('loadcommngrid')+"&WINAME="+encodeURIComponent(WINAME);
+			//param = encodeURIComponent(param);
+			xhr.open("POST", url, false);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(param);
+	
+	
+			if (xhr.status == 200)
+			{	
+				 ajaxResult = xhr.responseText;
+				 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+				 if(ajaxResult.indexOf("Exception")==0)
+				 {
+					alert("Unknown Exception while working with request type ");
+					return false;
+				 }	
+                 //alert("ajaxResult is"+ajaxResult);		
+				  if(ajaxResult.indexOf('|')!=-1)
+				  {
+					 ajaxResult=ajaxResult.split('|');
+					 for(var i=0;i<ajaxResult.length;i++)
+					 {
+						addrowcommngrid(ajaxResult[i],currWorkstep)
+					 }
+				  }
+				  else
+					addrowcommngrid(ajaxResult,currWorkstep);			 
+				//document.getElementById("AutocompleteValues").value=ajaxResult;
+				//alert("document.getElementById(AutocompleteValues).value--"+document.getElementById("AutocompleteValues").value);
+			}
+			else 
+			{
+				//alert("Error while Loading communication grid for the current workstep");
+				return false;
+			}
+		}
+		
+    }
+ 
+
+function loadDocuments(currWorkstep,RequestCode)
+	{
+		if(currWorkstep=='CSO')
+		{
+				deleteRowsFromGrid("DocumentGRid");	//Delete the rows from table using Grid Id
+				var url = '';
+				var xhr;
+				var ajaxResult;		
+				if(window.XMLHttpRequest)
+				xhr=new XMLHttpRequest();
+				else if(window.ActiveXObject)
+				xhr=new ActiveXObject("Microsoft.XMLHTTP");
+				
+				url = '/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+				var param = "reqType="+encodeURIComponent('loadDocumentGridOnCIFSearch')+"&ServiceRequestCode="+encodeURIComponent(RequestCode);
+				//param = encodeURIComponent(param);
+				xhr.open("POST", url, false);
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.send(param);
+				if (xhr.status == 200)
+				{
+					 ajaxResult = xhr.responseText;
+					 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+					 if(ajaxResult=='-1')
+					 {
+						alert("Error while loading customer data.");
+						return false;
+					 }
+					 else if(ajaxResult=='0')//Means no record found in database
+					 {
+						alert("No data found for the selected DOC");
+					 }
+					 else
+					 {							
+						addrowDocumentgrid(ajaxResult,currWorkstep);						 
+					 }		
+				}
+				else 
+				{
+					alert("Exception while loading DOC data.");
+					return false;
+				}
+		}
+	}
+function loadChecklistCombo(currWorkstep,RequestCode)
+{
+		if(currWorkstep!='')
+		{
+				var url = '';
+				var xhr;
+				var ajaxResult;		
+				if(window.XMLHttpRequest)
+				xhr=new XMLHttpRequest();
+				else if(window.ActiveXObject)
+				xhr=new ActiveXObject("Microsoft.XMLHTTP");
+				
+				url = '/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+				var param = "reqType="+encodeURIComponent('loadChecklistCombo')+"&ServiceRequestCode="+encodeURIComponent(RequestCode);
+				//param = encodeURIComponent(param);
+				xhr.open("POST", url, false);
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.send(param);
+	
+	
+				if (xhr.status == 200)
+				{
+					 ajaxResult = xhr.responseText;
+					 ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm,'');
+					 if(ajaxResult=='-1')
+					 {
+						alert("Error while loading ChecklistCombo data.");
+						return false;
+					 }
+					 else if(ajaxResult=='0')//Means no record found in database
+					 {
+						alert("No data found for the ChecklistCombo data");
+					 }
+					 else
+					 {							
+						 values = ajaxResult.split("|");
+						 for(var j=0;j<values.length;j++)
+						 {
+							var opt = document.createElement("option");
+							opt.text = values[j];
+							opt.value =values[j];
+							document.getElementById("Checklist_For").options.add(opt);
+						 }								 
+					 }		
+				}
+				else 
+				{
+					alert("Exception while loading ChecklistCombo data.");
+					return false;
+				}
+		}
+}
+function loadModeOfDelivery(RequestCode)
+{
+	if(RequestCode!="")
+	{
+		var xhr1;
+		var ajaxResult;
+		ajaxResult = "";
+		var reqType = "Load_ModeOfDelivery";
+
+		if (window.XMLHttpRequest)
+			xhr1 = new XMLHttpRequest();
+		else if (window.ActiveXObject)
+			xhr1 = new ActiveXObject("Microsoft.XMLHTTP");
+
+		var url = '/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+		var param = "reqType="+encodeURIComponent(reqType)+"&ServiceRequestCode="+encodeURIComponent(RequestCode);
+
+		xhr1.open("POST", url, false);
+		xhr1.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr1.send(param);
+
+		if (xhr1.status == 200) {
+			ajaxResult = xhr1.responseText;
+			ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm, '');
+			//alert("ajaxResult---"+ajaxResult);
+
+			if (ajaxResult.indexOf("Exception") == 0) {
+				alert("Some problem in Loading Mode Of Delivery Values");
+				return false;
+			}
+			//Clear the ModeOfDelivery Field
+			document.getElementById("modeofdelivery").innerText="";
+			//Adding values to ModeOfDelivery Field
+			var values = ajaxResult.split("~");				
+			for(var j=0;j<values.length;j++)
+			 {
+				 if(values[j]!='')
+				 {
+				 var opt = document.createElement("option");
+				 opt.text = values[j];
+				 opt.value =values[j];
+				 document.getElementById("modeofdelivery").options.add(opt);
+				 }
+			 }
+				 var e = document.getElementById("modeofdelivery");
+				
+		} else {
+			alert("Error while Loading Mode Of Delivery Values");
+			//return "";
+		}
+	}
+}
+
+function ajaxRequest(reqType,field, value)
+{
+		var xhr1;
+		var ajaxResult;
+		ajaxResult = "";
+		
+		if (window.XMLHttpRequest)
+			xhr1 = new XMLHttpRequest();
+		else if (window.ActiveXObject)
+			xhr1 = new ActiveXObject("Microsoft.XMLHTTP");
+
+		var url = '/TF/CustomForms/TF_Specific/DropDownLoad.jsp';
+		var param='UserName='+encodeURIComponent(value)+ "&reqType="+encodeURIComponent(reqType);
+		//alert("url"+url);
+
+		xhr1.open("POST", url, false);
+		xhr1.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr1.send(param);
+		
+		if (xhr1.status == 200) {
+			ajaxResult = xhr1.responseText;
+			ajaxResult = ajaxResult.replace(/^\s+|\s+$/gm, '');
+			//alert("ajaxResult---"+ajaxResult);
+
+			if (ajaxResult.indexOf("Exception") == 0) {
+				alert("Some problem in Loading mail ids.");
+				return false;
+			}
+			if(reqType == "getMailIdOfRORM")
+			{
+				document.getElementById(field).value=ajaxResult;
+			}	
+		} else {
+			alert("Error while Loading mail id");
+			//return "";
+		}	
+}

@@ -1,0 +1,251 @@
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="java.text.*"%>
+<%@ page import="java.net.*"%>
+<%@ page import="com.newgen.custom.wfdesktop.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.util.xmlapi.*" %>
+<%@ page import="com.newgen.custom.wfdesktop.exception.*" %>
+<%@ page import="com.newgen.custom.*" %>
+<%@ page import="java.math.*"%>
+<%@ include file="../TF_Specific/Log.process"%>
+<jsp:useBean id="customSession" class="com.newgen.custom.wfdesktop.session.WFCustomSession" scope="session"/>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<HTML>
+<HEAD>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+</HEAD>
+</HTML>
+<%
+		WriteLog("inside dropdownlaod2.jsp");
+		String reqType=URLDecoder.decode(request.getParameter("reqType")).replace("&amp;","&");
+		WriteLog("reqType"+reqType);
+		String WSNAME="";
+		String WINAME="";
+		String Checklist_Name="";
+		String CIFID="";
+		String ApplicationFormCode="";	
+		String returnValues = "";
+		String query = "";
+		String sCabName=customSession.getEngineName();	
+		String sSessionId = customSession.getDMSSessionId();
+		
+		String sJtsIp = customSession.getJtsIp();
+		int iJtsPort = customSession.getJtsPort();
+		WFCustomXmlResponse xmlParserData=null;
+		WFCustomXmlList objWorkList=null;
+		String sInputXML = "";
+		String sOutputXML = "";
+		String subXML="";
+		String params="";
+		
+		if (reqType.equals("selectDecision"))
+		{
+			WSNAME=URLDecoder.decode(request.getParameter("WSNAME")).replace("&amp;","&");
+			if (WSNAME != null) {WSNAME=WSNAME.replace("'","''");}
+			WriteLog("WSNAME"+WSNAME);
+		
+			query = "SELECT Decision FROM USR_0_TF_DECISION_MASTER with(nolock) WHERE WORKSTEP_NAME=:WSNAME order by Decision";
+			params = "WSNAME=="+WSNAME;
+		}
+		else if (reqType.equals("Load_ModeOfDelivery"))
+		{
+			ApplicationFormCode=URLDecoder.decode(request.getParameter("ServiceRequestCode")).replace("&amp;","&");
+			if (ApplicationFormCode != null) {ApplicationFormCode=ApplicationFormCode.replace("'","''");}
+			//WriteLog("Product_Type"+Product_Type);
+		
+			query = "SELECT Mode_Of_Delivery FROM  USR_0_TF_SUBCATEGORY with(nolock) where Application_FormCode=:Application_FormCode";
+			//params = "ONE==1";
+			params = "Application_FormCode=="+ApplicationFormCode;
+		}
+		else if (reqType.equals("loadchecklist"))
+		{
+			WINAME=URLDecoder.decode(request.getParameter("WINAME")).replace("&amp;","&");
+			if (WINAME != null) {WINAME=WINAME.replace("'","");}
+			Checklist_Name=URLDecoder.decode(request.getParameter("Checklist_Name")).replace("&amp;","&");
+			if (Checklist_Name != null) {Checklist_Name=Checklist_Name.replace("'","");}
+			//WriteLog("WINAME"+WINAME);
+			ApplicationFormCode=URLDecoder.decode(request.getParameter("ServiceRequestCode")).replace("&amp;","&");
+			if (ApplicationFormCode != null) {ApplicationFormCode=ApplicationFormCode.replace("'","");}
+			
+			query = "SELECT a.Checklist_Description,(select Option_checklist from USR_0_TF_SaveChecklistTable s with(nolock) where s.Checklist_Description=a.Checklist_Description and s.WIName =:WINAME and s.Workstep=a.Workstep) as Option_checklist,(select Remarks from USR_0_TF_SaveChecklistTable s with(nolock) where s.Checklist_Description=a.Checklist_Description and s.WIName =:WINAME and s.Workstep=a.Workstep) as Remarks,a.Workstep FROM USR_0_TF_ChecklistTable a with (nolock) WHERE a.Checklist_Name=:Checklist_Name and (a.SRsIncluded = 'All' or CHARINDEX('"+ApplicationFormCode+"',a.SRsIncluded) > 0) and (a.SRsExcluded is null or a.SRsExcluded ='' or CHARINDEX('"+ApplicationFormCode+"',a.SRsExcluded) = 0)";
+			params = "WINAME=="+WINAME+"~~Checklist_Name=="+Checklist_Name;
+			
+		}
+		else if (reqType.equals("loadcommngrid"))
+		{
+			WINAME=URLDecoder.decode(request.getParameter("WINAME")).replace("&amp;","&");
+			if (WINAME != null) {WINAME=WINAME.replace("'","''");}
+			//WriteLog("WINAME"+WINAME);
+			
+			query = "SELECT MODE_OF_COMMUNICATION,COMMUNICATION_DATE,COMMUNICATION_TIME,DESCRIPTION_COMM,CURRENT_DATE_COMM FROM USR_0_TF_COMMUNICATION_DTLS_GRID with(nolock) where WINAME=:WINAME";
+			params = "WINAME=="+WINAME;
+			
+		}
+		else if (reqType.equals("loadlodgementdate"))
+		{
+			WINAME=URLDecoder.decode(request.getParameter("WINAME")).replace("&amp;","&");
+			if (WINAME != null) {WINAME=WINAME.replace("'","''");}
+			//WriteLog("WINAME"+WINAME);
+			
+			query = "SELECT IntroductionDateTime FROM QUEUEVIEW WHERE processname='tf' AND processinstanceid=:WINAME";
+			params = "WINAME=="+WINAME;			
+		} 
+		else if (reqType.equals("loadDocumentGrid"))
+		{
+			WINAME=URLDecoder.decode(request.getParameter("WINAME")).replace("&amp;","&");
+			if (WINAME != null) {WINAME=WINAME.replace("'","''");}
+			//WriteLog("WINAME"+WINAME);
+			
+			query = "SELECT Case_Documents,No_Of_Copies,No_Of_Originals FROM USR_0_TF_SaveDocGridTable with(nolock) where WIName=:WINAME order by Case_Documents";
+			params = "WINAME=="+WINAME;			
+		} 
+		else if (reqType.equals("loadDocumentGridOnCIFSearch"))
+		{
+			ApplicationFormCode=URLDecoder.decode(request.getParameter("ServiceRequestCode")).replace("&amp;","&");
+			if (ApplicationFormCode != null) {ApplicationFormCode=ApplicationFormCode.replace("'","''");}
+			//WriteLog("Product_Type"+Product_Type);
+			
+			query = "SELECT DocumentGrid FROM  USR_0_TF_SUBCATEGORY with(nolock) where Application_FormCode=:Application_FormCode";
+			params = "Application_FormCode=="+ApplicationFormCode;		
+		} 
+		else if (reqType.equals("loadChecklistCombo"))
+		{
+			ApplicationFormCode=URLDecoder.decode(request.getParameter("ServiceRequestCode")).replace("&amp;","&");
+			if (ApplicationFormCode != null) {ApplicationFormCode=ApplicationFormCode.replace("'","''");}
+			//WriteLog("Product_Type"+Product_Type);
+			
+			query = "SELECT ChecklistCombo FROM USR_0_TF_SUBCATEGORY with(nolock) where Application_FormCode=:Application_FormCode";
+			params = "Application_FormCode=="+ApplicationFormCode;	
+			
+		}
+		else if (reqType.equals("loadEventGrid"))
+		{
+			CIFID=URLDecoder.decode(request.getParameter("CIFID")).replace("&amp;","&");
+			if (CIFID != null) {CIFID=CIFID.replace("'","''");}
+			//WriteLog("CIFID"+CIFID);
+		
+			query = "select CIF_ID,IntoducedAt,Product_Category,Product_Type,IntoducedBy,WI_NAME from RB_TF_EXTTABLE with(nolock) where CIF_ID=:CIFID";
+			//params = "CIFID=="+CIFID;		
+			WriteLog("query="+query);
+		}
+		else if (reqType.equals("loadInvoiceGrid"))
+		{
+			WINAME=URLDecoder.decode(request.getParameter("WINAME")).replace("&amp;","&");
+			if (WINAME != null) {WINAME=WINAME.replace("'","''");}
+			//WriteLog("WINAME"+WINAME);
+			
+			query = "SELECT INVOICE_ID,INVOICE_NUMBER FROM USR_0_TF_INVOICE_DTLS_GRID with (nolock) WHERE WINAME=:WINAME";
+			params = "WINAME=="+WINAME;			
+			WriteLog("query="+query);
+		}
+		else if (reqType.equals("getMailIdOfRORM"))
+		{
+			String UserName=URLDecoder.decode(request.getParameter("UserName")).replace("&amp;","&");
+			if (UserName != null) {UserName=UserName.replace("'","''");}
+			//WriteLog("WINAME"+WINAME);
+			
+			query = "SELECT MailId from PDBUSER with (nolock) WHERE UserName=:UserName and MailId is not null";
+			params = "UserName=="+UserName;			
+			//WriteLog("query="+query);
+		}
+	
+		
+		sInputXML = "<?xml version='1.0'?><APSelectWithNamedParam_Input><Option>APSelectWithNamedParam</Option><Query>" + query + "</Query><Params>"+params+"</Params><EngineName>" + sCabName + "</EngineName><SessionId>" + sSessionId + "</SessionId></APSelectWithNamedParam_Input>";
+		WriteLog("\nInput XML in Drop Down load-- "+sInputXML);
+	
+		sOutputXML = WFCustomCallBroker.execute(sInputXML, sJtsIp, iJtsPort, 1);
+		WriteLog("Output XML in Drop Down Load---- "+sOutputXML);
+
+		xmlParserData=new WFCustomXmlResponse();
+		xmlParserData.setXmlString((sOutputXML));
+		String mainCodeValue = xmlParserData.getVal("MainCode");
+		WriteLog("maincode in Drop Down Load"+mainCodeValue);
+		
+		int recordcount=0;
+		try
+		{
+			recordcount=Integer.parseInt(xmlParserData.getVal("TotalRetrieved"));
+		}
+		catch(Exception e)	
+		{
+		}
+		WriteLog("reqType--"+reqType+"recordcount -- "+recordcount);
+		if(reqType.equals("loadchecklist") && recordcount==0)
+		{
+			returnValues="";
+			//WriteLog("returnValues -- "+returnValues);
+			out.clear();
+			out.print(returnValues);
+		}
+		else if(reqType.equals("loadDocumentGrid") && recordcount==0)
+		{
+			returnValues="";
+			//WriteLog("returnValues -- "+returnValues);
+			out.clear();
+			out.print(returnValues);
+		}
+		else if(reqType.equals("loadInvoiceGrid") && recordcount==0)
+		{
+			returnValues="";
+			//WriteLog("returnValues -- "+returnValues);
+			out.clear();
+			out.print(returnValues);
+		}
+		else if(reqType.equals("getMailIdOfRORM") && recordcount==0)
+		{
+			returnValues="";
+			//WriteLog("returnValues -- "+returnValues);
+			out.clear();
+			out.print(returnValues);
+		}
+		else{
+			if(mainCodeValue.equals("0"))
+			{
+			//WriteLog("inside mainCodeValue -- "+mainCodeValue);
+					objWorkList = xmlParserData.createList("Records","Record"); 
+					for(objWorkList.reInitialize(true);objWorkList.hasMoreElements(true);objWorkList.skip(true))
+					{
+					//WriteLog("for loop -- ");
+						
+						if (reqType.equals("selectDecision"))
+							returnValues = returnValues + objWorkList.getVal("Decision")  + "~";
+						else if (reqType.equals("Load_ModeOfDelivery"))
+							returnValues = returnValues + objWorkList.getVal("Mode_Of_Delivery")  + "~";
+						else if (reqType.equals("loadchecklist"))
+							returnValues = returnValues + objWorkList.getVal("Checklist_Description") + "~" + objWorkList.getVal("Option_checklist") + "~" + objWorkList.getVal("Remarks")+ "~" + objWorkList.getVal("Workstep") + "|"; 
+						else if (reqType.equals("loadcommngrid"))
+							returnValues = returnValues + objWorkList.getVal("MODE_OF_COMMUNICATION") + "~" + objWorkList.getVal("COMMUNICATION_DATE") + "~" + objWorkList.getVal("COMMUNICATION_TIME") + "~" + objWorkList.getVal("DESCRIPTION_COMM") + "~" + objWorkList.getVal("CURRENT_DATE_COMM") + "|"; 
+						else if (reqType.equals("loadlodgementdate"))
+							returnValues = returnValues + objWorkList.getVal("IntroductionDateTime")  + "~";
+						else if (reqType.equals("loadDocumentGrid"))
+							returnValues = returnValues + objWorkList.getVal("Case_Documents") + "~" + objWorkList.getVal("No_Of_Copies") + "~" + objWorkList.getVal("No_Of_Originals") + "|"; 
+						else if (reqType.equals("loadDocumentGridOnCIFSearch"))
+							returnValues = returnValues + objWorkList.getVal("DocumentGrid") + "|"; 
+						else if (reqType.equals("loadChecklistCombo"))
+							returnValues = returnValues + objWorkList.getVal("ChecklistCombo") + "|"; 
+						else if (reqType.equals("loadEventGrid"))
+							returnValues = returnValues + objWorkList.getVal("CIF_ID") + "~" + objWorkList.getVal("introductionDateAndTime") + "~" + objWorkList.getVal("Product_Category") + "~" + objWorkList.getVal("Product_Type") + "~" + objWorkList.getVal("IntoducedBy") + "~" + objWorkList.getVal("WI_NAME") + "|"; 
+						else if (reqType.equals("loadInvoiceGrid"))
+							returnValues = returnValues + objWorkList.getVal("INVOICE_ID") + "~" + objWorkList.getVal("INVOICE_NUMBER") + "|"; 
+						else if (reqType.equals("getMailIdOfRORM"))
+							returnValues = returnValues + objWorkList.getVal("MailId") + "~"; 
+					}	
+					returnValues =  returnValues.substring(0,returnValues.length()-1);
+					WriteLog("returnValues -- "+returnValues);
+					out.clear();
+					out.print(returnValues);	
+				
+			}
+			else
+			{
+				WriteLog("Exception in loading dropdown values -- ");
+				out.clear();
+				out.print("-1");
+			}
+		}
+	
+%>

@@ -1,0 +1,2 @@
+
+Do not Delete jquery related files from this location as it is getting used for date picker

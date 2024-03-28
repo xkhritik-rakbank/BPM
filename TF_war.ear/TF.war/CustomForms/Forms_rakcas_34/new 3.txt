@@ -1,0 +1,58 @@
+
+SELECT * FROM RB_TF_EXTTABLE
+SELECT * FROM USR_0_SRB_CATEGORY
+IF OBJECT_ID ('dbo.USR_0_SRB_CATEGORY') IS NOT NULL
+	DROP TABLE dbo.USR_0_SRB_CATEGORY
+GO
+
+CREATE TABLE dbo.USR_0_SRB_CATEGORY
+	(
+	ID            INT IDENTITY NOT NULL,
+	CategoryIndex INT NOT NULL,
+	CategoryName  NVARCHAR (255) NOT NULL,
+	ProcessName   NVARCHAR (255) NULL,
+	ProcessId     INT NULL,
+	IsActive      NVARCHAR (1) DEFAULT ('Y') NULL,
+	CONSTRAINT PK_638FSP546456_2 PRIMARY KEY (CategoryIndex)
+	)
+GO
+CREATE TABLE dbo.USR_0_TF_CATEGORY
+	(
+	ID            INT IDENTITY NOT NULL,
+	CategoryIndex INT NOT NULL,
+	CategoryName  NVARCHAR (255) NOT NULL,
+	ProcessName   NVARCHAR (255) NULL,
+	ProcessId     INT NULL,
+	IsActive      NVARCHAR (1) DEFAULT ('Y') NULL,
+	CONSTRAINT PK_638FSP546456_3 PRIMARY KEY (CategoryIndex)
+	)
+	
+	
+GO
+
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (1, 'Loans Against Trust Receipt - LATR', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (2, 'Local Cheque Discounting - LCD', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (3, 'Short Term Loan Against Invoice - STL', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (4, 'Loans Against Invoices - LAI', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (5, 'Export Letter of Credit - EPLC ', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (6, 'Outward Gurantee - GTEE', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (7, 'Inward Gurantee - IWGT', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (8, 'Import Collection  - IND', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (9, 'Export Collection  - OBC', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (10, 'IMPORT LETTER OF CREDIT - IPLC', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (11, 'Banker Acceptance - BA', 'TF', 29, 'Y')
+GO
+INSERT INTO USR_0_TF_CATEGORY (CategoryIndex, CategoryName, ProcessName, ProcessId, IsActive) VALUES (12, 'Invoice Bazar', 'TF', 29, 'Y')
+GO
+
+SELECT * FROM usr_0_tf_category

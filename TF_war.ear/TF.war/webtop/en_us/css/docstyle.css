@@ -1,0 +1,561 @@
+
+BODY {
+	BACKGROUND: white
+}
+
+BODY.EWGeneral {
+	BACKGROUND-COLOR: white; MARGIN-LEFT: 6px; MARGIN-TOP: 0px
+}
+BODY.EWGeneralRB {
+	BACKGROUND-COLOR: "#FFFBF0"; MARGIN-LEFT: 6px; MARGIN-TOP: 0px
+}
+.EWNormalGreenGeneral1 {
+    COLOR: black;  FONT:11pt Arial; TEXT-ALIGN: left
+}
+
+BODY.EWGeneral1 {
+	BACKGROUND-COLOR: white; MARGIN-LEFT: 3px; MARGIN-RIGHT: 3px; MARGIN-TOP: 0px
+}
+.EWLabelRB {
+	FONT:  9pt Arial; color:#990033
+}
+.EWLabelRB2 {
+	COLOR: white; BACKGROUND-COLOR: #990033 ; FONT:  10pt Arial
+}
+.EWLabelRB2SRM {
+	BACKGROUND-COLOR: "#990033";FONT:  11pt Arial; color:"#FFFBF0"
+}
+.EWLabelRB3 {
+	BACKGROUND-COLOR: "#FFFBF0";FONT:  10pt Arial; 
+}
+.EWLabelRB4 {
+	COLOR: blue; FONT: 10pt Arial
+}
+.EWButtonRB {
+	BACKGROUND-COLOR: white; COLOR: black; FONT: bold 8pt Arial; TEXT-INDENT: 0px
+	}
+.EWEnabledLinkRB {
+	COLOR: "#FFFBF0"; FONT: bold 9pt Arial; TEXT-DECORATION: none
+}
+.EWButtonRBSRM {
+	BACKGROUND-COLOR: white; COLOR: black; FONT: bold 9pt Arial; TEXT-INDENT: 0px
+	}
+.EWEnabledLinkRB {
+	COLOR: "#FFFBF0"; FONT: bold 9pt Arial; TEXT-DECORATION: none
+}
+
+
+
+.EWLabel {
+	FONT: bold 9pt Arial
+}
+.EWLabelRight {
+	FONT: bold 9pt Arial;TEXT-ALIGN: right
+}
+.EWLabelLeft {
+	FONT: bold 9pt Arial;TEXT-ALIGN: left
+}
+
+.EWLabelGreen {
+    COLOR: green; FONT: bold 9pt Arial; TEXT-ALIGN: left
+}
+
+.EWLargeLabel {
+	FONT: bold 13pt Arial
+}
+.EWLabel1 {
+	COLOR: blue; FONT: 8pt Arial
+}
+
+.EWLabelBlue{
+        COLOR: blue; FONT: bold 8pt Arial
+}
+
+
+.EWLabel3 {
+	COLOR: black; FONT: 8pt Arial
+}
+
+.EWLabel3red {
+	COLOR: red; FONT: 8pt Arial
+}
+.EWLabel2 {
+	FONT: 7pt Arial
+}
+.EWLabelBold{
+        COLOR: black; FONT: bold 8pt Arial
+}
+
+.EWLabelBlue {
+	COLOR: blue; FONT: bold 9pt Arial
+}
+.EWNormalGreen {
+	COLOR: green; FONT: 8pt Arial
+}
+.EWMessage {
+	COLOR: red; FONT: bold 9pt Arial; TEXT-ALIGN: center
+}
+.EWSuccess {
+	COLOR: red; FONT: bold 11pt Arial
+}
+.EWMessageNormal {
+	COLOR: red; FONT: 9pt Arial; TEXT-ALIGN: center
+}
+.EWSubHeader {
+	BACKGROUND-COLOR: #dbeede; COLOR: blue; FONT: bold 9pt Arial; TEXT-ALIGN: center; VERTICAL-ALIGN: middle
+}
+
+TD.EWGreyHeader {
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold 9pt Arial; TEXT-ALIGN: center; VERTICAL-ALIGN: middle
+}
+
+TD.EWSubHeaderText {
+	BACKGROUND-COLOR: #dbeede; COLOR: blue; FONT: bold 9pt Arial; TEXT-ALIGN: left; VERTICAL-ALIGN: middle; padding-left: 5px
+}
+TD.EWSubHeaderNum {
+	BACKGROUND-COLOR: #dbeede; COLOR: blue; FONT: bold 9pt Arial; TEXT-ALIGN: right; VERTICAL-ALIGN: middle; padding-right: 5px
+}
+A.EWSortedBy {
+	COLOR: #800080
+}
+A.EWSubHeaderText {
+	 COLOR: blue;
+}
+
+A.EWSubHeaderText:hover {
+	COLOR: red
+}
+
+.EWHeader {
+	BACKGROUND-COLOR: #dbeede
+}
+.EWTableBack {
+	BACKGROUND-COLOR: #f6f6f6
+}
+TD.EWTableContents {
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial; HEIGHT:16px; text-decoration: underline;}
+TD.EWTableContentsText {
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: left;padding-left: 5px
+}
+TD.EWTableContentsNum {
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right;padding-right: 5px
+}
+.EWTableContentsBlue {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: blue; FONT: 8pt Arial; HEIGHT:16px; text-decoration: underline; CURSOR: pointer;
+}
+.EWTableContentsTextBlue {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: blue;FONT: 8pt Arial; HEIGHT:16px;
+}
+.EWTableContentsNumBlue {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: blue; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right; text-decoration: underline;
+}
+.EWTableContentsRed {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: red; FONT: 8pt Arial; HEIGHT:16px; text-decoration: underline; CURSOR: pointer;}
+.EWTableContentsTextRed {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: red;FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN:left;
+}
+
+.EWTableContentsNumRed {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: red; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right;
+}
+
+.EWTableContentsOlive {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: olive; FONT: 8pt Arial; HEIGHT:16px; text-decoration: underline; CURSOR: pointer;}
+
+.EWTableContentsTextOlive {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: olive;FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN:left;
+}
+
+.EWTableContentsNumOlive {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: olive; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right;
+}
+.EWTableContentsGreen{
+	BACKGROUND-COLOR: #f6f6f6; COLOR: green; FONT: 8pt Arial; HEIGHT:16px; text-decoration: underline; CURSOR: pointer;}
+
+.EWTableContentsTextGreen {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: black; FONT: 8pt Arial; HEIGHT: 16px; TEXT-ALIGN: left;
+}
+
+.EWTableContentsNumGreen {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: black; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right;
+}
+
+
+
+.EWTableContentsTeal {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: teal; FONT: 8pt Arial; HEIGHT:16px; text-decoration: underline; CURSOR: pointer;}
+
+.EWTableContentsTextTeal {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: teal;FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN:left;
+}
+
+.EWTableContentsNumTeal {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: teal; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right;
+}
+TD.EWTableContentsGray {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: gray; FONT: 8pt Arial; HEIGHT:16px; }
+TD.EWTableContentsTextGray {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: gray;FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN:left; text-indent: 10px; margin-left:10px;
+}
+TD.EWTableContentsNumGray {
+	BACKGROUND-COLOR: #f6f6f6; COLOR: gray; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right;
+}
+
+TD.EWTableContents1 {
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial
+}
+.EWCombo {
+	FONT: 9pt Arial
+}
+.EWFields {
+	FONT: 9pt Arial ;Color :blue;
+}
+
+A.EWTableContents {
+	COLOR: green; FONT: 8pt Arial
+}
+A.EWTableContents:hover {
+	COLOR: red
+}
+A.EWTableContentsBlue {
+	COLOR: blue; FONT: 8pt Arial
+}
+A.EWTableContentsTeal {
+	COLOR: teal; FONT: 8pt Arial
+}
+A.EWTableContentsOlive {
+	COLOR: olive; FONT: 8pt Arial
+}
+.EWTableContentsBlue:hover {
+	COLOR: red
+}
+A.EWTableContentsRed {
+	COLOR: red; FONT: 8pt Arial
+}
+.EWTableContentsRed:hover {
+	COLOR: blue
+}
+.EWTableContentsGreen:hover {
+	COLOR: red
+}
+
+
+
+
+A.EWTravelPlan {
+	COLOR: red; FONT: 8pt Arial
+}
+A.EWTravelPlan:hover {
+	COLOR: green
+}
+A.EWEnabledLink {
+	COLOR: green; FONT: bold 9pt Arial; TEXT-DECORATION: none
+}
+A.EWEnabledLink:hover {
+	COLOR: red
+}
+A.EWDisabledLink {
+	COLOR: silver; FONT: bold 9pt Arial; TEXT-DECORATION: none
+}
+TD.EWDisabledOption {
+	COLOR: silver; FONT: bold 9pt Arial
+}
+A.EWCalOtherMonth {
+	COLOR: silver; FONT: 8pt Arial; TEXT-DECORATION: none
+}
+A.EWCalGeneral {
+	COLOR: black; FONT: 8pt Arial; TEXT-DECORATION: none
+}
+A.EWCalToday {
+	COLOR: blue; FONT: 8pt Arial; TEXT-DECORATION: none
+}
+.EWButton {
+	BACKGROUND-COLOR: white; COLOR: rgb(50,126,65); FONT: bold 8pt Arial; text-align : center; 
+
+}
+
+HR.EWHLine {
+	COLOR: #c0c0c0;
+}
+.pgheaders1 {
+	COLOR: red; FONT: bold 14pt Arial, Helvetica, sans-serif
+}
+.pgcontenthead1 {
+	COLOR: black; FONT: bold 10pt Arial, Helvetica, sans-serif
+}
+.pgcontent1 {
+	COLOR: black; FONT: 10pt Arial, Helvetica, sans-serif
+}
+all.EWBold8Pt{font:bold 8pt Arial;font-weight:800;}
+
+.EWErrorMessage{font:bold 9pt Arial;color:blue;text-align:center;}
+
+.EWButtonLink {
+	BACKGROUND-COLOR: white;
+	border-width :0px;
+	height :0px;
+	width :0px
+}
+
+.EWAction {
+	COLOR: black;
+	FONT: bold 10pt Arial;
+	border-width:0px;
+	height:0px;
+	width:0px
+}
+
+.EWButtonLinkDisabled{
+	BACKGROUND-COLOR: rgb(192,192,192);
+	COLOR: gray;
+	FONT: 8pt Arial;
+	TEXT-INDENT: 0px;
+	TEXT-DECORATION: none;
+	border-width:0;
+}
+A.EWLabelBorder {
+	FONT: bold 8pt verdana;
+	COLOR: black;
+
+	text-align:center;
+	TEXT-DECORATION: none;
+	CURSOR: pointer
+}
+
+A.EWLabelBorder:hover
+{
+    COLOR: green
+}
+
+
+.EWLabelBorder1 {
+	FONT: bold 8pt verdana;
+	COLOR:black;
+	BACKGROUND-COLOR: rgb(163,163,163);
+	text-align:center;
+	TEXT-DECORATION: none;
+	CURSOR:pointer
+}
+A.sitetexthover
+{
+    COLOR: #000000;
+    FONT-FAMILY: verdana;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none
+}
+A.sitetexthover:hover
+{
+    COLOR: green;
+}
+
+
+A.EWEnabledLink1 {
+	COLOR: black; FONT:bold 8pt verdana; TEXT-DECORATION: none;
+}
+A.EWEnabledLink1:hover {
+	COLOR: blue;
+}
+
+.pgcontenthead1 {
+	COLOR: black; FONT: bold 10pt Arial, Helvetica, sans-serif;
+}
+.pgcontent1 {
+	COLOR: black; FONT: 10pt Arial, Helvetica, sans-serif;
+}
+
+.divLinkEn{
+text-decoration: underline; cursor: pointer; font-size: 12px; font-family: Arial; color: green;
+}
+.divLinkDis{
+text-decoration: underline; cursor: pointer; font-size: 12px; font-family: Arial; color: gray;
+}
+
+.divLinkEnLeft{
+text-decoration: underline; cursor: pointer; FONT: 8pt Arial; HEIGHT: 16px; TEXT-ALIGN: left; color: green;
+}
+
+.divLinkDisLeft{
+text-decoration: underline; FONT: 8pt Arial; HEIGHT: 16px; color: gray;
+}
+
+.divBtmLinkEn {
+        cursor: pointer; font-size: 12px; font-weight: bold; font-family: Arial; color: green; TEXT-DECORATION: none ;
+}
+
+.divBtmLinkDis{
+        text-decoration: none; cursor: pointer; font-weight: bold; font-size: 12px; font-family: Arial; color: silver;
+}
+
+.LableWth{
+WIDTH: 20%;
+white-space : nowrap;
+text-align :left;
+}
+.ValueWth{
+WIDTH: 80%;
+text-align :left;
+}
+.PANEL{
+text-align : left ;
+white-space: nowrap;
+
+}
+
+
+
+.EWMsg {
+color: red; font-family: 'New Century Schoolbook', serif; font-style: oblique; text-decoration: underline;
+}
+
+.EWKey{
+color: green; FONT: bold 10pt Arial;
+}
+
+.EWTableWi{
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial; HEIGHT:16px; padding-left: 5px;
+}
+.EWTableLinkWi{
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: left; padding-left: 5px;
+}
+.EWTableTextWi {
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: left; padding-left: 5px;
+}
+.EWTableNumWi {
+	BACKGROUND-COLOR: #f6f6f6; FONT: 8pt Arial; HEIGHT:16px; TEXT-ALIGN: right; padding-right: 5px;
+}
+
+
+.EWHeaderLinkWi{
+    color: blue; text-decoration : underline; padding-left: 5px;
+}
+.EWHeaderLinkWi:hover {
+	COLOR: red
+}
+
+.EWHeaderSortWi {
+    COLOR: #800080; text-decoration : underline; padding-left: 5px;
+}
+
+.EWHeaderText{
+    color: blue; padding-left: 5px;
+}
+
+.EWLabelWi{
+
+    COLOR: blue; FONT: bold 9pt Arial; BACKGROUND-COLOR: #f6f6f6;
+}
+.equiPartiton{
+    width :  100%;
+    text-align :center;
+    vertical-align : top;
+    COLOR: blue; FONT: bold 9pt Arial; TEXT-ALIGN: center; BACKGROUND-COLOR: #f6f6f6;
+    white-space :nowrap
+}
+.appDivClass{
+height :450px;
+width  :400px;
+
+}
+
+.docIFrameClass{
+height :450px;
+width :100%;
+}
+.hiddendiv{
+display : none;
+}
+.EWFixWCombo{
+FONT: 9pt Arial;
+width :150px;
+height :20px;
+}
+
+.EWDisableTextField{
+    width :150px;
+    height :20px;
+    FONT: 9pt Arial;
+    Background-color : #EBECE4;
+    COLOR :#000000;
+}
+.EWEnalbleTextField{
+    width :150px;
+    height :20px;
+    FONT: 9pt Arial;
+}
+
+.EWExcpCombo{
+    VERTICAL-ALIGN: top;    
+}
+.docPanelRowStyle{
+width :100%; height :15px; border-width :0px;
+}
+.docPanelColumnStyle{
+width :100%; height :20px; VERTICAL-ALIGN : top ; 
+}
+.docPanelStyle{
+width :100%; height :600px; VERTICAL-ALIGN: top ;  border-width :0px; padding:0px;
+
+}
+
+.docOperationPanel{
+    width :100% ; height :40px ; text-align :top ;  border-width :0px ; 
+}
+.docName{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold 9pt Arial; TEXT-ALIGN: left; VERTICAL-ALIGN: middle ; width :35%;
+}
+.rightdocName{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold 9pt Arial; TEXT-ALIGN: right; VERTICAL-ALIGN: middle ; width :50%;
+}
+.docCombo{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold 9pt Arial; TEXT-ALIGN: left; VERTICAL-ALIGN: middle ; width :15%;
+}
+.docOperation{
+	BACKGROUND-COLOR: lightgrey; COLOR: black; FONT: bold 9pt Arial; TEXT-ALIGN: left; VERTICAL-ALIGN: middle ;width :20%; white-space :nowrap; 
+}
+.iconstyle{
+  height :35px;
+}
+
+.iconstyleMain{
+    height :55px;
+}
+
+.cmtStyle{
+    width: 100%; text-align: left; 
+}
+
+.lblStyle{
+    width: 30%; text-align: left;
+}
+
+.txtStyle{
+    width: 70%; text-align: left;
+}
+
+.EWBlue{
+color: blue; FONT: bold 10pt Arial;
+}
+
+.EWLabelN3 {
+	COLOR: black; FONT: 8pt Arial; text-align: left;
+}
+
+.EWBlueN{
+    color: blue; FONT: bold 10pt Arial; text-align: left;
+}
+
+.EWLabelBlueN{
+    COLOR: blue; FONT: bold 8pt Arial; width: 30%; text-align: left;
+}
+
+.EWLabelN1{
+    COLOR: blue; FONT: 8pt Arial; text-align: left;
+}
+.EWLabelBoldN{
+    COLOR: black; FONT: bold 8pt Arial; width: 30%; text-align: left;
+}
+
+.EWLabelCmnt{
+    COLOR: black; FONT: bold Italic 8pt Arial; text-decoration: underline; text-align: left;
+}
